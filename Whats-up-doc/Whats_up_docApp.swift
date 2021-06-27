@@ -10,18 +10,25 @@ import SwiftUI
 @main
 struct Whats_up_docApp: App {
     var body: some Scene {
-        WindowGroup {
+         WindowGroup {
             TabView {
-                Color(.blue)
+                HomeView()
                     .tabItem {
                         Text("Home")
                         Image(systemName: "house.fill")
                     }
-                Color(.purple)
+                DiagnosticsView()
                     .tabItem {
                         Text("Diagnostics")
                         Image(systemName: "waveform.path.ecg")
                     }
+                AppoinementView()
+                    .tabItem {
+                        Text("Appoinement")
+                        Image(systemName: "calendar")
+                    }
+
+                
             }
         }
     }
