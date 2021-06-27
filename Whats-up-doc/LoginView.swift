@@ -30,7 +30,7 @@ struct LoginView: View {
                 .padding(.bottom, 100)
             
             VStack(alignment: .leading, spacing: 15) {
-                TextField("Email", text: self.$email)
+                TextField("Email", text: $email)
                     .padding()
                     .background(Color("textFieldColor"))
                     .cornerRadius(20.0)
@@ -52,7 +52,7 @@ struct LoginView: View {
                     Button(action: {
                         showPassword.toggle()
                     }) {
-                        Image(systemName: self.showPassword ? "eye.slash" : "eye")
+                        Image(systemName: showPassword ? "eye.slash" : "eye")
                             .accentColor(.black).scaleEffect(0.8).padding()
                     }
                 }
@@ -88,16 +88,5 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
-    }
-}
-
-struct OvalTextFieldStyle: TextFieldStyle {
-    let skyBlue = Color(hue: 0.1639, saturation: 1, brightness: 1)
-    func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .padding(10)
-            .background(Color.white)
-            .cornerRadius(20)
-           
     }
 }

@@ -12,7 +12,7 @@ struct Whats_up_docApp: App {
     var body: some Scene {
          WindowGroup {
             TabView {
-                HomeView()
+                registerView()
                     .tabItem {
                         Text("Home")
                         Image(systemName: "house.fill")
