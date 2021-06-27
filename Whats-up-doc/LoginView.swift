@@ -8,39 +8,80 @@
 import SwiftUI
 
 struct LoginView: View {
-    
-    @State var login = ""
-    @State var password = ""
+
+    @State private var email = ""
+    @State private var password = ""
     @State private var showPassword: Bool = false
     
+
     var body: some View {
-    VStack(alignment: .leading) {
-                    Text("Login").font(.title2)
-                    HStack {
-                        TextField("Email", text: $login)
+        VStack() {
+            Text("What's up Doc")
+                .font(.largeTitle).foregroundColor(Color.white)
+                .padding([.top, .bottom], 40)
+                .shadow(radius: 10.0, x: 20, y: 10)
+            
+            Image("logo")
+                .resizable()
+                .frame(width: 200, height: 200)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 10.0, x: 20, y: 10)
+                .padding(.bottom, 100)
+            
+            VStack(alignment: .leading, spacing: 15) {
+                TextField("Email", text: self.$email)
+                    .padding()
+                    .background(Color("textFieldColor"))
+                    .cornerRadius(20.0)
+                    .shadow(radius: 10.0, x: 20, y: 10)
+                ZStack(alignment: .trailing) {
+                    if showPassword {
+                        TextField("Password", text: $password)
+                            .padding()
+                            .background(Color("textFieldColor"))
+                            .cornerRadius(20.0)
+                            .shadow(radius: 10.0, x: 20, y: 10)
+                    } else {
+                    SecureField("Password", text: $password)
+                            .padding()
+                            .background(Color("textFieldColor"))
+                            .cornerRadius(20.0)
+                            .shadow(radius: 10.0, x: 20, y: 10)
                     }
-                    .textFieldStyle(OvalTextFieldStyle())
+                    Button(action: {
+                        showPassword.toggle()
+                    }) {
+                        Image(systemName: self.showPassword ? "eye.slash" : "eye")
+                            .accentColor(.black).scaleEffect(0.8).padding()
+                    }
+                }
+            }.padding([.leading, .trailing], 27.5)
+            
+            Button(action: {}) {
+                Text("Sign In")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 330, height: 50)
+                    .background(Color.blue)
+                    .cornerRadius(15.0)
+                    .shadow(radius: 10.0, x: 20, y: 10)
+            }.padding(.top, 50)
+            
+            Spacer()
+            HStack(spacing: 0) {
+                Text("Don't have an account? ")
+                Button(action: {}) {
+                    Text("Sign Up")
+                        .foregroundColor(.black)
+                }
+            }
+        }
+        .background(
+            LinearGradient(gradient: Gradient(colors: [.green, .white]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all))
         
-                    Text("Password").font(.title2)
-                    ZStack(alignment: .trailing) {
-                        if showPassword {
-                            TextField("Password", text: $password)
-                        } else {
-                            SecureField("Password", text: $password)
-                        }
-                        Button(action: {
-                            showPassword.toggle()
-                        }) {
-                            Image(systemName: self.showPassword ? "eye" : "eye.slash")
-                                .accentColor(.gray).scaleEffect(0.8).padding()
-                        }
-                    }.textFieldStyle(OvalTextFieldStyle())
-    }
-    .padding()
-    .background(Color("Blue"))
-    .cornerRadius(10.0)
-    .shadow(color: .gray, radius: 5, x: 3, y: 5)
-    .padding()
     }
 }
 
