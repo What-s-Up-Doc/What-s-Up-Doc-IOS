@@ -32,20 +32,20 @@ struct LoginView: View {
             VStack(alignment: .leading, spacing: 15) {
                 TextField("Email", text: $email)
                     .padding()
-                    .background(Color("textFieldColor"))
+                    .background(Color("lightGray"))
                     .cornerRadius(20.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
                 ZStack(alignment: .trailing) {
                     if showPassword {
                         TextField("Password", text: $password)
                             .padding()
-                            .background(Color("textFieldColor"))
+                            .background(Color("lightGray"))
                             .cornerRadius(20.0)
                             .shadow(radius: 10.0, x: 20, y: 10)
                     } else {
                     SecureField("Password", text: $password)
                             .padding()
-                            .background(Color("textFieldColor"))
+                            .background(Color("lightGray"))
                             .cornerRadius(20.0)
                             .shadow(radius: 10.0, x: 20, y: 10)
                     }
@@ -79,7 +79,7 @@ struct LoginView: View {
             }
         }
         .background(
-            LinearGradient(gradient: Gradient(colors: [.green, .white]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
         
     }
