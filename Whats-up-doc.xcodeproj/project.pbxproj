@@ -15,7 +15,6 @@
 		B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71CE2688E0230099A4E3 /* LoginView.swift */; };
 		B32A71D8268917BE0099A4E3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71D7268917BE0099A4E3 /* RegisterView.swift */; };
 		EC1EAF8526739AF4006C0ED8 /* Whats_up_docApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */; };
-		EC1EAF8726739AF4006C0ED8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1EAF8626739AF4006C0ED8 /* ContentView.swift */; };
 		EC1EAF8926739AF6006C0ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */; };
 		EC1EAF8C26739AF6006C0ED8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8B26739AF6006C0ED8 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -30,7 +29,6 @@
 		B32A71D7268917BE0099A4E3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		EC1EAF8126739AF4006C0ED8 /* Whats-up-doc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whats-up-doc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whats_up_docApp.swift; sourceTree = "<group>"; };
-		EC1EAF8626739AF4006C0ED8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC1EAF8B26739AF6006C0ED8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC1EAF8D26739AF6006C0ED8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +45,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B32796B8268BC03C007C2BE0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B32796BC268BC128007C2BE0 /* NotConnected */,
+				B32796BB268BC111007C2BE0 /* Shared */,
+				B32796BA268BC0E2007C2BE0 /* Connected */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B32796B9268BC093007C2BE0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B32796B5268BBF4C007C2BE0 /* ValidatorField.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B32796BA268BC0E2007C2BE0 /* Connected */ = {
+			isa = PBXGroup;
+			children = (
+				B32A71C82688D7CE0099A4E3 /* HomeView.swift */,
+				B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */,
+				B32A71CB2688DD6C0099A4E3 /* AppoinementView.swift */,
+			);
+			path = Connected;
+			sourceTree = "<group>";
+		};
+		B32796BB268BC111007C2BE0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B32796BC268BC128007C2BE0 /* NotConnected */ = {
+			isa = PBXGroup;
+			children = (
+				B32A71CE2688E0230099A4E3 /* LoginView.swift */,
+				B32A71D7268917BE0099A4E3 /* RegisterView.swift */,
+			);
+			path = NotConnected;
+			sourceTree = "<group>";
+		};
 		EC1EAF7826739AF4006C0ED8 = {
 			isa = PBXGroup;
 			children = (
@@ -66,18 +109,12 @@
 		EC1EAF8326739AF4006C0ED8 /* Whats-up-doc */ = {
 			isa = PBXGroup;
 			children = (
+				B32796B8268BC03C007C2BE0 /* Views */,
 				EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */,
-				B32A71C82688D7CE0099A4E3 /* HomeView.swift */,
-				EC1EAF8626739AF4006C0ED8 /* ContentView.swift */,
+				B32796B9268BC093007C2BE0 /* Utils */,
 				EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */,
 				EC1EAF8D26739AF6006C0ED8 /* Info.plist */,
 				EC1EAF8A26739AF6006C0ED8 /* Preview Content */,
-				B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */,
-				B32A71CB2688DD6C0099A4E3 /* AppoinementView.swift */,
-				B32A71CE2688E0230099A4E3 /* LoginView.swift */,
-				B32A71D7268917BE0099A4E3 /* RegisterView.swift */,
-				B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */,
-				B32796B5268BBF4C007C2BE0 /* ValidatorField.swift */,
 			);
 			path = "Whats-up-doc";
 			sourceTree = "<group>";
@@ -160,7 +197,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */,
-				EC1EAF8726739AF4006C0ED8 /* ContentView.swift in Sources */,
 				B32796B6268BBF4C007C2BE0 /* ValidatorField.swift in Sources */,
 				B32A71CC2688DD6C0099A4E3 /* AppoinementView.swift in Sources */,
 				B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */,
