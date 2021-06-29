@@ -40,8 +40,8 @@ struct RegisterView: View {
                 VStack(){
                     Section(header: Text("Account").foregroundColor(.white)) {
                         ZStack(alignment: .center) {
-                            TextField("Email", text: $email, onEditingChanged: { (editingChanged) in
-                                    if editingChanged {
+                            TextField("Email", text: $email, onEditingChanged: { editingChanged in
+                                if editingChanged {
                                         emailErrorMsg = ""
                                     } else {
                                         emailErrorMsg = validator.validateField(text: email, with: [.notEmpty, .validEmail])
@@ -54,7 +54,7 @@ struct RegisterView: View {
                                 .disableAutocorrection(true)
                                 .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                             
-                            if emailErrorMsg != "" {
+                            if emailErrorMsg != "" && emailErrorMsg != nil {
                                 ErrorMessageView(errorMsg: "\(emailErrorMsg!)")
                             }
                         }
@@ -62,7 +62,7 @@ struct RegisterView: View {
                         ZStack(alignment: .center) {
                             ZStack(alignment: .trailing) {
                                 if showPassword {
-                                    TextField("Password", text: $password, onEditingChanged: { (editingChanged) in
+                                    TextField("Password", text: $password, onEditingChanged: { editingChanged in
                                         if editingChanged {
                                             passwordErrorMsg = ""
                                         } else {
@@ -90,7 +90,7 @@ struct RegisterView: View {
                                 }
                             }
                             
-                            if passwordErrorMsg != "" {
+                            if passwordErrorMsg != "" && passwordErrorMsg != nil {
                                 ErrorMessageView(errorMsg: "\(passwordErrorMsg!)")
                             }
                         }
@@ -132,7 +132,7 @@ struct RegisterView: View {
                         .pickerStyle(SegmentedPickerStyle()).background(Color.clear)
 
                         ZStack(alignment: .center) {
-                            TextField("Firstname", text: $firstname, onEditingChanged: { (editingChanged) in
+                            TextField("Firstname", text: $firstname, onEditingChanged: { editingChanged in
                                 if editingChanged {
                                     firstnameErrorMsg = ""
                                 } else {
@@ -145,13 +145,13 @@ struct RegisterView: View {
                                 .shadow(radius: 10.0, x: 20, y: 10)
                                 .disableAutocorrection(true)
                             
-                            if firstnameErrorMsg != "" {
+                            if firstnameErrorMsg != "" && firstnameErrorMsg != nil {
                                 ErrorMessageView(errorMsg: "\(firstnameErrorMsg!)")
                             }
                         }
 
                         ZStack(alignment: .center) {
-                            TextField("Lastname", text: $lastname, onEditingChanged: { (editingChanged) in
+                            TextField("Lastname", text: $lastname, onEditingChanged: { editingChanged in
                                 if editingChanged {
                                     lastnameErrorMsg = ""
                                 } else {
@@ -164,7 +164,7 @@ struct RegisterView: View {
                                 .shadow(radius: 10.0, x: 20, y: 10)
                                 .disableAutocorrection(true)
                             
-                            if lastnameErrorMsg != "" {
+                            if lastnameErrorMsg != "" && lastnameErrorMsg != nil {
                                 ErrorMessageView(errorMsg: "\(lastnameErrorMsg!)")
                             }
                         }
@@ -178,7 +178,7 @@ struct RegisterView: View {
                         .shadow(radius: 10.0, x: 20, y: 10)
                         
                         ZStack(alignment: .center) {
-                            TextField("Phone", text: $phone.value, onEditingChanged: { (editingChanged) in
+                            TextField("Phone", text: $phone.value, onEditingChanged: { editingChanged in
                                 if editingChanged {
                                     phoneErrorMsg = ""
                                 } else {
@@ -189,9 +189,10 @@ struct RegisterView: View {
                                 .background(Color("lightGray"))
                                 .cornerRadius(20.0)
                                 .shadow(radius: 10.0, x: 20, y: 10)
+                                .keyboardType(.numberPad)
                                 .disableAutocorrection(true)
                             
-                            if phoneErrorMsg != "" {
+                            if phoneErrorMsg != "" && phoneErrorMsg != nil {
                                 ErrorMessageView(errorMsg: "\(phoneErrorMsg!)")
                             }
                         }
@@ -212,7 +213,7 @@ struct RegisterView: View {
                         
                         ZStack(alignment: .center) {
                             ZStack(alignment: .trailing) {
-                                    TextField("Weight", text: $weight.value, onEditingChanged: { (editingChanged) in
+                                    TextField("Weight", text: $weight.value, onEditingChanged: { editingChanged in
                                         if editingChanged {
                                             weightErroMsg = ""
                                         } else {
@@ -230,14 +231,14 @@ struct RegisterView: View {
                                     .padding(.trailing, 35)
                             }
                             
-                            if weightErroMsg != "" {
+                            if weightErroMsg != "" && weightErroMsg != nil {
                                 ErrorMessageView(errorMsg: "\(weightErroMsg!)")
                             }
                         }
                         
                         ZStack(alignment: .center) {
                             ZStack(alignment: .trailing) {
-                                    TextField("Height", text: $height.value, onEditingChanged: { (editingChanged) in
+                                    TextField("Height", text: $height.value, onEditingChanged: { editingChanged in
                                         if editingChanged {
                                             heightErrorMsg = ""
                                         } else {
@@ -255,7 +256,7 @@ struct RegisterView: View {
                                     .padding(.trailing, 35)
                             }
                             
-                            if heightErrorMsg != "" {
+                            if heightErrorMsg != ""  && heightErrorMsg != nil {
                                 ErrorMessageView(errorMsg: "\(heightErrorMsg!)")
                             }
                         }
