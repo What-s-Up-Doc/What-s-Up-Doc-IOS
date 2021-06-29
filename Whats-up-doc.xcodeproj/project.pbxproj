@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */; };
 		B32A71C62688D6310099A4E3 /* DiagnosticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */; };
 		B32A71C92688D7CE0099A4E3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71C82688D7CE0099A4E3 /* HomeView.swift */; };
 		B32A71CC2688DD6C0099A4E3 /* AppoinementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71CB2688DD6C0099A4E3 /* AppoinementView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
 		B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
 		B32A71C82688D7CE0099A4E3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B32A71CB2688DD6C0099A4E3 /* AppoinementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppoinementView.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				B32A71CB2688DD6C0099A4E3 /* AppoinementView.swift */,
 				B32A71CE2688E0230099A4E3 /* LoginView.swift */,
 				B32A71D7268917BE0099A4E3 /* RegisterView.swift */,
+				B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */,
 			);
 			path = "Whats-up-doc";
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */,
 				EC1EAF8726739AF4006C0ED8 /* ContentView.swift in Sources */,
 				B32A71CC2688DD6C0099A4E3 /* AppoinementView.swift in Sources */,
+				B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */,
 				B32A71C92688D7CE0099A4E3 /* HomeView.swift in Sources */,
 				B32A71C62688D6310099A4E3 /* DiagnosticsView.swift in Sources */,
 				B32A71D8268917BE0099A4E3 /* RegisterView.swift in Sources */,

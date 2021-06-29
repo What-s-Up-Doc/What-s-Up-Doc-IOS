@@ -39,13 +39,12 @@ struct RegisterView: View {
             ScrollView() {
                 VStack(){
                     Section(header: Text("Account").foregroundColor(.white)) {
-                        
                         ZStack(alignment: .center) {
                             TextField("Email", text: $email, onEditingChanged: { (editingChanged) in
                                     if editingChanged {
                                         emailErrorMsg = ""
                                     } else {
-                                        emailErrorMsg = validator.validateField(text: email, with: [ .validEmail])
+                                        emailErrorMsg = validator.validateField(text: email, with: [.notEmpty, .validEmail])
                                     }
                                 })
                                 .padding()
@@ -56,11 +55,7 @@ struct RegisterView: View {
                                 .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                             
                             if emailErrorMsg != "" {
-                                Text("\(emailErrorMsg!)")
-                                    .foregroundColor(.red)
-                                    .italic()
-                                    .font(.system(size: 14))
-                                    .padding(.top, 40)
+                                ErrorMessageView(errorMsg: "\(emailErrorMsg!)")
                             }
                         }
                         
@@ -96,16 +91,9 @@ struct RegisterView: View {
                             }
                             
                             if passwordErrorMsg != "" {
-                                Text("\(passwordErrorMsg!)")
-                                    .foregroundColor(.red)
-                                    .italic()
-                                    .font(.system(size: 14))
-                                    .padding(.top, 40)
+                                ErrorMessageView(errorMsg: "\(passwordErrorMsg!)")
                             }
                         }
-                            
-                            
-
 
                         ZStack(alignment: .trailing) {
                             if showPassword {
@@ -158,11 +146,7 @@ struct RegisterView: View {
                                 .disableAutocorrection(true)
                             
                             if firstnameErrorMsg != "" {
-                                Text("\(firstnameErrorMsg!)")
-                                    .foregroundColor(.red)
-                                    .italic()
-                                    .font(.system(size: 14))
-                                    .padding(.top, 40)
+                                ErrorMessageView(errorMsg: "\(firstnameErrorMsg!)")
                             }
                         }
 
@@ -181,11 +165,7 @@ struct RegisterView: View {
                                 .disableAutocorrection(true)
                             
                             if lastnameErrorMsg != "" {
-                                Text("\(lastnameErrorMsg!)")
-                                    .foregroundColor(.red)
-                                    .italic()
-                                    .font(.system(size: 14))
-                                    .padding(.top, 40)
+                                ErrorMessageView(errorMsg: "\(lastnameErrorMsg!)")
                             }
                         }
                         
@@ -211,12 +191,8 @@ struct RegisterView: View {
                                 .shadow(radius: 10.0, x: 20, y: 10)
                                 .disableAutocorrection(true)
                             
-                            if lastnameErrorMsg != "" {
-                                Text("\(lastnameErrorMsg!)")
-                                    .foregroundColor(.red)
-                                    .italic()
-                                    .font(.system(size: 14))
-                                    .padding(.top, 40)
+                            if phoneErrorMsg != "" {
+                                ErrorMessageView(errorMsg: "\(phoneErrorMsg!)")
                             }
                         }
                     }.padding(.bottom, 10)
@@ -255,11 +231,7 @@ struct RegisterView: View {
                             }
                             
                             if weightErroMsg != "" {
-                                Text("\(weightErroMsg!)")
-                                    .foregroundColor(.red)
-                                    .italic()
-                                    .font(.system(size: 14))
-                                    .padding(.top, 40)
+                                ErrorMessageView(errorMsg: "\(weightErroMsg!)")
                             }
                         }
                         
@@ -284,11 +256,7 @@ struct RegisterView: View {
                             }
                             
                             if heightErrorMsg != "" {
-                                Text("\(heightErrorMsg!)")
-                                    .foregroundColor(.red)
-                                    .italic()
-                                    .font(.system(size: 14))
-                                    .padding(.top, 40)
+                                ErrorMessageView(errorMsg: "\(heightErrorMsg!)")
                             }
                         }
                         
@@ -315,17 +283,6 @@ struct RegisterView: View {
                 .edgesIgnoringSafeArea(.all))
         .navigationBarTitle("Register", displayMode: .inline)
     }
-    
-     func registerValidator() -> Void {
-//        emailErrorMsg = validator.validateField(text: email, with: [.notEmpty, .validEmail])!
-//        firstnameErrorMsg = validator.validateField(text: firstname, with: [.notEmpty, .fieldlenght])!
-//        lastnameErrorMsg = validator.validateField(text: lastname, with: [.notEmpty, .fieldlenght])!
-//        phoneErrorMsg = validator.validateField(text: phone.value, with: [.notEmpty, .validPhone])!
-//        passwordErrorMsg = validator.validateField(text: password, with: [.notEmpty, .passwordlength])!
-//        weightErroMsg = validator.validateField(text: weight.value, with: [.notEmpty, .isDecimal])!
-//        heightErrorMsg = validator.validateField(text: height.value, with: [.notEmpty, .isDecimal])!
-    }
-    
 }
 
 class Validator {
