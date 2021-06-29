@@ -84,7 +84,7 @@ struct RegisterView: View {
                                     .accentColor(Color("primary")).scaleEffect(0.8).padding()
                             }
                         }
-                    }.padding([.top,.bottom])
+                    }.padding([.top,.bottom],5)
                     
                     Section(header: Text("Personal").foregroundColor(.white)) {
                         Picker("Gender", selection: $selectedGenderIndex) {
@@ -138,29 +138,41 @@ struct RegisterView: View {
                         .background(Color("lightGray"))
                         .cornerRadius(20.0)
                         .shadow(radius: 10.0, x: 20, y: 10)
-                        .toggleStyle(CheckboxStyle())
+                        .toggleStyle(SwitchToggleStyle(tint: Color.blue))
                         
-                        TextField("Weight", text: $weight.value)
-                            .padding()
-                            .background(Color("lightGray"))
-                            .cornerRadius(20.0)
-                            .shadow(radius: 10.0, x: 20, y: 10)
-                            .keyboardType(.numberPad)
-                            .disableAutocorrection(true)
+                        ZStack(alignment: .trailing) {
+                            TextField("Weight", text: $weight.value)
+                                .padding()
+                                .background(Color("lightGray"))
+                                .cornerRadius(20.0)
+                                .shadow(radius: 10.0, x: 20, y: 10)
+                                .keyboardType(.numberPad)
+                                .disableAutocorrection(true)
                         
-                        TextField("Height", text: $height.value)
-                            .padding()
-                            .background(Color("lightGray"))
-                            .cornerRadius(20.0)
-                            .shadow(radius: 10.0, x: 20, y: 10)
-                            .keyboardType(.numberPad)
-                            .disableAutocorrection(true)
+                            Text("kg")
+                                .padding(.trailing, 35)
+                        }
+                        
+                        ZStack(alignment: .trailing) {
+                            TextField("Height", text: $height.value)
+                                .padding()
+                                .background(Color("lightGray"))
+                                .cornerRadius(20.0)
+                                .shadow(radius: 10.0, x: 20, y: 10)
+                                .keyboardType(.numberPad)
+                                .disableAutocorrection(true)
+                            
+                            Text("cm")
+                                .padding(.trailing, 30)
+                        }
                         
                         
                     }.padding(.bottom, 10)
                     
-                    Button(action: {}) {
-                        Text("Sign Up")
+                    Button(action: {
+                        
+                    }) {
+                        Text("Submit")
                             .font(.headline)
                             .foregroundColor(.white)
                             .padding()
@@ -181,21 +193,21 @@ struct RegisterView: View {
     }
 }
 
-struct CheckboxStyle: ToggleStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        return HStack {
-            configuration.label
-            Spacer()
-            Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
-                .resizable()
-                .frame(width: 24, height: 24)
-                .foregroundColor(configuration.isOn ? .blue : .gray)
-                .onTapGesture {
-                    configuration.isOn.toggle()
-                }
-        }
-    }
-}
+//struct CheckboxStyle: ToggleStyle {
+//    func makeBody(configuration: Self.Configuration) -> some View {
+//        return HStack {
+//            configuration.label
+//            Spacer()
+//            Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
+//                .resizable()
+//                .frame(width: 24, height: 24)
+//                .foregroundColor(configuration.isOn ? .blue : .gray)
+//                .onTapGesture {
+//                    configuration.isOn.toggle()
+//                }
+//        }
+//    }
+//}
 
 class DecimalOnly: ObservableObject {
     @Published var value = "" {

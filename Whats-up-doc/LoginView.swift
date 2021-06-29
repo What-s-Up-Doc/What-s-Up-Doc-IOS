@@ -75,7 +75,7 @@ struct LoginView: View {
                     NavigationLink(destination: RegisterView()){
                         Text("Sign Up")
                     }.navigationBarTitle("Login", displayMode: .inline)
-            }
+            }.padding(.bottom)
         }
         .background(
             LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)

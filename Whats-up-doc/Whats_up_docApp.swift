@@ -9,11 +9,12 @@ import SwiftUI
 
 @main
 struct Whats_up_docApp: App {
-    var connected: Bool = false
+    
+    @StateObject private var userData: UserData = UserData()
     
     var body: some Scene {
         WindowGroup {
-            if connected {
+            if userData.isLoggeIn {
                 TabView {
                     HomeView()
                         .tabItem {
@@ -38,4 +39,8 @@ struct Whats_up_docApp: App {
             }
         }
     }
+}
+
+class UserData: ObservableObject {
+    @Published var isLoggeIn: Bool = false
 }
