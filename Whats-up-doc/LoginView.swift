@@ -53,7 +53,7 @@ struct LoginView: View {
                         showPassword.toggle()
                     }) {
                         Image(systemName: showPassword ? "eye.slash" : "eye")
-                            .accentColor(.black).scaleEffect(0.8).padding()
+                            .accentColor(Color("primary")).scaleEffect(0.8).padding()
                     }
                 }
             }.padding([.leading, .trailing], 27.5)

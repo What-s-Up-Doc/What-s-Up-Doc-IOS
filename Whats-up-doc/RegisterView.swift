@@ -37,7 +37,6 @@ struct RegisterView: View {
                             .shadow(radius: 10.0, x: 20, y: 10)
                             .disableAutocorrection(true)
                         
-                        
                         ZStack(alignment: .trailing) {
                             if showPassword {
                                 TextField("Password", text: $password)
@@ -48,17 +47,17 @@ struct RegisterView: View {
                                     .disableAutocorrection(true)
                             } else {
                                 SecureField("Password", text: $password)
-                                        .padding()
-                                        .background(Color("lightGray"))
-                                        .cornerRadius(20.0)
-                                        .shadow(radius: 10.0, x: 20, y: 10)
-                                        .disableAutocorrection(true)
+                                    .padding()
+                                    .background(Color("lightGray"))
+                                    .cornerRadius(20.0)
+                                    .shadow(radius: 10.0, x: 20, y: 10)
+                                    .disableAutocorrection(true)
                             }
                             Button(action: {
                                 showPassword.toggle()
                             }) {
                                 Image(systemName: showPassword ? "eye.slash" : "eye")
-                                    .accentColor(.black).scaleEffect(0.8).padding()
+                                    .accentColor(Color("primary")).scaleEffect(0.8).padding()
                             }
                         }
 
@@ -72,17 +71,17 @@ struct RegisterView: View {
                                     .disableAutocorrection(true)
                             } else {
                                 SecureField("Password Confirm", text: $passwordConfirm)
-                                        .padding()
-                                        .background(Color("lightGray"))
-                                        .cornerRadius(20.0)
-                                        .shadow(radius: 10.0, x: 20, y: 10)
-                                        .disableAutocorrection(true)
+                                    .padding()
+                                    .background(Color("lightGray"))
+                                    .cornerRadius(20.0)
+                                    .shadow(radius: 10.0, x: 20, y: 10)
+                                    .disableAutocorrection(true)
                             }
                             Button(action: {
                                 showPassword.toggle()
                             }) {
                                 Image(systemName: showPassword ? "eye.slash" : "eye")
-                                    .accentColor(.black).scaleEffect(0.8).padding()
+                                    .accentColor(Color("primary")).scaleEffect(0.8).padding()
                             }
                         }
                     }.padding([.top,.bottom])
@@ -91,8 +90,6 @@ struct RegisterView: View {
                         Picker("Gender", selection: $selectedGenderIndex) {
                             ForEach(0..<genderOptions.count) {
                                 Text(self.genderOptions[$0])
-
-
                             }
                         }.padding(10)
                         .background(Color("lightGray"))
@@ -117,8 +114,8 @@ struct RegisterView: View {
                         
                         DatePicker(selection: $birthday, in: ...Date(), displayedComponents: .date) {
                             Text("Birthday")
-                                .padding([.leading, .top, .bottom], 20)
-                        }
+                                .padding()
+                        }.padding(.trailing)
                         .background(Color("lightGray"))
                         .cornerRadius(20.0)
                         .shadow(radius: 10.0, x: 20, y: 10)
