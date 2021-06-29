@@ -27,12 +27,6 @@ struct RegisterView: View {
     
     var body: some View {
         VStack() {
-            Text("Register")
-                .font(.largeTitle).foregroundColor(Color.white)
-                .padding(.top, 40)
-                .padding(.bottom, 10)
-                .shadow(radius: 10.0, x: 20, y: 10)
-            
             ScrollView() {
                 VStack(){
                     Section(header: Text("Account").foregroundColor(.white)) {
@@ -91,7 +85,7 @@ struct RegisterView: View {
                                     .accentColor(.black).scaleEffect(0.8).padding()
                             }
                         }
-                    }.padding(.bottom, 10)
+                    }.padding([.top,.bottom])
                     
                     Section(header: Text("Personal").foregroundColor(.white)) {
                         Picker("Gender", selection: $selectedGenderIndex) {
@@ -177,15 +171,16 @@ struct RegisterView: View {
                             .background(Color.blue)
                             .cornerRadius(15.0)
                             .shadow(radius: 10.0, x: 20, y: 10)
-                    }.padding(.top, 50)
+                    }.padding([.top,.bottom], 50)
                     
                 }.padding([.leading, .trailing], 27.5)
-            }.cornerRadius(20.0)
+            }
             Spacer()
         }
         .background(
             LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
+        .navigationBarTitle("Register", displayMode: .inline)
     }
 }
 
@@ -231,6 +226,6 @@ class NumbersOnly: ObservableObject {
 
 struct registerView_Previews: PreviewProvider {
     static var previews: some View {
-        registerView()
+        RegisterView()
     }
 }

@@ -70,12 +70,11 @@ struct LoginView: View {
             }.padding(.top, 50)
             
             Spacer()
-            HStack(spacing: 0) {
-                Text("Don't have an account? ")
-                Button(action: {}) {
-                    Text("Sign Up")
-                        .foregroundColor(.black)
-                }
+                HStack(spacing: 0) {
+                    Text("Don't have an account? ")
+                    NavigationLink(destination: RegisterView()){
+                        Text("Sign Up")
+                    }.navigationBarTitle("Login", displayMode: .inline)
             }
         }
         .background(

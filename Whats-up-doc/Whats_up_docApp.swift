@@ -9,26 +9,32 @@ import SwiftUI
 
 @main
 struct Whats_up_docApp: App {
+    var connected: Bool = false
+    
     var body: some Scene {
-         WindowGroup {
-            TabView {
-                HomeView()
-                    .tabItem {
-                        Text("Home")
-                        Image(systemName: "house.fill")
-                    }
-                DiagnosticsView()
-                    .tabItem {
-                        Text("Diagnostics")
-                        Image(systemName: "waveform.path.ecg")
-                    }
-                AppoinementView()
-                    .tabItem {
-                        Text("Appoinement")
-                        Image(systemName: "calendar")
-                    }
-
-                
+        WindowGroup {
+            if connected {
+                TabView {
+                    HomeView()
+                        .tabItem {
+                            Text("Home")
+                            Image(systemName: "house.fill")
+                        }
+                    DiagnosticsView()
+                        .tabItem {
+                            Text("Diagnostics")
+                            Image(systemName: "waveform.path.ecg")
+                        }
+                    AppoinementView()
+                        .tabItem {
+                            Text("Appoinement")
+                            Image(systemName: "calendar")
+                        }
+                }
+            } else {
+                NavigationView {
+                    LoginView()
+                }
             }
         }
     }
