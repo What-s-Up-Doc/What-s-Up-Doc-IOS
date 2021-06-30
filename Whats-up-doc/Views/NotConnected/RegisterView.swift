@@ -45,7 +45,7 @@ struct RegisterView: View {
                                 if editingChanged {
                                         emailErrorMsg = ""
                                     } else {
-                                        emailErrorMsg = validator.validateField(text: email, with: [.notEmpty, .validEmail])
+                                        emailErrorMsg = validator.validateField(text: [email], with: [.notEmpty, .validEmail])
                                     }
                                 })
                                 .padding()
@@ -53,7 +53,7 @@ struct RegisterView: View {
                                 .cornerRadius(20.0)
                                 .shadow(radius: 10.0, x: 20, y: 10)
                                 .disableAutocorrection(true)
-                                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                                .autocapitalization(.none)
                             
                             if emailErrorMsg != "" && emailErrorMsg != nil {
                                 ErrorMessageView(errorMsg: "\(emailErrorMsg!)")
@@ -67,7 +67,7 @@ struct RegisterView: View {
                                         if editingChanged {
                                             passwordErrorMsg = ""
                                         } else {
-                                            passwordErrorMsg = validator.validateField(text: password, with: [.notEmpty, .passwordlength])
+                                            passwordErrorMsg = validator.validateField(text: [password], with: [.notEmpty, .passwordlength])
                                         }
                                     })
                                     .padding()
@@ -75,6 +75,7 @@ struct RegisterView: View {
                                     .cornerRadius(20.0)
                                     .shadow(radius: 10.0, x: 20, y: 10)
                                     .disableAutocorrection(true)
+                                    .autocapitalization(.none)
                                 } else {
                                     SecureField("Password", text: $password)
                                         .padding()
@@ -82,6 +83,7 @@ struct RegisterView: View {
                                         .cornerRadius(20.0)
                                         .shadow(radius: 10.0, x: 20, y: 10)
                                         .disableAutocorrection(true)
+                                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                                 }
                                 Button(action: {
                                     showPassword.toggle()
@@ -96,33 +98,41 @@ struct RegisterView: View {
                             }
                         }
 
-                        ZStack(alignment: .trailing) {
-                            if showPasswordConfirm {
-                                TextField("Password Confirm", text: $passwordConfirm, onEditingChanged: { editingChanged in
-                                    if editingChanged {
-                                        passwordConfirmErrorMsg = ""
-                                    } else {
-                                        passwordConfirmErrorMsg = validator.validateField(text: passwordConfirm, with: [.notEmpty, .passwordlength])
-                                    }
-                                })
+                        ZStack(alignment: .center) {
+                            ZStack(alignment: .trailing) {
+                                if showPasswordConfirm {
+                                    TextField("Password Confirm", text: $passwordConfirm, onEditingChanged: { editingChanged in
+                                        if editingChanged {
+                                            passwordConfirmErrorMsg = ""
+                                        } else {
+                                            passwordConfirmErrorMsg = validator.validateField(text: [passwordConfirm, password], with: [.notEmpty, .validPasswordConfirm])
+                                        }
+                                    })
                                     .padding()
                                     .background(Color("lightGray"))
                                     .cornerRadius(20.0)
                                     .shadow(radius: 10.0, x: 20, y: 10)
                                     .disableAutocorrection(true)
-                            } else {
-                                SecureField("Password Confirm", text: $passwordConfirm)
-                                    .padding()
-                                    .background(Color("lightGray"))
-                                    .cornerRadius(20.0)
-                                    .shadow(radius: 10.0, x: 20, y: 10)
-                                    .disableAutocorrection(true)
+                                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                                } else {
+                                    SecureField("Password Confirm", text: $passwordConfirm)
+                                        .padding()
+                                        .background(Color("lightGray"))
+                                        .cornerRadius(20.0)
+                                        .shadow(radius: 10.0, x: 20, y: 10)
+                                        .disableAutocorrection(true)
+                                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                                }
+                                Button(action: {
+                                    showPasswordConfirm.toggle()
+                                }) {
+                                    Image(systemName: showPasswordConfirm ? "eye.slash" : "eye")
+                                        .accentColor(Color("primary")).scaleEffect(0.8).padding()
+                                }
                             }
-                            Button(action: {
-                                showPasswordConfirm.toggle()
-                            }) {
-                                Image(systemName: showPasswordConfirm ? "eye.slash" : "eye")
-                                    .accentColor(Color("primary")).scaleEffect(0.8).padding()
+                            
+                            if passwordConfirmErrorMsg != "" && passwordConfirmErrorMsg != nil {
+                                ErrorMessageView(errorMsg: "\(passwordConfirmErrorMsg!)")
                             }
                         }
                     }.padding([.top,.bottom],5)
@@ -143,7 +153,7 @@ struct RegisterView: View {
                                 if editingChanged {
                                     firstnameErrorMsg = ""
                                 } else {
-                                    firstnameErrorMsg = validator.validateField(text: firstname, with: [.notEmpty, .fieldlenght])
+                                    firstnameErrorMsg = validator.validateField(text: [firstname], with: [.notEmpty, .fieldlenght])
                                 }
                             })
                                 .padding()
@@ -162,7 +172,7 @@ struct RegisterView: View {
                                 if editingChanged {
                                     lastnameErrorMsg = ""
                                 } else {
-                                    lastnameErrorMsg = validator.validateField(text: lastname, with: [.notEmpty, .fieldlenght])
+                                    lastnameErrorMsg = validator.validateField(text: [lastname], with: [.notEmpty, .fieldlenght])
                                 }
                             })
                                 .padding()
@@ -189,7 +199,7 @@ struct RegisterView: View {
                                 if editingChanged {
                                     phoneErrorMsg = ""
                                 } else {
-                                    phoneErrorMsg = validator.validateField(text: phone.value, with: [.notEmpty, .validPhone])
+                                    phoneErrorMsg = validator.validateField(text: [phone.value], with: [.notEmpty, .validPhone])
                                 }
                             })
                                 .padding()
@@ -222,7 +232,7 @@ struct RegisterView: View {
                                         if editingChanged {
                                             weightErroMsg = ""
                                         } else {
-                                            weightErroMsg = validator.validateField(text: weight.value, with: [.notEmpty, .isDecimal])
+                                            weightErroMsg = validator.validateField(text: [weight.value], with: [.notEmpty, .isDecimal])
                                         }
                                     })
                                     .padding()
@@ -247,7 +257,7 @@ struct RegisterView: View {
                                         if editingChanged {
                                             heightErrorMsg = ""
                                         } else {
-                                            heightErrorMsg = validator.validateField(text: height.value, with: [.notEmpty, .isDecimal])
+                                            heightErrorMsg = validator.validateField(text: [height.value], with: [.notEmpty, .isDecimal])
                                         }
                                     })
                                     .padding()
