@@ -17,6 +17,7 @@ struct RegisterView: View {
     @State private var passwordConfirm: String = ""
     @State private var showPassword: Bool = false
     @State private var showPasswordConfirm: Bool = false
+    @State private var showsDatePicker: Bool = false
     @State private var selectedGenderIndex: Int = 0
     
     @ObservedObject private var height = DecimalOnly()
@@ -35,8 +36,14 @@ struct RegisterView: View {
     
     private var genderOptions = ["Male", "Female", "Other"]
     
+    let dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        return df
+    }()
+    
     var body: some View {
-        VStack() {
+        VStack(spacing: 0) {
             ScrollView() {
                 VStack(){
                     Section(header: Text("Account").foregroundColor(.white)) {
@@ -186,13 +193,22 @@ struct RegisterView: View {
                             }
                         }
                         
-                        DatePicker(selection: $birthday, in: ...Date(), displayedComponents: .date) {
-                            Text("Birthday")
-                                .padding()
-                        }.padding(.trailing)
-                        .background(Color("lightGray"))
-                        .cornerRadius(20.0)
-                        .shadow(radius: 10.0, x: 20, y: 10)
+                        ZStack(alignment: .trailing) {
+                            HStack {
+                                Text("Date of Birthday")
+
+                               Spacer()
+                                Text("\(dateFormatter.string(from: birthday))")
+                                    .onTapGesture {
+                                        self.showsDatePicker.toggle()
+                                    }
+                                    .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
+                                    .foregroundColor(.blue)
+                            }.padding()
+                            .background(Color("lightGray"))
+                            .cornerRadius(20.0)
+                            .shadow(radius: 10.0, x: 20, y: 10)
+                        }
                         
                         ZStack(alignment: .center) {
                             TextField("Phone", text: $phone.value, onEditingChanged: { editingChanged in
@@ -289,10 +305,27 @@ struct RegisterView: View {
                             .cornerRadius(15.0)
                             .shadow(radius: 10.0, x: 20, y: 10)
                     }.padding([.top,.bottom], 50)
-                    
                 }.padding([.leading, .trailing], 27.5)
+            }.overlay((self.showsDatePicker ? Color.black.opacity(0.3) : Color.clear)
+            .edgesIgnoringSafeArea(.all)
+            .onTapGesture {
+                self.showsDatePicker.toggle()
+            })
+
+
+            if self.showsDatePicker {
+                HStack(){
+                        DatePicker("", selection: $birthday, displayedComponents: .date)
+                            .datePickerStyle(WheelDatePickerStyle())
+                    }
+                    .offset(y: self.showsDatePicker ? 0 : UIScreen.main.bounds.height)
+                    .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+                    .padding(.horizontal)
+                    .padding(.top,20)
+                    .background(Color("lightGray"))
+                    .edgesIgnoringSafeArea(.bottom)
             }
-            Spacer()
+            
         }
         .background(
             LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)

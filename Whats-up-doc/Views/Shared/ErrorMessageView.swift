@@ -28,10 +28,9 @@ struct ErrorMessageView: View {
         .modifier(ShakeEffect(shakeNumber: numberOfShakes))
         .onAppear {
             withAnimation(.easeIn(duration: 0.6)) {
-                numberOfShakes = 2            }
+                numberOfShakes = 2
+            }
         }
-        
-
     }
 }
 
