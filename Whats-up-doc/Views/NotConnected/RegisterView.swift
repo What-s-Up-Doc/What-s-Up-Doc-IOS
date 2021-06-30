@@ -4,7 +4,6 @@
 //
 //  Created by Aymeric Larvet on 27/06/2021.
 //
-
 import SwiftUI
 
 struct RegisterView: View {
@@ -17,6 +16,7 @@ struct RegisterView: View {
     @State private var password: String = ""
     @State private var passwordConfirm: String = ""
     @State private var showPassword: Bool = false
+    @State private var showPasswordConfirm: Bool = false
     @State private var selectedGenderIndex: Int = 0
     
     @ObservedObject private var height = DecimalOnly()
@@ -29,9 +29,10 @@ struct RegisterView: View {
     @State var lastnameErrorMsg: String? = ""
     @State var phoneErrorMsg: String? = ""
     @State var passwordErrorMsg: String? = ""
+    @State var passwordConfirmErrorMsg: String? = ""
     @State var weightErroMsg: String? = ""
     @State var heightErrorMsg: String? = ""
-
+    
     private var genderOptions = ["Male", "Female", "Other"]
     
     var body: some View {
@@ -96,8 +97,14 @@ struct RegisterView: View {
                         }
 
                         ZStack(alignment: .trailing) {
-                            if showPassword {
-                                TextField("Password Confirm", text: $passwordConfirm)
+                            if showPasswordConfirm {
+                                TextField("Password Confirm", text: $passwordConfirm, onEditingChanged: { editingChanged in
+                                    if editingChanged {
+                                        passwordConfirmErrorMsg = ""
+                                    } else {
+                                        passwordConfirmErrorMsg = validator.validateField(text: passwordConfirm, with: [.notEmpty, .passwordlength])
+                                    }
+                                })
                                     .padding()
                                     .background(Color("lightGray"))
                                     .cornerRadius(20.0)
@@ -112,9 +119,9 @@ struct RegisterView: View {
                                     .disableAutocorrection(true)
                             }
                             Button(action: {
-                                showPassword.toggle()
+                                showPasswordConfirm.toggle()
                             }) {
-                                Image(systemName: showPassword ? "eye.slash" : "eye")
+                                Image(systemName: showPasswordConfirm ? "eye.slash" : "eye")
                                     .accentColor(Color("primary")).scaleEffect(0.8).padding()
                             }
                         }
