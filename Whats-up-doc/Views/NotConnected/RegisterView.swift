@@ -1,8 +1,8 @@
 //
-//  registerView.swift
+//  RegisterView.swift
 //  Whats-up-doc
 //
-//  Created by Hermance Dornier on 27/06/2021.
+//  Created by Aymeric Larvet on 27/06/2021.
 //
 
 import SwiftUI
@@ -208,8 +208,6 @@ struct RegisterView: View {
                         .cornerRadius(20.0)
                         .shadow(radius: 10.0, x: 20, y: 10)
                         .toggleStyle(SwitchToggleStyle(tint: Color.blue))
-                        
-
                         
                         ZStack(alignment: .center) {
                             ZStack(alignment: .trailing) {

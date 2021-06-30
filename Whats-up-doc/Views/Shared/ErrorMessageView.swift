@@ -2,7 +2,7 @@
 //  ErrorMessageView.swift
 //  Whats-up-doc
 //
-//  Created by Hermance Dornier on 29/06/2021.
+//  Created by Aymeric Larvet on 29/06/2021.
 //
 
 import SwiftUI
