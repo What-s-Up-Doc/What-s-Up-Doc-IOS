@@ -19,6 +19,7 @@ struct RegisterView: View {
     @State private var showPasswordConfirm: Bool = false
     @State private var showsDatePicker: Bool = false
     @State private var selectedGenderIndex: Int = 0
+    @State private var isEnabled = false
     
     @ObservedObject private var height = DecimalOnly()
     @ObservedObject private var weight = DecimalOnly()
@@ -312,7 +313,6 @@ struct RegisterView: View {
                 self.showsDatePicker.toggle()
             })
 
-
             if self.showsDatePicker {
                 HStack(){
                         DatePicker("", selection: $birthday, displayedComponents: .date)
@@ -327,6 +327,7 @@ struct RegisterView: View {
             }
             
         }
+        .animation(.default, value: showsDatePicker)
         .background(
             LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))

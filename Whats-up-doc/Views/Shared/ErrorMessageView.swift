@@ -47,7 +47,9 @@ struct ShakeEffect: AnimatableModifier {
 
     func body(content: Content) -> some View {
         content
-            .offset(x: sin(shakeNumber * .pi * 2) * 10)    }
+            .offset(x: sin(shakeNumber * .pi * 2) * 10)
+        
+    }
 }
 
 //struct ErrorMessageView_Previews: PreviewProvider {
