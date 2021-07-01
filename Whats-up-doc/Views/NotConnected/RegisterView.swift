@@ -19,7 +19,6 @@ struct RegisterView: View {
     @State private var showPasswordConfirm: Bool = false
     @State private var showsDatePicker: Bool = false
     @State private var selectedGenderIndex: Int = 0
-    @State private var isEnabled = false
     @State private var firstTapePasswordField = true
     @State private var firstTapePasswordConfirmField = true
     
@@ -57,7 +56,7 @@ struct RegisterView: View {
                                     emailErrorMsg = ""
                                     checkPasswordFields()
                                 } else {
-                                    emailErrorMsg = validator.validateField(text: [email], with: [.notEmpty, .validEmail])
+                                    emailErrorMsg = validator.validateField(text: [email], with: [.notEmpty, .validEmail]) == nil ? "" : validator.validateField(text: [email], with: [.notEmpty, .validEmail])
                                 }})
                                 .padding()
                                 .background(Color("lightGray"))
@@ -78,7 +77,7 @@ struct RegisterView: View {
                                         if editingChanged {
                                             passwordErrorMsg = ""
                                         } else {
-                                            passwordErrorMsg = validator.validateField(text: [password], with: [.notEmpty, .passwordlength])
+                                            passwordErrorMsg = validator.validateField(text: [password], with: [.notEmpty, .passwordlength]) == nil ? "" : validator.validateField(text: [password], with: [.notEmpty, .passwordlength])
                                         }
                                     })
                                     .padding()
@@ -120,7 +119,7 @@ struct RegisterView: View {
                                         if editingChanged {
                                             passwordConfirmErrorMsg = ""
                                         } else {
-                                            passwordConfirmErrorMsg = validator.validateField(text: [passwordConfirm, password], with: [.notEmpty, .validPasswordConfirm])
+                                            passwordConfirmErrorMsg = validator.validateField(text: [passwordConfirm, password], with: [.notEmpty, .validPasswordConfirm]) == nil ? "" : validator.validateField(text: [passwordConfirm, password], with: [.notEmpty, .validPasswordConfirm])
                                         }
                                     })
                                     .padding()
@@ -173,7 +172,7 @@ struct RegisterView: View {
                                     firstnameErrorMsg = ""
                                     checkPasswordFields()
                                 } else {
-                                    firstnameErrorMsg = validator.validateField(text: [firstname], with: [.notEmpty, .fieldlenght])
+                                    firstnameErrorMsg = validator.validateField(text: [firstname], with: [.notEmpty, .fieldlenght]) == nil ? "" : validator.validateField(text: [firstname], with: [.notEmpty, .fieldlenght])
                                 }
                             })
                                 .padding()
@@ -193,7 +192,7 @@ struct RegisterView: View {
                                     lastnameErrorMsg = ""
                                     checkPasswordFields()
                                 } else {
-                                    lastnameErrorMsg = validator.validateField(text: [lastname], with: [.notEmpty, .fieldlenght])
+                                    lastnameErrorMsg = validator.validateField(text: [lastname], with: [.notEmpty, .fieldlenght]) == nil ? "" : validator.validateField(text: [lastname], with: [.notEmpty, .fieldlenght])
                                 }
                             })
                                 .padding()
@@ -230,7 +229,7 @@ struct RegisterView: View {
                                     phoneErrorMsg = ""
                                     checkPasswordFields()
                                 } else {
-                                    phoneErrorMsg = validator.validateField(text: [phone.value], with: [.notEmpty, .validPhone])
+                                    phoneErrorMsg = validator.validateField(text: [phone.value], with: [.notEmpty, .validPhone]) == nil ? "" : validator.validateField(text: [phone.value], with: [.notEmpty, .validPhone])
                                 }
                             })
                                 .padding()
@@ -264,7 +263,7 @@ struct RegisterView: View {
                                             weightErroMsg = ""
                                             checkPasswordFields()
                                         } else {
-                                            weightErroMsg = validator.validateField(text: [weight.value], with: [.notEmpty, .isDecimal])
+                                            weightErroMsg = validator.validateField(text: [weight.value], with: [.notEmpty, .isDecimal]) == nil ? "" : validator.validateField(text: [weight.value], with: [.notEmpty, .isDecimal])
                                         }
                                     })
                                     .padding()
@@ -290,7 +289,7 @@ struct RegisterView: View {
                                             heightErrorMsg = ""
                                             checkPasswordFields()
                                         } else {
-                                            heightErrorMsg = validator.validateField(text: [height.value], with: [.notEmpty, .isDecimal])
+                                            heightErrorMsg = validator.validateField(text: [height.value], with: [.notEmpty, .isDecimal]) == nil ? "" : validator.validateField(text: [height.value], with: [.notEmpty, .isDecimal])
                                         }
                                     })
                                     .padding()
@@ -312,16 +311,20 @@ struct RegisterView: View {
                     }.padding(.bottom, 10)
                     
                     Button(action: {
+                       
                     }) {
                         Text("Submit")
                             .font(.headline)
                             .foregroundColor(.white)
                             .padding()
                             .frame(width: 330, height: 50)
-                            .background(Color.blue)
+                            .background(isDisabled() ? Color.gray : Color.blue)
                             .cornerRadius(15.0)
                             .shadow(radius: 10.0, x: 20, y: 10)
-                    }.padding([.top,.bottom], 50)
+                    }
+                    .padding([.top,.bottom], 50)
+                    .disabled(self.isDisabled())
+                    
                 }.padding([.leading, .trailing], 27.5)
             }.overlay((self.showsDatePicker ? Color.black.opacity(0.3) : Color.clear)
             .edgesIgnoringSafeArea(.all)
@@ -350,13 +353,25 @@ struct RegisterView: View {
         .navigationBarTitle("Register", displayMode: .inline)
     }
     
+    func isDisabled() -> Bool {
+        let enabled = (emailErrorMsg! == "" && email != "") &&
+            (firstnameErrorMsg! == "" && firstname != "")
+            (lastnameErrorMsg! == "" || lastname != "") &&
+            (phoneErrorMsg! == "" || phone.value != "") &&
+            (passwordErrorMsg! == "" || password != "") &&
+            (passwordConfirmErrorMsg! == "" || passwordConfirm != "") &&
+            (weightErroMsg! == "" || weight.value != "") &&
+            (heightErrorMsg! == "" || height.value != "")
+       return !enabled
+    }
+    
     func checkPasswordFields() -> Void {
         if !firstTapePasswordField {
-            passwordErrorMsg = validator.validateField(text: [password], with: [.notEmpty, .passwordlength])
+            passwordErrorMsg = validator.validateField(text: [password], with: [.notEmpty, .passwordlength]) == nil ? "" : validator.validateField(text: [password], with: [.notEmpty, .passwordlength])
         }
         
         if !firstTapePasswordConfirmField {
-            passwordConfirmErrorMsg = validator.validateField(text: [passwordConfirm, password], with: [.notEmpty, .validPasswordConfirm])
+            passwordConfirmErrorMsg = validator.validateField(text: [passwordConfirm, password], with: [.notEmpty, .validPasswordConfirm]) == nil ? "" :  validator.validateField(text: [passwordConfirm, password], with: [.notEmpty, .validPasswordConfirm])
         }
     }
 }
