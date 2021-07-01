@@ -2,7 +2,7 @@
 //  LoginView.swift
 //  Whats-up-doc
 //
-//  Created by Hermance Dornier on 27/06/2021.
+//  Created by Aymeric Larvet on 27/06/2021.
 //
 
 import SwiftUI
@@ -30,30 +30,39 @@ struct LoginView: View {
                 .padding(.bottom, 100)
             
             VStack(alignment: .leading, spacing: 15) {
-                TextField("Email", text: self.$email)
+                TextField("Email", text: $email)
                     .padding()
-                    .background(Color("textFieldColor"))
+                    .background(Color("lightGray"))
                     .cornerRadius(20.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                
                 ZStack(alignment: .trailing) {
                     if showPassword {
                         TextField("Password", text: $password)
                             .padding()
-                            .background(Color("textFieldColor"))
+                            .background(Color("lightGray"))
                             .cornerRadius(20.0)
                             .shadow(radius: 10.0, x: 20, y: 10)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                        
                     } else {
-                    SecureField("Password", text: $password)
-                            .padding()
-                            .background(Color("textFieldColor"))
-                            .cornerRadius(20.0)
-                            .shadow(radius: 10.0, x: 20, y: 10)
+                        SecureField("Password", text: $password)
+                                .padding()
+                                .background(Color("lightGray"))
+                                .cornerRadius(20.0)
+                                .shadow(radius: 10.0, x: 20, y: 10)
+                                .disableAutocorrection(true)
+                                .autocapitalization(.none)
+                        
                     }
                     Button(action: {
                         showPassword.toggle()
                     }) {
-                        Image(systemName: self.showPassword ? "eye.slash" : "eye")
-                            .accentColor(.black).scaleEffect(0.8).padding()
+                        Image(systemName: showPassword ? "eye.slash" : "eye")
+                            .accentColor(Color("primary")).scaleEffect(0.8).padding()
                     }
                 }
             }.padding([.leading, .trailing], 27.5)
@@ -64,40 +73,33 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .padding()
                     .frame(width: 330, height: 50)
-                    .background(Color.blue)
+                    .background(isDisabled() ? Color.gray : Color.blue)
                     .cornerRadius(15.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
+
             }.padding(.top, 50)
+            .disabled(isDisabled())
             
             Spacer()
-            HStack(spacing: 0) {
-                Text("Don't have an account? ")
-                Button(action: {}) {
-                    Text("Sign Up")
-                        .foregroundColor(.black)
-                }
-            }
+                HStack(spacing: 0) {
+                    Text("Don't have an account? ")
+                    NavigationLink(destination: RegisterView()){
+                        Text("Sign Up")
+                    }.navigationBarTitle("Login", displayMode: .inline)
+            }.padding(.bottom)
         }
         .background(
-            LinearGradient(gradient: Gradient(colors: [.green, .white]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
         
+    }
+    func isDisabled() -> Bool {
+        return email == "" || password == ""
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
-    }
-}
-
-struct OvalTextFieldStyle: TextFieldStyle {
-    let skyBlue = Color(hue: 0.1639, saturation: 1, brightness: 1)
-    func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .padding(10)
-            .background(Color.white)
-            .cornerRadius(20)
-           
     }
 }
