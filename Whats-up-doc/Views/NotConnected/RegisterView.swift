@@ -290,7 +290,7 @@ struct RegisterView: View {
                                             heightErrorMsg = ""
                                             checkPasswordFields()
                                         } else {
-                                            heightErrorMsg = validator.validateField(text: [height.value], with: [.notEmpty, .isDecimal]) == nil ? "" : validator.validateField(text: [height.value], with: [.notEmpty, .isDecimal])
+                                            heightErrorMsg = validator.validateField(text: [height.value], with: [.notEmpty, .isHeight]) == nil ? "" : validator.validateField(text: [height.value], with: [.notEmpty, .isHeight])
                                         }
                                     })
                                     .padding()
@@ -356,13 +356,13 @@ struct RegisterView: View {
     
     func isDisabled() -> Bool {
         let enabled = (emailErrorMsg! == "" && email != "") &&
-            (firstnameErrorMsg! == "" && firstname != "")
-            (lastnameErrorMsg! == "" || lastname != "") &&
-            (phoneErrorMsg! == "" || phone.value != "") &&
-            (passwordErrorMsg! == "" || password != "") &&
-            (passwordConfirmErrorMsg! == "" || passwordConfirm != "") &&
-            (weightErroMsg! == "" || weight.value != "") &&
-            (heightErrorMsg! == "" || height.value != "")
+            (firstnameErrorMsg! == "" && firstname != "") &&
+            (lastnameErrorMsg! == "" && lastname != "") &&
+            (phoneErrorMsg! == "" && phone.value != "") &&
+            (passwordErrorMsg! == "" && password != "") &&
+            (passwordConfirmErrorMsg! == "" && passwordConfirm != "") &&
+            (weightErroMsg! == "" && weight.value != "") &&
+            (heightErrorMsg! == "" && height.value != "")
        return !enabled
     }
     

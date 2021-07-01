@@ -54,6 +54,14 @@ struct Rule {
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         return predicate.evaluate(with: $0[0]) ? nil : "Must have valid format"
     })
+    
+    
+    static let isHeight = Rule(check: {
+        let regex = #"^[0-9]{1,3}"#
+
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        return predicate.evaluate(with: $0[0]) ? nil : "Must have valid format"
+    })
 
     static let countryCode = Rule(check: {
         let regex = #"^\+\d+.*"#
