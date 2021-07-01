@@ -47,8 +47,8 @@ struct RegisterView: View {
     var body: some View {
         VStack(spacing: 0) {
             ScrollView() {
-                VStack(){
-                    Section(header: Text("Account").foregroundColor(.white)) {
+                VStack(alignment: .leading){
+                    Section(header: HeaderSection(title: "Account",icon: "person.crop.circle.fill")) {
                         
                         ZStack(alignment: .center) {
                             TextField("Email", text: $email, onEditingChanged: { editingChanged in
@@ -155,7 +155,7 @@ struct RegisterView: View {
                         }
                     }.padding([.top,.bottom],5)
                     
-                    Section(header: Text("Personal").foregroundColor(.white)) {
+                    Section(header: HeaderSection(title: "Personal",icon: "person.fill")) {
                         Picker("Gender", selection: $selectedGenderIndex) {
                             ForEach(0..<genderOptions.count) {
                                 Text(self.genderOptions[$0])
@@ -245,12 +245,13 @@ struct RegisterView: View {
                         }
                     }.padding(.bottom, 10)
                     
-                    Section(header: Text("Healt").foregroundColor(.white)) {
+                    Section(header: HeaderSection(title: "Healt",icon: "heart.fill")) {
                         
                         Toggle(isOn: $smoker, label: {
                             Text("Smoker")
                         })
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.vertical,12)
                         .background(Color("lightGray"))
                         .cornerRadius(20.0)
                         .shadow(radius: 10.0, x: 20, y: 10)

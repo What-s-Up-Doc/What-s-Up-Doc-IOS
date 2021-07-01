@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B319B721268DEAD4004DA65B /* HeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B720268DEAD4004DA65B /* HeaderSection.swift */; };
 		B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */; };
 		B32796B6268BBF4C007C2BE0 /* ValidatorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32796B5268BBF4C007C2BE0 /* ValidatorField.swift */; };
 		B32A71C62688D6310099A4E3 /* DiagnosticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B319B720268DEAD4004DA65B /* HeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSection.swift; sourceTree = "<group>"; };
 		B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
 		B32796B5268BBF4C007C2BE0 /* ValidatorField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorField.swift; sourceTree = "<group>"; };
 		B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */,
+				B319B720268DEAD4004DA65B /* HeaderSection.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				B32A71CC2688DD6C0099A4E3 /* AppoinementView.swift in Sources */,
 				B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */,
 				B32A71C92688D7CE0099A4E3 /* HomeView.swift in Sources */,
+				B319B721268DEAD4004DA65B /* HeaderSection.swift in Sources */,
 				B32A71C62688D6310099A4E3 /* DiagnosticsView.swift in Sources */,
 				B32A71D8268917BE0099A4E3 /* RegisterView.swift in Sources */,
 				EC1EAF8526739AF4006C0ED8 /* Whats_up_docApp.swift in Sources */,
