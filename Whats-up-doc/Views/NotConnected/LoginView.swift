@@ -35,6 +35,9 @@ struct LoginView: View {
                     .background(Color("lightGray"))
                     .cornerRadius(20.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                
                 ZStack(alignment: .trailing) {
                     if showPassword {
                         TextField("Password", text: $password)
@@ -42,12 +45,18 @@ struct LoginView: View {
                             .background(Color("lightGray"))
                             .cornerRadius(20.0)
                             .shadow(radius: 10.0, x: 20, y: 10)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                        
                     } else {
-                    SecureField("Password", text: $password)
-                            .padding()
-                            .background(Color("lightGray"))
-                            .cornerRadius(20.0)
-                            .shadow(radius: 10.0, x: 20, y: 10)
+                        SecureField("Password", text: $password)
+                                .padding()
+                                .background(Color("lightGray"))
+                                .cornerRadius(20.0)
+                                .shadow(radius: 10.0, x: 20, y: 10)
+                                .disableAutocorrection(true)
+                                .autocapitalization(.none)
+                        
                     }
                     Button(action: {
                         showPassword.toggle()
@@ -64,10 +73,12 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .padding()
                     .frame(width: 330, height: 50)
-                    .background(Color.blue)
+                    .background(isDisabled() ? Color.gray : Color.blue)
                     .cornerRadius(15.0)
                     .shadow(radius: 10.0, x: 20, y: 10)
+
             }.padding(.top, 50)
+            .disabled(isDisabled())
             
             Spacer()
                 HStack(spacing: 0) {
@@ -81,6 +92,9 @@ struct LoginView: View {
             LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
         
+    }
+    func isDisabled() -> Bool {
+        return email == "" || password == ""
     }
 }
 
