@@ -21,6 +21,7 @@ struct RegisterView: View {
     @State private var selectedGenderIndex: Int = 0
     @State private var firstTapePasswordField = true
     @State private var firstTapePasswordConfirmField = true
+    @State private var firstTapeBirthdayField = true
     
     @ObservedObject private var height = DecimalOnly()
     @ObservedObject private var weight = DecimalOnly()
@@ -35,13 +36,15 @@ struct RegisterView: View {
     @State var passwordConfirmErrorMsg: String? = ""
     @State var weightErroMsg: String? = ""
     @State var heightErrorMsg: String? = ""
+    @State var birthdayErrorMsg: String? = ""
     
     private var genderOptions = ["Male", "Female", "Other"]
     
     let dateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateStyle = .medium
-        return df
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        
+        return dateFormatter
     }()
     
     var body: some View {
@@ -55,6 +58,7 @@ struct RegisterView: View {
                                 if editingChanged {
                                     emailErrorMsg = ""
                                     checkPasswordFields()
+                                    checkBirthdayField()
                                 } else {
                                     emailErrorMsg = validator.validateField(text: [email], with: [.notEmpty, .validEmail]) == nil ? "" : validator.validateField(text: [email], with: [.notEmpty, .validEmail])
                                 }})
@@ -171,6 +175,7 @@ struct RegisterView: View {
                                 if editingChanged {
                                     firstnameErrorMsg = ""
                                     checkPasswordFields()
+                                    checkBirthdayField()
                                 } else {
                                     firstnameErrorMsg = validator.validateField(text: [firstname], with: [.notEmpty, .fieldlenght]) == nil ? "" : validator.validateField(text: [firstname], with: [.notEmpty, .fieldlenght])
                                 }
@@ -191,6 +196,7 @@ struct RegisterView: View {
                                 if editingChanged {
                                     lastnameErrorMsg = ""
                                     checkPasswordFields()
+                                    checkBirthdayField()
                                 } else {
                                     lastnameErrorMsg = validator.validateField(text: [lastname], with: [.notEmpty, .fieldlenght]) == nil ? "" : validator.validateField(text: [lastname], with: [.notEmpty, .fieldlenght])
                                 }
@@ -205,22 +211,28 @@ struct RegisterView: View {
                                 ErrorMessageView(errorMsg: "\(lastnameErrorMsg!)")
                             }
                         }
-                        
-                        ZStack(alignment: .trailing) {
-                            HStack {
-                                Text("Date of Birthday")
+                        ZStack(alignment: .center) {
+                            ZStack(alignment: .trailing) {
+                                HStack {
+                                    Text("Date of Birthday")
 
-                               Spacer()
-                                Text("\(dateFormatter.string(from: birthday))")
-                                    .onTapGesture {
-                                        self.showsDatePicker.toggle()
-                                    }
-                                    .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
-                                    .foregroundColor(.blue)
-                            }.padding()
-                            .background(Color("lightGray"))
-                            .cornerRadius(20.0)
-                            .shadow(radius: 10.0, x: 20, y: 10)
+                                   Spacer()
+                                    Text("\(dateFormatter.string(from: birthday))")
+                                        .onTapGesture {
+                                            self.showsDatePicker.toggle()
+                                            birthdayErrorMsg = ""
+                                            firstTapeBirthdayField = false
+                                        }
+                                        .padding(EdgeInsets(top: 2, leading: 10, bottom: 2, trailing: 10))
+                                        .foregroundColor(.blue)
+                                }.padding()
+                                .background(Color("lightGray"))
+                                .cornerRadius(20.0)
+                                .shadow(radius: 10.0, x: 20, y: 10)
+                            }
+                            if birthdayErrorMsg != "" && birthdayErrorMsg != nil {
+                                ErrorMessageView(errorMsg: "\(birthdayErrorMsg!)")
+                            }
                         }
                         
                         ZStack(alignment: .center) {
@@ -228,6 +240,7 @@ struct RegisterView: View {
                                 if editingChanged {
                                     phoneErrorMsg = ""
                                     checkPasswordFields()
+                                    checkBirthdayField()
                                 } else {
                                     phoneErrorMsg = validator.validateField(text: [phone.value], with: [.notEmpty, .validPhone]) == nil ? "" : validator.validateField(text: [phone.value], with: [.notEmpty, .validPhone])
                                 }
@@ -263,6 +276,7 @@ struct RegisterView: View {
                                         if editingChanged {
                                             weightErroMsg = ""
                                             checkPasswordFields()
+                                            checkBirthdayField()
                                         } else {
                                             weightErroMsg = validator.validateField(text: [weight.value], with: [.notEmpty, .isDecimal]) == nil ? "" : validator.validateField(text: [weight.value], with: [.notEmpty, .isDecimal])
                                         }
@@ -289,6 +303,7 @@ struct RegisterView: View {
                                         if editingChanged {
                                             heightErrorMsg = ""
                                             checkPasswordFields()
+                                            checkBirthdayField()
                                         } else {
                                             heightErrorMsg = validator.validateField(text: [height.value], with: [.notEmpty, .isHeight]) == nil ? "" : validator.validateField(text: [height.value], with: [.notEmpty, .isHeight])
                                         }
@@ -373,6 +388,12 @@ struct RegisterView: View {
         
         if !firstTapePasswordConfirmField {
             passwordConfirmErrorMsg = validator.validateField(text: [passwordConfirm, password], with: [.notEmpty, .validPasswordConfirm]) == nil ? "" :  validator.validateField(text: [passwordConfirm, password], with: [.notEmpty, .validPasswordConfirm])
+        }
+    }
+    
+    func checkBirthdayField() -> Void {
+        if !firstTapeBirthdayField {
+            birthdayErrorMsg = validator.validateField(text: [dateFormatter.string(from: birthday)], with: [.isValidBirthday]) == nil ? "" : validator.validateField(text: [dateFormatter.string(from: birthday)], with: [.isValidBirthday])
         }
     }
 }

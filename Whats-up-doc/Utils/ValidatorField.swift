@@ -55,12 +55,25 @@ struct Rule {
         return predicate.evaluate(with: $0[0]) ? nil : "Must have valid format"
     })
     
-    
     static let isHeight = Rule(check: {
         let regex = #"^[0-9]{1,3}"#
 
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         return predicate.evaluate(with: $0[0]) ? nil : "Must have valid format"
+    })
+    
+    static let isValidBirthday = Rule(check: {
+        
+        print("Date",$0[0])
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        var date = dateFormatter.date(from: $0[0])
+
+        if date == nil {
+            return "Error"
+        }
+        return  date! < Date() ? nil : "Must have valid birthday"
     })
 
     static let countryCode = Rule(check: {

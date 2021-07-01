@@ -2,7 +2,7 @@
 //  HeaderSection.swift
 //  Whats-up-doc
 //
-//  Created by Hermance Dornier on 01/07/2021.
+//  Created by Aymeric Larvet on 01/07/2021.
 //
 
 import SwiftUI
