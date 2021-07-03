@@ -327,7 +327,7 @@ struct RegisterView: View {
                     }.padding(.bottom, 10)
                     
                     Button(action: {
-                       
+                        submit()
                     }) {
                         Text("Submit")
                             .font(.headline)
@@ -367,6 +367,28 @@ struct RegisterView: View {
             LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all))
         .navigationBarTitle("Register", displayMode: .inline)
+    }
+    
+    func submit() -> Void {
+        var json = [String:Any]()
+        json = [
+            "firstname": firstname,
+            "lastname": lastname,
+            "email": email,
+            "password": password,
+            "confirmedPassword": passwordConfirm,
+            "phone": phone.value,
+            "gender": gender,
+            "birthday": dateFormatter.string(from: birthday),
+            "smoker": smoker,
+            "height": height.value,
+            "weight": weight.value,
+            "medical_history": "nothing",
+            "family_medical_history": "nothing",
+            "treatment": "nothing"
+        ]
+        
+        HttpRequest.sharedInstance.post(endpoint: "api/account", json: json)
     }
     
     func isDisabled() -> Bool {

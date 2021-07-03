@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LoginView: View {
 
@@ -67,7 +68,9 @@ struct LoginView: View {
                 }
             }.padding([.leading, .trailing], 27.5)
             
-            Button(action: {}) {
+            Button(action: {
+                submitLogin()
+            }) {
                 Text("Sign In")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -95,6 +98,15 @@ struct LoginView: View {
     }
     func isDisabled() -> Bool {
         return email == "" || password == ""
+    }
+    
+    func submitLogin() -> Void {
+        let json = [
+            "username": email,
+            "password": password
+        ]
+        
+        HttpRequest.sharedInstance.post(endpoint: "api/login", json: json)
     }
 }
 
