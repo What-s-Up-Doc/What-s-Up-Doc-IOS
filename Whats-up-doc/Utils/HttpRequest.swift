@@ -27,16 +27,11 @@ class HttpRequest {
             request.addValue("application/json", forHTTPHeaderField: "Accept")
 
             let task = URLSession.shared.dataTask(with: request)
-            if (json["response"]) != nil {
-                                    print("1234")
-            }
-            
-            
             task.resume()
             
         } catch  {
             //TODO
-            print(error)
+            print("error")
         }
         
     }

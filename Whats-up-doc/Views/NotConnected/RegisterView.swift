@@ -47,6 +47,13 @@ struct RegisterView: View {
         return dateFormatter
     }()
     
+    let dateFormatter2: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter
+    }()
+    
     var body: some View {
         VStack(spacing: 0) {
             ScrollView() {
@@ -370,6 +377,9 @@ struct RegisterView: View {
     }
     
     func submit() -> Void {
+        
+        let smokerData = smoker ? 1 : 0;
+        
         var json = [String:Any]()
         json = [
             "firstname": firstname,
@@ -378,11 +388,11 @@ struct RegisterView: View {
             "password": password,
             "confirmedPassword": passwordConfirm,
             "phone": phone.value,
-            "gender": gender,
-            "birthday": dateFormatter.string(from: birthday),
-            "smoker": smoker,
-            "height": height.value,
-            "weight": weight.value,
+            "gender": genderOptions[selectedGenderIndex],
+            "birthday": dateFormatter2.string(from: birthday),
+            "smoker": smokerData,
+            "height": Int(height.value),
+            "weight": Int(weight.value),
             "medical_history": "nothing",
             "family_medical_history": "nothing",
             "treatment": "nothing"
