@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HeaderSection: View {
+struct HeaderSectionView: View {
     let title: String
     let icon: String
     
@@ -24,6 +24,6 @@ struct HeaderSection: View {
 
 struct HeaderSection_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderSection(title: "Healt",icon: "heart.fill")
+        HeaderSectionView(title: "Healt",icon: "heart.fill")
     }
 }
