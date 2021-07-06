@@ -14,13 +14,27 @@ struct Whats_up_docApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if userData.isLoggeIn {
+//            if userData.isLoggedIn {
+//                TabView {
+//                    DiagnosticsView()
+//                        .tabItem {
+//                            Text("Diagnostics")
+//                            Image(systemName: "waveform.path.ecg")
+//                        }
+//                    HomeView()
+//                        .tabItem {
+//                            Text("Home")
+//                            Image(systemName: "house.fill")
+//                        }
+//                    AppoinementView()
+//                        .tabItem {
+//                            Text("Appointments")
+//                            Image(systemName: "calendar")
+//                        }
+//                }
+//            } else {
+            
                 TabView {
-                    HomeView()
-                        .tabItem {
-                            Text("Home")
-                            Image(systemName: "house.fill")
-                        }
                     DiagnosticsView()
                         .tabItem {
                             Text("Diagnostics")
@@ -28,19 +42,18 @@ struct Whats_up_docApp: App {
                         }
                     AppointmentView()
                         .tabItem {
-                            Text("Appointment")
+                            Text("Appointments")
                             Image(systemName: "calendar")
                         }
                 }
-            } else {
-                NavigationView {
-                    LoginView()
-                }
-            }
+//                NavigationView {
+//                    LoginView()
+//                }
+//            }
         }
     }
 }
 
 class UserData: ObservableObject {
-    @Published var isLoggeIn: Bool = true
+    @Published var isLoggedIn: Bool = false
 }
