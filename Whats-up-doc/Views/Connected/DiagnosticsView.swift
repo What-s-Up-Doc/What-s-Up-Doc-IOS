@@ -1,4 +1,3 @@
-
 //  DiagnosticsView.swift
 //  Whats-up-doc
 //
@@ -10,8 +9,17 @@ import SwiftUI
 struct DiagnosticsView: View {
     
     @State var symptoms:[SymptomItem] = [
-        SymptomItem(name: "Rhume", id: 1),
-        SymptomItem(name: "Toux", id: 2)
+        SymptomItem(name: "Gorge irritée", id: 13),
+        SymptomItem(name: "Nez qui coule", id: 14),
+        SymptomItem(name: "Nez encombré", id: 28),
+        SymptomItem(name: "Eternuements", id: 95),
+        SymptomItem(name: "Douleur dans les membres", id: 12),
+        SymptomItem(name: "Douleur thoracique", id: 17),
+        SymptomItem(name: "Nausée", id: 44),
+        SymptomItem(name: "Brûlures d'estomac", id: 45),
+        SymptomItem(name: "Palpitations", id: 37),
+        SymptomItem(name: "Rythme cardiaque irrégulier", id: 986),
+        SymptomItem(name: "Toux", id: 15)
     ]
     
     
@@ -37,11 +45,8 @@ struct DiagnosticsView: View {
                 Button(action: {
                     submitSymptoms()
                 }) {
-                    Text("Sign In")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 330, height: 50)
+                    Text("Diagnostique")
+                        .buttonTextDesign()
                         .background(isDisabled() ? Color.gray : Color.blue)
                         .cornerRadius(15.0)
                         .shadow(radius: 10.0, x: 20, y: 10)

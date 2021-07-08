@@ -21,4 +21,11 @@ extension View {
             .shadow(radius: 10.0, x: 20, y: 10)
             .toggleStyle(SwitchToggleStyle(tint: Color.blue))
     }
+    
+    func buttonTextDesign() -> some View {
+        self.font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 330, height: 50)
+    }
 }
