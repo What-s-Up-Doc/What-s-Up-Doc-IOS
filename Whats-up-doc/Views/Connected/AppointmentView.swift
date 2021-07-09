@@ -1,5 +1,5 @@
 //
-//  AppoinementView.swift
+//  AppointmentView.swift
 //  Whats-up-doc
 //
 //  Created by Aymeric Larvet on 27/06/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AppoinementView: View {
+struct AppointmentView: View {
     var appointments = getAppointments()
     var body: some View {
         ZStack(alignment: .top) {
@@ -93,9 +93,9 @@ let getAppointments = {
     ]
 }
 
-struct AppoinementView_Previews: PreviewProvider {
+struct AppointmentView_Previews: PreviewProvider {
     static var previews: some View {
-        AppoinementView()
+        AppointmentView()
     }
 }
 

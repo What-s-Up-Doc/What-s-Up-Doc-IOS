@@ -26,9 +26,9 @@ struct Whats_up_docApp: App {
                             Text("Diagnostics")
                             Image(systemName: "waveform.path.ecg")
                         }
-                    AppoinementView()
+                    AppointmentView()
                         .tabItem {
-                            Text("Appoinement")
+                            Text("Appointment")
                             Image(systemName: "calendar")
                         }
                 }
