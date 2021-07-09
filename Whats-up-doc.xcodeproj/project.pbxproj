@@ -17,6 +17,9 @@
 		B32A71CC2688DD6C0099A4E3 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71CB2688DD6C0099A4E3 /* AppointmentView.swift */; };
 		B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71CE2688E0230099A4E3 /* LoginView.swift */; };
 		B32A71D8268917BE0099A4E3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71D7268917BE0099A4E3 /* RegisterView.swift */; };
+		B6B4A04A2698503C006CB115 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4A0492698503C006CB115 /* UserView.swift */; };
+		B6B4A04E2698579E006CB115 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4A04D2698579E006CB115 /* Patient.swift */; };
+		B6B4A05126985E66006CB115 /* ColumnComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4A05026985E66006CB115 /* ColumnComponent.swift */; };
 		EC1EAF8526739AF4006C0ED8 /* Whats_up_docApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */; };
 		EC1EAF8926739AF6006C0ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */; };
 		EC1EAF8C26739AF6006C0ED8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8B26739AF6006C0ED8 /* Preview Assets.xcassets */; };
@@ -37,6 +40,9 @@
 		B32A71CE2688E0230099A4E3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B32A71D7268917BE0099A4E3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		B365FE74269358B20063048E /* AppointmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentService.swift; sourceTree = "<group>"; };
+		B6B4A0492698503C006CB115 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		B6B4A04D2698579E006CB115 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		B6B4A05026985E66006CB115 /* ColumnComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnComponent.swift; sourceTree = "<group>"; };
 		EC1EAF8126739AF4006C0ED8 /* Whats-up-doc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whats-up-doc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whats_up_docApp.swift; sourceTree = "<group>"; };
 		EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +88,7 @@
 				B32A71C82688D7CE0099A4E3 /* HomeView.swift */,
 				B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */,
 				B32A71CB2688DD6C0099A4E3 /* AppointmentView.swift */,
+				B6B4A0492698503C006CB115 /* UserView.swift */,
 			);
 			path = Connected;
 			sourceTree = "<group>";
@@ -116,6 +123,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		B6B4A04C26985783006CB115 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B6B4A04D2698579E006CB115 /* Patient.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		EC1EAF7826739AF4006C0ED8 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +150,7 @@
 		EC1EAF8326739AF4006C0ED8 /* Whats-up-doc */ = {
 			isa = PBXGroup;
 			children = (
+				B6B4A04C26985783006CB115 /* Models */,
 				B32796B8268BC03C007C2BE0 /* Views */,
 				EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */,
 				B34D3CAE2691E15F00B6B35C /* Services */,
@@ -167,6 +183,7 @@
 			children = (
 				ECD131C92694AFCC00739A3A /* HeaderComponent.swift */,
 				ECD131CB2694B00B00739A3A /* ToggleComponent.swift */,
+				B6B4A05026985E66006CB115 /* ColumnComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -244,14 +261,17 @@
 				ECD131C72694A87A00739A3A /* DesignComponent.swift in Sources */,
 				B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */,
 				B319B72A2690676D004DA65B /* UserService.swift in Sources */,
+				B6B4A05126985E66006CB115 /* ColumnComponent.swift in Sources */,
 				ECD131CA2694AFCC00739A3A /* HeaderComponent.swift in Sources */,
 				B32796B6268BBF4C007C2BE0 /* ValidatorField.swift in Sources */,
 				B32A71CC2688DD6C0099A4E3 /* AppointmentView.swift in Sources */,
+				B6B4A04A2698503C006CB115 /* UserView.swift in Sources */,
 				ECD131CC2694B00B00739A3A /* ToggleComponent.swift in Sources */,
 				B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */,
 				B32A71C92688D7CE0099A4E3 /* HomeView.swift in Sources */,
 				B319B721268DEAD4004DA65B /* HeaderSectionView.swift in Sources */,
 				B32A71C62688D6310099A4E3 /* DiagnosticsView.swift in Sources */,
+				B6B4A04E2698579E006CB115 /* Patient.swift in Sources */,
 				B32A71D8268917BE0099A4E3 /* RegisterView.swift in Sources */,
 				EC1EAF8526739AF4006C0ED8 /* Whats_up_docApp.swift in Sources */,
 			);
