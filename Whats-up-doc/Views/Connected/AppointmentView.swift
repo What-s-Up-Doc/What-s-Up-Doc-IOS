@@ -37,13 +37,7 @@ struct AppointmentView: View {
                     openNewAppointmentModal()
                 }) {
                     Text("New Appointment")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius: 10.0, x: 20, y: 10)
+                        .textButtonNotDisabled(color: Color.blue)
 
                 }.padding(.top, 50)
                 .padding(.horizontal, 10)
