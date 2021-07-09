@@ -14,42 +14,19 @@ struct Whats_up_docApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            if userData.isLoggedIn {
-//                TabView {
-//                    DiagnosticsView()
-//                        .tabItem {
-//                            Text("Diagnostics")
-//                            Image(systemName: "waveform.path.ecg")
-//                        }
-//                    HomeView()
-//                        .tabItem {
-//                            Text("Home")
-//                            Image(systemName: "house.fill")
-//                        }
-//                    AppoinementView()
-//                        .tabItem {
-//                            Text("Appointments")
-//                            Image(systemName: "calendar")
-//                        }
-//                }
-//            } else {
             
-                TabView {
-                    DiagnosticsView()
-                        .tabItem {
-                            Text("Diagnostics")
-                            Image(systemName: "waveform.path.ecg")
-                        }
-                    AppointmentView()
-                        .tabItem {
-                            Text("Appointments")
-                            Image(systemName: "calendar")
-                        }
-                }
-//                NavigationView {
-//                    LoginView()
-//                }
-//            }
+            TabView {
+                DiagnosticsView()
+                    .tabItem {
+                        Text("Diagnostics")
+                        Image(systemName: "waveform.path.ecg")
+                    }
+                AppointmentView()
+                    .tabItem {
+                        Text("Appointments")
+                        Image(systemName: "calendar")
+                    }
+            }
         }
     }
 }
