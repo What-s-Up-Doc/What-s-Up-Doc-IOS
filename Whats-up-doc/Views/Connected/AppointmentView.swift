@@ -8,45 +8,14 @@
 import SwiftUI
 
 struct AppointmentView: View {
-    var appointments = getAppointments()
+    @StateObject private var userData: UserData = UserData()
+    
     var body: some View {
-        ZStack(alignment: .top) {
-            VStack(spacing: 0) {
-                Image(systemName: "calendar")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                Text("Appointments")
-                    .font(.largeTitle)
-                    .shadow(radius: 10.0, x: 20, y: 10)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                List {
-                    ForEach(appointments) { appointment in
-                        AppointmentRow(appointment: appointment)
-                               }
-                    .listRowBackground(Color.blue
-//                                        .clipped()
-//                                       .cornerRadius(10)
-                                        .opacity(0.7)
-                    )
-                    .opacity(0.7)
-                }.clipped().cornerRadius(10)
-                    .padding(.horizontal, 10)
-                    .padding(.top, 10)
-                Button(action: {
-                    openNewAppointmentModal()
-                }) {
-                    Text("New Appointment")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius: 10.0, x: 20, y: 10)
-
-                }.padding(.top, 50)
-                .padding(.horizontal, 10)
+        if userData.isLoggedIn {
+            AppointmentLoggedView()
+        } else {
+            NavigationView {
+                AppointmentNotLogged()
             }
         }
     }
@@ -116,6 +85,87 @@ struct AppointmentRow: View {
                 .bold()
             Text(appointment.patient)
                 .foregroundColor(.white)
+        }
+    }
+}
+
+struct AppointmentNotLogged: View {
+    var body: some View {
+        ZStack(alignment: .top){
+            VStack() {
+                HeaderComponent()
+                Spacer()
+                Text("You must be connected to take an appointment.")
+                HStack {
+                    Text("Please ")
+                    NavigationLink(destination: LoginView()){
+                        Text("login")
+                    }
+                }
+                HStack(spacing: 0) {
+                    Text("Don't have an account? ")
+                    NavigationLink(destination: RegisterView()){
+                        Text("Sign Up")
+                    }//.navigationBarTitle("Login", displayMode: .inline)
+                }
+                Spacer()
+                
+            }.frame(
+                minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/,
+                maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
+                minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/,
+                maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
+                alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/
+            )
+            .background(
+                LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all))
+        }
+    }
+}
+
+struct AppointmentLoggedView: View {
+    var appointments = getAppointments()
+
+    var body: some View {
+        ZStack(alignment: .top) {
+            VStack(spacing: 0) {
+                Image(systemName: "calendar")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                Text("Appointments")
+                    .font(.largeTitle)
+                    .shadow(radius: 10.0, x: 20, y: 10)
+                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                List {
+                    ForEach(appointments) { appointment in
+                        AppointmentRow(appointment: appointment)
+                               }
+                    .listRowBackground(Color.blue
+//                                        .clipped()
+//                                       .cornerRadius(10)
+                                        .opacity(0.7)
+                    )
+                    .opacity(0.7)
+                }.clipped().cornerRadius(10)
+                    .padding(.horizontal, 10)
+                    .padding(.top, 10)
+                Button(action: {
+                    openNewAppointmentModal()
+                }) {
+                    Text("New Appointment")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .shadow(radius: 10.0, x: 20, y: 10)
+
+                }.padding(.top, 50)
+                .padding(.horizontal, 10)
+            }
         }
     }
 }
