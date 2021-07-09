@@ -7,19 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B319B721268DEAD4004DA65B /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B720268DEAD4004DA65B /* HeaderSectionView.swift */; };
+		B319B72A2690676D004DA65B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B7292690676D004DA65B /* UserService.swift */; };
+		B319B72F26909839004DA65B /* ResponseMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B72E26909839004DA65B /* ResponseMessageView.swift */; };
+		B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */; };
+		B32796B6268BBF4C007C2BE0 /* ValidatorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32796B5268BBF4C007C2BE0 /* ValidatorField.swift */; };
+		B32A71C62688D6310099A4E3 /* DiagnosticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */; };
+		B32A71C92688D7CE0099A4E3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71C82688D7CE0099A4E3 /* HomeView.swift */; };
+		B32A71CC2688DD6C0099A4E3 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71CB2688DD6C0099A4E3 /* AppointmentView.swift */; };
+		B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71CE2688E0230099A4E3 /* LoginView.swift */; };
+		B32A71D8268917BE0099A4E3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71D7268917BE0099A4E3 /* RegisterView.swift */; };
 		EC1EAF8526739AF4006C0ED8 /* Whats_up_docApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */; };
-		EC1EAF8726739AF4006C0ED8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1EAF8626739AF4006C0ED8 /* ContentView.swift */; };
 		EC1EAF8926739AF6006C0ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */; };
 		EC1EAF8C26739AF6006C0ED8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8B26739AF6006C0ED8 /* Preview Assets.xcassets */; };
+		ECD131C72694A87A00739A3A /* DesignComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD131C62694A87A00739A3A /* DesignComponent.swift */; };
+		ECD131CA2694AFCC00739A3A /* HeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD131C92694AFCC00739A3A /* HeaderComponent.swift */; };
+		ECD131CC2694B00B00739A3A /* ToggleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD131CB2694B00B00739A3A /* ToggleComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B319B720268DEAD4004DA65B /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
+		B319B7292690676D004DA65B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		B319B72E26909839004DA65B /* ResponseMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessageView.swift; sourceTree = "<group>"; };
+		B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
+		B32796B5268BBF4C007C2BE0 /* ValidatorField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorField.swift; sourceTree = "<group>"; };
+		B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
+		B32A71C82688D7CE0099A4E3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B32A71CB2688DD6C0099A4E3 /* AppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentView.swift; sourceTree = "<group>"; };
+		B32A71CE2688E0230099A4E3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B32A71D7268917BE0099A4E3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		B365FE74269358B20063048E /* AppointmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentService.swift; sourceTree = "<group>"; };
 		EC1EAF8126739AF4006C0ED8 /* Whats-up-doc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whats-up-doc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whats_up_docApp.swift; sourceTree = "<group>"; };
-		EC1EAF8626739AF4006C0ED8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC1EAF8B26739AF6006C0ED8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC1EAF8D26739AF6006C0ED8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECD131C62694A87A00739A3A /* DesignComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignComponent.swift; sourceTree = "<group>"; };
+		ECD131C92694AFCC00739A3A /* HeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderComponent.swift; sourceTree = "<group>"; };
+		ECD131CB2694B00B00739A3A /* ToggleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +58,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B32796B8268BC03C007C2BE0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B32796BC268BC128007C2BE0 /* NotConnected */,
+				B32796BB268BC111007C2BE0 /* Shared */,
+				B32796BA268BC0E2007C2BE0 /* Connected */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B32796B9268BC093007C2BE0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B32796B5268BBF4C007C2BE0 /* ValidatorField.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B32796BA268BC0E2007C2BE0 /* Connected */ = {
+			isa = PBXGroup;
+			children = (
+				B32A71C82688D7CE0099A4E3 /* HomeView.swift */,
+				B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */,
+				B32A71CB2688DD6C0099A4E3 /* AppointmentView.swift */,
+			);
+			path = Connected;
+			sourceTree = "<group>";
+		};
+		B32796BB268BC111007C2BE0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				ECD131C82694AFB100739A3A /* Components */,
+				ECD131C32694A78700739A3A /* Design */,
+				B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */,
+				B319B720268DEAD4004DA65B /* HeaderSectionView.swift */,
+				B319B72E26909839004DA65B /* ResponseMessageView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B32796BC268BC128007C2BE0 /* NotConnected */ = {
+			isa = PBXGroup;
+			children = (
+				B32A71CE2688E0230099A4E3 /* LoginView.swift */,
+				B32A71D7268917BE0099A4E3 /* RegisterView.swift */,
+			);
+			path = NotConnected;
+			sourceTree = "<group>";
+		};
+		B34D3CAE2691E15F00B6B35C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B319B7292690676D004DA65B /* UserService.swift */,
+				B365FE74269358B20063048E /* AppointmentService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		EC1EAF7826739AF4006C0ED8 = {
 			isa = PBXGroup;
 			children = (
@@ -52,8 +135,10 @@
 		EC1EAF8326739AF4006C0ED8 /* Whats-up-doc */ = {
 			isa = PBXGroup;
 			children = (
+				B32796B8268BC03C007C2BE0 /* Views */,
 				EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */,
-				EC1EAF8626739AF4006C0ED8 /* ContentView.swift */,
+				B34D3CAE2691E15F00B6B35C /* Services */,
+				B32796B9268BC093007C2BE0 /* Utils */,
 				EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */,
 				EC1EAF8D26739AF6006C0ED8 /* Info.plist */,
 				EC1EAF8A26739AF6006C0ED8 /* Preview Content */,
@@ -67,6 +152,23 @@
 				EC1EAF8B26739AF6006C0ED8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ECD131C32694A78700739A3A /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				ECD131C62694A87A00739A3A /* DesignComponent.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		ECD131C82694AFB100739A3A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ECD131C92694AFCC00739A3A /* HeaderComponent.swift */,
+				ECD131CB2694B00B00739A3A /* ToggleComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +240,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC1EAF8726739AF4006C0ED8 /* ContentView.swift in Sources */,
+				B319B72F26909839004DA65B /* ResponseMessageView.swift in Sources */,
+				ECD131C72694A87A00739A3A /* DesignComponent.swift in Sources */,
+				B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */,
+				B319B72A2690676D004DA65B /* UserService.swift in Sources */,
+				ECD131CA2694AFCC00739A3A /* HeaderComponent.swift in Sources */,
+				B32796B6268BBF4C007C2BE0 /* ValidatorField.swift in Sources */,
+				B32A71CC2688DD6C0099A4E3 /* AppointmentView.swift in Sources */,
+				ECD131CC2694B00B00739A3A /* ToggleComponent.swift in Sources */,
+				B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */,
+				B32A71C92688D7CE0099A4E3 /* HomeView.swift in Sources */,
+				B319B721268DEAD4004DA65B /* HeaderSectionView.swift in Sources */,
+				B32A71C62688D6310099A4E3 /* DiagnosticsView.swift in Sources */,
+				B32A71D8268917BE0099A4E3 /* RegisterView.swift in Sources */,
 				EC1EAF8526739AF4006C0ED8 /* Whats_up_docApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

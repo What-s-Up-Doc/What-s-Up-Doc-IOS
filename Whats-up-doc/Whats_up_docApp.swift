@@ -9,20 +9,28 @@ import SwiftUI
 
 @main
 struct Whats_up_docApp: App {
+    
+    @StateObject private var userData: UserData = UserData()
+    
     var body: some Scene {
         WindowGroup {
+            
             TabView {
-                Color(.blue)
-                    .tabItem {
-                        Text("Home")
-                        Image(systemName: "house.fill")
-                    }
-                Color(.purple)
+                DiagnosticsView()
                     .tabItem {
                         Text("Diagnostics")
                         Image(systemName: "waveform.path.ecg")
                     }
+                AppointmentView()
+                    .tabItem {
+                        Text("Appointments")
+                        Image(systemName: "calendar")
+                    }
             }
         }
     }
+}
+
+class UserData: ObservableObject {
+    @Published var isLoggedIn: Bool = false
 }
