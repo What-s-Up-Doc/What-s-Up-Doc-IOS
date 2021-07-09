@@ -277,7 +277,7 @@ struct RegisterView: View {
                             }
                         }.padding(.bottom, 10)
                         
-                        Section(header: HeaderSectionView(title: "Healt",icon: "heart.fill")) {
+                        Section(header: HeaderSectionView(title: "Health",icon: "heart.fill")) {
                             
                             Toggle(isOn: $smoker, label: {
                                 Text("Smoker")
