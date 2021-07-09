@@ -42,5 +42,5 @@ struct Whats_up_docApp: App {
 }
 
 class UserData: ObservableObject {
-    @Published var isLoggeIn: Bool = false
+    @Published var isLoggeIn: Bool = true
 }
