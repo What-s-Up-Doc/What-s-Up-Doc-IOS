@@ -7,7 +7,21 @@
 
 import SwiftUI
 
-struct AppoinementView: View {
+struct AppointmentView: View {
+    @StateObject private var userData: UserData = UserData()
+    
+    var body: some View {
+        if userData.isLoggedIn {
+            AppointmentLoggedView()
+        } else {
+            NavigationView {
+                AppointmentNotLogged()
+            }
+        }
+    }
+}
+
+struct AppointmentLoggedView: View {
     var appointments = getAppointments()
     @State private var showingSheet = false
 
@@ -269,52 +283,6 @@ struct AppointmentNotLogged: View {
             .background(
                 LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all))
-        }
-    }
-}
-
-struct AppointmentLoggedView: View {
-    var appointments = getAppointments()
-
-    var body: some View {
-        ZStack(alignment: .top) {
-            VStack(spacing: 0) {
-                Image(systemName: "calendar")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                Text("Appointments")
-                    .font(.largeTitle)
-                    .shadow(radius: 10.0, x: 20, y: 10)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                List {
-                    ForEach(appointments) { appointment in
-                        AppointmentRow(appointment: appointment)
-                               }
-                    .listRowBackground(Color.blue
-//                                        .clipped()
-//                                       .cornerRadius(10)
-                                        .opacity(0.7)
-                    )
-                    .opacity(0.7)
-                }.clipped().cornerRadius(10)
-                    .padding(.horizontal, 10)
-                    .padding(.top, 10)
-                Button(action: {
-                    openNewAppointmentModal()
-                }) {
-                    Text("New Appointment")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius: 10.0, x: 20, y: 10)
-
-                }.padding(.top, 50)
-                .padding(.horizontal, 10)
-            }
         }
     }
 }
