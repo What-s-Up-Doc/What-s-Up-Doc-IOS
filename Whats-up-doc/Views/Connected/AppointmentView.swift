@@ -28,25 +28,24 @@ struct AppointmentLoggedView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack(spacing: 0) {
-                Image(systemName: "calendar")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                Text("Appointments")
-                    .font(.largeTitle)
-                    .shadow(radius: 10.0, x: 20, y: 10)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                List {
-                    ForEach(appointments) { appointment in
-                        AppointmentRow(appointment: appointment)
-                               }
-                    .listRowBackground(Color.blue
-                                        .opacity(0.7)
-                    )
-                    .opacity(0.7)
-                }.clipped().cornerRadius(10)
-                    .padding(.horizontal, 10)
-                    .padding(.top, 10)
+                
+                HeaderComponent()
+                
+                Section(header: HeaderSectionView(title: "Appointments",icon: "calendar")) {
+                    List {
+                        ForEach(appointments) { appointment in
+                            AppointmentRow(appointment: appointment)
+                                   }
+                        .listRowBackground(Color.blue
+                                            .opacity(0.7)
+                        )
+                        .opacity(0.7)
+                    }.clipped().cornerRadius(10)
+                        .padding(.horizontal, 10)
+                        .padding(.top, 10)
+                }
+
+
                 Button(action: {
                     showingSheet.toggle()
                 }) {
@@ -66,7 +65,7 @@ struct AppointmentLoggedView: View {
                 .padding(.bottom, 20)
                 .padding(.horizontal, 10)
             }
-        }
+        }.background(Color.green)
     }
 }
 
@@ -78,58 +77,140 @@ struct Appointment: Identifiable {
     let patient: String
 }
 
-struct Item: Identifiable {
+struct Item: Codable, Hashable, Identifiable {
     let id: String
-    let name: String
+    var name: String
+}
+
+struct Test: Hashable {
+    var index: Int = 0
 }
 
 struct SheetView: View {
     @Environment(\.presentationMode) var presentationMode
+    @State private var showSelector: Bool = false
+    @State var selectedSpeciality: Item = Item(id: "-1", name: "Speciality")
+   // @State private var selectedSpeciality: Int = 0
+    @State var indexTest: Test = Test(index: 0)
+    let specialities:[Item] = [
+        Item(id: "0", name: "Generalist"),
+        Item(id: "1", name: "Cardiology"),
+        Item(id: "2", name: "Gynecology"),
+        Item(id: "3", name: "Pediatry"),
+        Item(id: "4", name: "Podology"),
+        Item(id: "5", name: "Sophrology")
+    ]
 
     var body: some View {
-        Text("New Appointment")
-            .font(.largeTitle)
-            .shadow(radius: 10.0, x: 20, y: 10)
-            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-        VStack(){
-            HStack(){
-                DropDown(items: getSpecialities(), selection: "Speciality")
+        ZStack(alignment: .bottom){
+            Spacer()
+            Text("New Appointment")
+                .font(.largeTitle)
+                .shadow(radius: 10.0, x: 20, y: 10)
+                .foregroundColor(.white)
+                .padding()
+            Spacer()
+            VStack(){
+                Spacer()
+                HStack(){
+                    Text(specialities[Int(selectedSpeciality.name) ?? 0].name)
+                        .onTapGesture {
+                            self.showSelector.toggle()
+                        }
+                }
+                Spacer()
+                HStack(){
+                    DropDown(items: getDoctors(), selection: "Doctor")
+                }
+                Spacer()
+                HStack(){
+                    DropDown(items: getDateAndTime(), selection: "Date and Time")
+                }
+                Spacer()
+                
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Validate")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .shadow(radius: 10.0, x: 20, y: 10)
+
+                }.padding(.top, 50)
+                .padding(.horizontal, 10)
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Cancel")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red)
+                        .cornerRadius(10)
+                        .shadow(radius: 10.0, x: 20, y: 10)
+
+                }.padding(.vertical, 10)
+                .padding(.horizontal, 10)
+                
+            }.overlay((self.showSelector ? Color.black.opacity(0.3) : Color.clear)
+            .edgesIgnoringSafeArea(.all)
+            .onTapGesture {
+                self.showSelector.toggle()
+            })
+
+            if showSelector {
+                HStack(){
+                    PickerView(selectedSpeciality: $selectedSpeciality) // selectedSpeciality: $indexTest
+                }
+                .zIndex(10)
+                .offset(y: self.showSelector ? 0 : UIScreen.main.bounds.height)
+                .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+                .padding(.horizontal)
+                .padding(.top,20)
+                .background(Color("lightGray"))
+                .edgesIgnoringSafeArea(.bottom)
+
+
             }
-            HStack(){
-                DropDown(items: getDoctors(), selection: "Doctor")
-            }
-            HStack(){
-                DropDown(items: getDateAndTime(), selection: "Date and Time")
+
+        } .background(
+            LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all))
+    }
+}
+
+class SpecialitiesController: ObservableObject {
+    @Published var specialities: [Item] = []
+
+    init() {
+        specialities = [
+            Item(id: "0", name: "Generalist"),
+            Item(id: "1", name: "Cardiology"),
+            Item(id: "2", name: "Gynecology"),
+            Item(id: "3", name: "Pediatry"),
+            Item(id: "4", name: "Podology"),
+            Item(id: "5", name: "Sophrology")
+        ]
+    }
+}
+
+
+struct PickerView: View {
+    @Binding var selectedSpeciality: Item
+    @ObservedObject var specialities_controller = SpecialitiesController()
+    let specialities = getSpecialities()
+    
+    var body: some View {
+        Picker("Speciality", selection: $selectedSpeciality.name) {
+            ForEach(specialities_controller.specialities) { speciality in
+                Text(speciality.name)
             }
         }
-        Button(action: {
-            presentationMode.wrappedValue.dismiss()
-        }) {
-            Text("Validate")
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.blue)
-                .cornerRadius(10)
-                .shadow(radius: 10.0, x: 20, y: 10)
-
-        }.padding(.top, 50)
-        .padding(.horizontal, 10)
-        Button(action: {
-            presentationMode.wrappedValue.dismiss()
-        }) {
-            Text("Cancel")
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.red)
-                .cornerRadius(10)
-                .shadow(radius: 10.0, x: 20, y: 10)
-
-        }.padding(.vertical, 10)
-        .padding(.horizontal, 10)
     }
 }
 
@@ -177,7 +258,7 @@ let getDateAndTime = {
 
 let getSpecialities = {
     return [
-        Item(id: "1", name: "General"),
+        Item(id: "1", name: "Generalist"),
         Item(id: "2", name: "Cardiology"),
         Item(id: "3", name: "Gynecology"),
         Item(id: "4", name: "Pediatry"),

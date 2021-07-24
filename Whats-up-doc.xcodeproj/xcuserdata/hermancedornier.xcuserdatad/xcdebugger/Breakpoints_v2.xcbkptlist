@@ -20,5 +20,180 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2787F6E4-8FDA-49C1-8F92-6CB7DB707678"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Whats-up-doc/Views/Connected/AppointmentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55CD1446-26C6-4524-9130-3BE7730961BE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Whats-up-doc/Views/Connected/AppointmentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "specialities"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "55CD1446-26C6-4524-9130-3BE7730961BE - ca821c713059ead2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Whats_up_doc.SheetView.init() -&gt; Whats_up_doc.SheetView"
+                  moduleName = "Whats-up-doc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hermancedornier/Documents/projects/aymeric/Swift/Projet/What-s-Up-Doc-IOS/Whats-up-doc/Views/Connected/AppointmentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "55CD1446-26C6-4524-9130-3BE7730961BE - 22749fbcb6da2f79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of Whats_up_doc.SheetView.(selectedSpeciality in _8D3A6D0796BEBDA23FC6AA6B75B14E26) : Whats_up_doc.Item"
+                  moduleName = "Whats-up-doc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hermancedornier/Documents/projects/aymeric/Swift/Projet/What-s-Up-Doc-IOS/Whats-up-doc/Views/Connected/AppointmentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  uuid = "55CD1446-26C6-4524-9130-3BE7730961BE - 91861df57a84cadc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Whats_up_doc.SheetView.init(presentationMode: SwiftUI.Environment&lt;SwiftUI.Binding&lt;SwiftUI.PresentationMode&gt;&gt;) -&gt; Whats_up_doc.SheetView"
+                  moduleName = "Whats-up-doc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hermancedornier/Documents/projects/aymeric/Swift/Projet/What-s-Up-Doc-IOS/Whats-up-doc/Views/Connected/AppointmentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "90">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C4DD70AB-D86B-4F67-AE1C-307AE8327212"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Whats-up-doc/Views/Connected/AppointmentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "C4DD70AB-D86B-4F67-AE1C-307AE8327212 - c1c833203d3e8916"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Whats_up_doc.Item&gt;, Whats_up_doc.Item, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt; in Whats_up_doc.PickerView.body.getter : some"
+                  moduleName = "Whats-up-doc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hermancedornier/Documents/projects/aymeric/Swift/Projet/What-s-Up-Doc-IOS/Whats-up-doc/Views/Connected/AppointmentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "C4DD70AB-D86B-4F67-AE1C-307AE8327212 - 4f8ae15d64b0c4a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Whats_up_doc.Item) -&gt; &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Whats_up_doc.Item&gt;, Whats_up_doc.Item, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt; in Whats_up_doc.PickerView.body.getter : some"
+                  moduleName = "Whats-up-doc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hermancedornier/Documents/projects/aymeric/Swift/Projet/What-s-Up-Doc-IOS/Whats-up-doc/Views/Connected/AppointmentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "197"
+                  endingLineNumber = "197"
+                  offsetFromSymbolStart = "230">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "53C474C5-7338-4043-9ADA-5A72F49EEBEF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Whats-up-doc/Views/Connected/AppointmentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "53C474C5-7338-4043-9ADA-5A72F49EEBEF - 4f8ae15d64b0c4a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Whats_up_doc.Item) -&gt; &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Whats_up_doc.Item&gt;, Whats_up_doc.Item, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt; in Whats_up_doc.PickerView.body.getter : some"
+                  moduleName = "Whats-up-doc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hermancedornier/Documents/projects/aymeric/Swift/Projet/What-s-Up-Doc-IOS/Whats-up-doc/Views/Connected/AppointmentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "197"
+                  endingLineNumber = "197"
+                  offsetFromSymbolStart = "230">
+               </Location>
+               <Location
+                  uuid = "53C474C5-7338-4043-9ADA-5A72F49EEBEF - 278f33bf8a9eb3db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Whats_up_doc.Item) -&gt; &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Whats_up_doc.Item&gt;, Whats_up_doc.Item, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt; in Whats_up_doc.PickerView.body.getter : some"
+                  moduleName = "Whats-up-doc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hermancedornier/Documents/projects/aymeric/Swift/Projet/What-s-Up-Doc-IOS/Whats-up-doc/Views/Connected/AppointmentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
