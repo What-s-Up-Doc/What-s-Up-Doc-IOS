@@ -89,17 +89,9 @@ struct Test: Hashable {
 struct SheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showSelector: Bool = false
-    @State var selectedSpeciality: Item = Item(id: "-1", name: "Speciality")
-   // @State private var selectedSpeciality: Int = 0
+    @State private var selectedSpecialityIndex = 0
     @State var indexTest: Test = Test(index: 0)
-    let specialities:[Item] = [
-        Item(id: "0", name: "Generalist"),
-        Item(id: "1", name: "Cardiology"),
-        Item(id: "2", name: "Gynecology"),
-        Item(id: "3", name: "Pediatry"),
-        Item(id: "4", name: "Podology"),
-        Item(id: "5", name: "Sophrology")
-    ]
+
 
     var body: some View {
         ZStack(alignment: .bottom){
@@ -113,7 +105,7 @@ struct SheetView: View {
             VStack(){
                 Spacer()
                 HStack(){
-                    Text(specialities[Int(selectedSpeciality.name) ?? 0].name)
+                    Text("\(getSpecialities()[selectedSpecialityIndex].name)")
                         .onTapGesture {
                             self.showSelector.toggle()
                         }
@@ -165,7 +157,11 @@ struct SheetView: View {
 
             if showSelector {
                 HStack(){
-                    PickerView(selectedSpeciality: $selectedSpeciality) // selectedSpeciality: $indexTest
+                    Picker("Speciality", selection: $selectedSpecialityIndex, content: {
+                        ForEach(0..<getSpecialities().count, content: { index in
+                            Text(getSpecialities()[index].name)
+                        })
+                    })
                 }
                 .zIndex(10)
                 .offset(y: self.showSelector ? 0 : UIScreen.main.bounds.height)
@@ -196,21 +192,6 @@ class SpecialitiesController: ObservableObject {
             Item(id: "4", name: "Podology"),
             Item(id: "5", name: "Sophrology")
         ]
-    }
-}
-
-
-struct PickerView: View {
-    @Binding var selectedSpeciality: Item
-    @ObservedObject var specialities_controller = SpecialitiesController()
-    let specialities = getSpecialities()
-    
-    var body: some View {
-        Picker("Speciality", selection: $selectedSpeciality.name) {
-            ForEach(specialities_controller.specialities) { speciality in
-                Text(speciality.name)
-            }
-        }
     }
 }
 
