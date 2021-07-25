@@ -56,151 +56,167 @@ struct AppointmentSheetView: View {
     @State private var showDatePicker: Bool = false
     @State private var selectedSpeciality: Bool = false
     @State private var selectedDoctor: Bool = false
+    @Binding  var showResponseMessage: Bool
+    
+    @Binding  var messageTitle: String
+    @Binding  var messageContent: String
+    @Binding  var messageColor: Color
     
     @State private var selectedDateIndex = 0
     @State private var selectedDoctorIndex = 0
     @State private var selectedSpecialityIndex = 0
-    
-    
-
 
     var body: some View {
-        ZStack(alignment: .bottom){
-            VStack(){
-                
-                VStack() {
-                    HStack(){
-                        Text("New Appointment")
-                            .font(.largeTitle)
-                            .shadow(radius: 10.0, x: 20, y: 10)
+//        ZStack(alignment: .top) {
+//            if showResponseMessage {
+//                ResponseMessageView(title: messageTitle, message: messageContent,color: messageColor)
+//                    .onAppear {
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//                            self.showResponseMessage = false
+//                        }
+//                    }
+//            }
+            ZStack(alignment: .bottom){
+                VStack(){
+                    
+                    VStack() {
+                        HStack(){
+                            Text("New Appointment")
+                                .font(.largeTitle)
+                                .shadow(radius: 10.0, x: 20, y: 10)
+                                .foregroundColor(.white)
+                                .padding()
+                        }
+                        
+
+                        HStack(){
+                            Image(systemName: "calendar.badge.plus")
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                                .foregroundColor(.white)
+                                .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 20))
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                                .shadow(radius: 10.0, x: 20, y: 10)
+                                .padding(.bottom, 20)
+                        }
+                        
+                    }
+                    
+                    Spacer()
+                    PickerValueComponent(icon: "stethoscope", title:"Speciality", pickerValue: getSpecialities()[selectedSpecialityIndex].name, showPicker: $showSpecialitiesPicker)
+                    .onTapGesture {
+                        self.showSpecialitiesPicker.toggle()
+                    }
+                    
+                    Spacer()
+                    ZStack(alignment: .center) {
+                        PickerValueComponent(icon: "person", title:"Doctor", pickerValue: getDoctors()[selectedDoctorIndex].name, showPicker: $showDoctorPicker)
+                        .onTapGesture {
+                            self.showDoctorPicker.toggle()
+                        }.allowsHitTesting(selectedSpecialityIndex != 0)
+                        
+                        if selectedSpecialityIndex == 0 {
+                            WarningMessageComponent(warningMsg: "Choose a Speciality")
+                        }
+                        
+                    }
+
+
+                    Spacer()
+                    ZStack(alignment: .center) {
+                        PickerValueComponent(icon: "clock", title:"Schedule", pickerValue: getDateAndTime()[selectedDateIndex].name, showPicker: $showDatePicker)
+                        .onTapGesture {
+                            self.showDatePicker.toggle()
+                        }.allowsHitTesting(selectedDoctorIndex != 0)
+                        
+                        if selectedDoctorIndex == 0 {
+                            WarningMessageComponent(warningMsg: "Choose a Speciality and a Doctor")
+                        }
+                        
+                    }
+                    
+                    Spacer()
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                        messageTitle = "Success !"
+                        messageContent = "Appointment booked"
+                        messageColor = Color.green
+                        showResponseMessage = true
+                    }) {
+                        Text("Validate")
+                            .font(.headline)
                             .foregroundColor(.white)
                             .padding()
-                    }
-                    
-
-                    HStack(){
-                        Image(systemName: "calendar.badge.plus")
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                            .foregroundColor(.white)
-                            .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 20))
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .cornerRadius(10)
                             .shadow(radius: 10.0, x: 20, y: 10)
-                            .padding(.bottom, 20)
-                    }
+
+                    }.padding(.top, 50)
+                    .padding(.horizontal, 10)
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Cancel")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.red)
+                            .cornerRadius(10)
+                            .shadow(radius: 10.0, x: 20, y: 10)
+
+                    }.padding(.vertical, 10)
+                    .padding(.horizontal, 10)
                     
-                }
-                
-                Spacer()
-                PickerValueComponent(icon: "stethoscope", title:"Speciality", pickerValue: getSpecialities()[selectedSpecialityIndex].name, showPicker: $showSpecialitiesPicker)
+                }.overlay((self.showSpecialitiesPicker || self.showDoctorPicker || self.showDatePicker ? Color.black.opacity(0.3) : Color.clear)
+                .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
-                    self.showSpecialitiesPicker.toggle()
+                    self.showSpecialitiesPicker = false
+                    self.showDoctorPicker = false
+                    self.showDatePicker = false
+                })
+
+                if showSpecialitiesPicker {
+                    PickerComponent(pickerIndex: $selectedSpecialityIndex, pickerList: getSpecialities())
+                        .offset(y: self.showSpecialitiesPicker ? 0 : UIScreen.main.bounds.height)
+                        .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+                        .padding(.horizontal)
+                        .padding(.top,20)
+                        .background(Color("lightGray"))
+                        .edgesIgnoringSafeArea(.bottom)
                 }
                 
-                Spacer()
-                ZStack(alignment: .center) {
-                    PickerValueComponent(icon: "person", title:"Doctor", pickerValue: getDoctors()[selectedDoctorIndex].name, showPicker: $showDoctorPicker)
-                    .onTapGesture {
-                        self.showDoctorPicker.toggle()
-                    }.allowsHitTesting(selectedSpecialityIndex != 0)
-                    
-                    if selectedSpecialityIndex == 0 {
-                        WarningMessageComponent(warningMsg: "Choose a Speciality")
-                    }
-                    
+                if showDoctorPicker {
+                    PickerComponent(pickerIndex: $selectedDoctorIndex, pickerList: getDoctors())
+                        .offset(y: self.showDoctorPicker ? 0 : UIScreen.main.bounds.height)
+                        .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+                        .padding(.horizontal)
+                        .padding(.top,20)
+                        .background(Color("lightGray"))
+                        .edgesIgnoringSafeArea(.bottom)
                 }
 
-
-                Spacer()
-                ZStack(alignment: .center) {
-                    PickerValueComponent(icon: "clock", title:"Schedule", pickerValue: getDateAndTime()[selectedDateIndex].name, showPicker: $showDatePicker)
-                    .onTapGesture {
-                        self.showDatePicker.toggle()
-                    }.allowsHitTesting(selectedDoctorIndex != 0)
-                    
-                    if selectedDoctorIndex == 0 {
-                        WarningMessageComponent(warningMsg: "Choose a Speciality and a Doctor")
-                    }
-                    
+                if showDatePicker {
+                    PickerComponent(pickerIndex: $selectedDateIndex, pickerList: getDateAndTime())
+                        .offset(y: self.showDatePicker ? 0 : UIScreen.main.bounds.height)
+                        .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+                        .padding(.horizontal)
+                        .padding(.top,20)
+                        .background(Color("lightGray"))
+                        .edgesIgnoringSafeArea(.bottom)
                 }
-                
-                Spacer()
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Validate")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .shadow(radius: 10.0, x: 20, y: 10)
 
-                }.padding(.top, 50)
-                .padding(.horizontal, 10)
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Cancel")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.red)
-                        .cornerRadius(10)
-                        .shadow(radius: 10.0, x: 20, y: 10)
-
-                }.padding(.vertical, 10)
-                .padding(.horizontal, 10)
-                
-            }.overlay((self.showSpecialitiesPicker || self.showDoctorPicker || self.showDatePicker ? Color.black.opacity(0.3) : Color.clear)
-            .edgesIgnoringSafeArea(.all)
-            .onTapGesture {
-                self.showSpecialitiesPicker = false
-                self.showDoctorPicker = false
-                self.showDatePicker = false
-            })
-
-            if showSpecialitiesPicker {
-                PickerComponent(pickerIndex: $selectedSpecialityIndex, pickerList: getSpecialities())
-                    .offset(y: self.showSpecialitiesPicker ? 0 : UIScreen.main.bounds.height)
-                    .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
-                    .padding(.horizontal)
-                    .padding(.top,20)
-                    .background(Color("lightGray"))
-                    .edgesIgnoringSafeArea(.bottom)
-            }
-            
-            if showDoctorPicker {
-                PickerComponent(pickerIndex: $selectedDoctorIndex, pickerList: getDoctors())
-                    .offset(y: self.showDoctorPicker ? 0 : UIScreen.main.bounds.height)
-                    .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
-                    .padding(.horizontal)
-                    .padding(.top,20)
-                    .background(Color("lightGray"))
-                    .edgesIgnoringSafeArea(.bottom)
-            }
-
-            if showDatePicker {
-                PickerComponent(pickerIndex: $selectedDateIndex, pickerList: getDateAndTime())
-                    .offset(y: self.showDatePicker ? 0 : UIScreen.main.bounds.height)
-                    .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
-                    .padding(.horizontal)
-                    .padding(.top,20)
-                    .background(Color("lightGray"))
-                    .edgesIgnoringSafeArea(.bottom)
-            }
-
-        } .background(
-            LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all))
+            } .background(
+                LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all))
+//        }
     }
 }
 
-struct AppointmentSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        AppointmentSheetView()
-    }
-}
+//struct AppointmentSheetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AppointmentSheetView()
+//    }
+//}

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		B319B721268DEAD4004DA65B /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B720268DEAD4004DA65B /* HeaderSectionView.swift */; };
 		B319B72A2690676D004DA65B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B7292690676D004DA65B /* UserService.swift */; };
-		B319B72F26909839004DA65B /* ResponseMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B72E26909839004DA65B /* ResponseMessageView.swift */; };
-		B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */; };
+		B319B72F26909839004DA65B /* ResponseMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B72E26909839004DA65B /* ResponseMessageComponent.swift */; };
+		B32796B3268BB56E007C2BE0 /* ErrorMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32796B2268BB56D007C2BE0 /* ErrorMessageComponent.swift */; };
 		B32796B6268BBF4C007C2BE0 /* ValidatorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32796B5268BBF4C007C2BE0 /* ValidatorField.swift */; };
 		B32A71C62688D6310099A4E3 /* DiagnosticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */; };
 		B32A71C92688D7CE0099A4E3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71C82688D7CE0099A4E3 /* HomeView.swift */; };
@@ -34,8 +34,8 @@
 /* Begin PBXFileReference section */
 		B319B720268DEAD4004DA65B /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
 		B319B7292690676D004DA65B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		B319B72E26909839004DA65B /* ResponseMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessageView.swift; sourceTree = "<group>"; };
-		B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
+		B319B72E26909839004DA65B /* ResponseMessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessageComponent.swift; sourceTree = "<group>"; };
+		B32796B2268BB56D007C2BE0 /* ErrorMessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageComponent.swift; sourceTree = "<group>"; };
 		B32796B5268BBF4C007C2BE0 /* ValidatorField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorField.swift; sourceTree = "<group>"; };
 		B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
 		B32A71C82688D7CE0099A4E3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -105,9 +105,7 @@
 			children = (
 				ECD131C82694AFB100739A3A /* Components */,
 				ECD131C32694A78700739A3A /* Design */,
-				B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */,
 				B319B720268DEAD4004DA65B /* HeaderSectionView.swift */,
-				B319B72E26909839004DA65B /* ResponseMessageView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -180,6 +178,8 @@
 		ECD131C82694AFB100739A3A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B319B72E26909839004DA65B /* ResponseMessageComponent.swift */,
+				B32796B2268BB56D007C2BE0 /* ErrorMessageComponent.swift */,
 				ECD131C92694AFCC00739A3A /* HeaderComponent.swift */,
 				ECD131CB2694B00B00739A3A /* ToggleComponent.swift */,
 				B3B889B926AD9DC300F10E2B /* PickerComponent.swift */,
@@ -258,7 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B319B72F26909839004DA65B /* ResponseMessageView.swift in Sources */,
+				B319B72F26909839004DA65B /* ResponseMessageComponent.swift in Sources */,
 				B3B889BA26AD9DC300F10E2B /* PickerComponent.swift in Sources */,
 				ECD131C72694A87A00739A3A /* DesignComponent.swift in Sources */,
 				B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */,
@@ -269,7 +269,7 @@
 				B32A71CC2688DD6C0099A4E3 /* AppointmentView.swift in Sources */,
 				ECD131CC2694B00B00739A3A /* ToggleComponent.swift in Sources */,
 				B3B889CA26ADF8D200F10E2B /* WarningMessageComponent.swift in Sources */,
-				B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */,
+				B32796B3268BB56E007C2BE0 /* ErrorMessageComponent.swift in Sources */,
 				B3B889C726ADE99700F10E2B /* PickerValueComponent.swift in Sources */,
 				B3B889C026ADA02D00F10E2B /* AppointmentLoggedView.swift in Sources */,
 				B32A71C92688D7CE0099A4E3 /* HomeView.swift in Sources */,

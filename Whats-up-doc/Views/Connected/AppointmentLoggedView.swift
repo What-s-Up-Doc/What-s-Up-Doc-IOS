@@ -13,6 +13,12 @@ struct AppointmentLoggedView: View {
     var appointments = getAppointments()
     @State private var showingSheet = false
     @State  var showCircleButton = false
+    
+    @State  var showResponseMessage: Bool = false
+    
+    @State  var messageTitle: String = ""
+    @State  var messageContent: String = ""
+    @State  var messageColor: Color = Color.green
         
     init() {
        UITableView.appearance().separatorStyle = .none
@@ -23,76 +29,92 @@ struct AppointmentLoggedView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            VStack(spacing: 0) {
-                
-                HeaderComponent()
-                
-                Section(header: HeaderSectionView(title: "Appointments",icon: "calendar")) {
-                    ZStack(alignment: .bottom){
-                        List {
-                            ForEach(appointments) { appointment in
-                                AppointmentRow(appointment: appointment)
-                                       }
-                            .listRowBackground(Color("lightGray"))
-                            .opacity(0.7)
-                        }.cornerRadius(10)
-                        .padding(.top, 10)
+            if showResponseMessage {
+                ResponseMessageComponent(title: messageTitle, message: messageContent,color: messageColor)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.showResponseMessage = false
+                        }
+                    }
+            }
+            ZStack(alignment: .top) {
+                VStack(spacing: 0) {
                     
+                    HeaderComponent()
+                    
+                    Section(header: HeaderSectionView(title: "Appointments",icon: "calendar")) {
+                        ZStack(alignment: .bottom){
+                            List {
+                                ForEach(appointments) { appointment in
+                                    AppointmentRow(appointment: appointment)
+                                           }
+                                .listRowBackground(Color("lightGray"))
+                                .opacity(0.7)
+                            }.cornerRadius(10)
+                            .padding(.top, 10)
                         
-                            if showCircleButton {
-                                
-                                Button(action: {
-                                    showingSheet.toggle()
-                                }) {
+                            
+                                if showCircleButton {
                                     
-                                    Image(systemName: "calendar.badge.plus")
+                                    Button(action: {
+                                        showingSheet.toggle()
+                                    }) {
+                                        
+                                        Image(systemName: "calendar.badge.plus")
+                                            .foregroundColor(.white)
+                                            .padding()
+                                            .background(Color.blue)
+                                            .clipShape(Circle())
+                                            .shadow(radius: 10.0, x: 20, y: 10)
+
+                                    }
+                                    .sheet(isPresented: $showingSheet) {
+                                        AppointmentSheetView(showResponseMessage: $showResponseMessage,
+                                                             messageTitle: $messageTitle,
+                                                             messageContent: $messageContent,
+                                                             messageColor: $messageColor)
+                                    }
+                                    .padding(.bottom, 20)
+                                    .padding(.leading, 300)
+
+                                    
+                                    
+                                } else {
+                                    Button(action: {
+                                        showingSheet.toggle()
+                                    }) {
+                                        
+                                        HStack(){
+                                            Image(systemName: "calendar.badge.plus")
+                                            
+                                            Text("New Appointment")
+                                                
+
+                                        }
+                                        .font(.system(size: 14))
                                         .foregroundColor(.white)
                                         .padding()
                                         .background(Color.blue)
-                                        .clipShape(Circle())
+                                        .cornerRadius(30)
                                         .shadow(radius: 10.0, x: 20, y: 10)
 
-                                }
-                                .sheet(isPresented: $showingSheet) {
-                                    AppointmentSheetView()
-                                }
-                                .padding(.bottom, 20)
-                                .padding(.leading, 300)
-
-                                
-                                
-                            } else {
-                                Button(action: {
-                                    showingSheet.toggle()
-                                }) {
-                                    
-                                    HStack(){
-                                        Image(systemName: "calendar.badge.plus")
-                                        
-                                        Text("New Appointment")
-                                            
-
                                     }
-                                    .font(.system(size: 14))
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .background(Color.blue)
-                                    .cornerRadius(30)
-                                    .shadow(radius: 10.0, x: 20, y: 10)
-
+                                    .sheet(isPresented: $showingSheet) {
+                                        AppointmentSheetView(showResponseMessage: $showResponseMessage,
+                                                             messageTitle: $messageTitle,
+                                                             messageContent: $messageContent,
+                                                             messageColor: $messageColor)
+                                    }
+                                    .padding(.bottom, 20)
+                                    .padding(.leading, 200)
                                 }
-                                .sheet(isPresented: $showingSheet) {
-                                    AppointmentSheetView()
-                                }
-                                .padding(.bottom, 20)
-                                .padding(.leading, 200)
                             }
-                        }
+                    }
                 }
-            }
-        }.background(
-            LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all))
+            }.background(
+                LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all))
+        }
     }
 }
 
