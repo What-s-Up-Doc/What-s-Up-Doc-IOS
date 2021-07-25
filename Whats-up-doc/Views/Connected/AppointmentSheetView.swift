@@ -67,15 +67,6 @@ struct AppointmentSheetView: View {
     @State private var selectedSpecialityIndex = 0
 
     var body: some View {
-//        ZStack(alignment: .top) {
-//            if showResponseMessage {
-//                ResponseMessageView(title: messageTitle, message: messageContent,color: messageColor)
-//                    .onAppear {
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//                            self.showResponseMessage = false
-//                        }
-//                    }
-//            }
             ZStack(alignment: .bottom){
                 VStack(){
                     
@@ -149,12 +140,14 @@ struct AppointmentSheetView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.blue)
+                            .background(isDisabled() ? Color.gray : Color.blue)
                             .cornerRadius(10)
                             .shadow(radius: 10.0, x: 20, y: 10)
 
                     }.padding(.top, 50)
                     .padding(.horizontal, 10)
+                    .disabled(isDisabled())
+                    
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }) {
@@ -211,7 +204,11 @@ struct AppointmentSheetView: View {
             } .background(
                 LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
                     .edgesIgnoringSafeArea(.all))
-//        }
+
+    }
+    
+    func isDisabled() -> Bool{
+        return selectedDoctorIndex == 0 || selectedSpecialityIndex == 0 || selectedDateIndex == 0
     }
 }
 
