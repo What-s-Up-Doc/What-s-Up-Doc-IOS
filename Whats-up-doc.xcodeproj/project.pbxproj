@@ -17,8 +17,11 @@
 		B32A71CC2688DD6C0099A4E3 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71CB2688DD6C0099A4E3 /* AppointmentView.swift */; };
 		B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71CE2688E0230099A4E3 /* LoginView.swift */; };
 		B32A71D8268917BE0099A4E3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71D7268917BE0099A4E3 /* RegisterView.swift */; };
-		B365FE75269358B20063048E /* AppointmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B365FE74269358B20063048E /* AppointmentService.swift */; };
 		B3B889AD26A884E000F10E2B /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889AC26A884E000F10E2B /* ModalView.swift */; };
+		B3B889BA26AD9DC300F10E2B /* PickerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889B926AD9DC300F10E2B /* PickerComponent.swift */; };
+		B3B889BD26AD9EEA00F10E2B /* AppointmentSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889BC26AD9EEA00F10E2B /* AppointmentSheetView.swift */; };
+		B3B889C026ADA02D00F10E2B /* AppointmentLoggedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889BF26ADA02D00F10E2B /* AppointmentLoggedView.swift */; };
+		B3B889C326ADA10500F10E2B /* AppointmentNotLoggedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889C226ADA10500F10E2B /* AppointmentNotLoggedView.swift */; };
 		EC1EAF8526739AF4006C0ED8 /* Whats_up_docApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */; };
 		EC1EAF8926739AF6006C0ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */; };
 		EC1EAF8C26739AF6006C0ED8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8B26739AF6006C0ED8 /* Preview Assets.xcassets */; };
@@ -40,6 +43,10 @@
 		B32A71D7268917BE0099A4E3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		B365FE74269358B20063048E /* AppointmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentService.swift; sourceTree = "<group>"; };
 		B3B889AC26A884E000F10E2B /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		B3B889B926AD9DC300F10E2B /* PickerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerComponent.swift; sourceTree = "<group>"; };
+		B3B889BC26AD9EEA00F10E2B /* AppointmentSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentSheetView.swift; sourceTree = "<group>"; };
+		B3B889BF26ADA02D00F10E2B /* AppointmentLoggedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentLoggedView.swift; sourceTree = "<group>"; };
+		B3B889C226ADA10500F10E2B /* AppointmentNotLoggedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentNotLoggedView.swift; sourceTree = "<group>"; };
 		EC1EAF8126739AF4006C0ED8 /* Whats-up-doc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whats-up-doc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whats_up_docApp.swift; sourceTree = "<group>"; };
 		EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +93,8 @@
 				B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */,
 				B32A71CB2688DD6C0099A4E3 /* AppointmentView.swift */,
 				B3B889AC26A884E000F10E2B /* ModalView.swift */,
+				B3B889BC26AD9EEA00F10E2B /* AppointmentSheetView.swift */,
+				B3B889BF26ADA02D00F10E2B /* AppointmentLoggedView.swift */,
 			);
 			path = Connected;
 			sourceTree = "<group>";
@@ -107,6 +116,7 @@
 			children = (
 				B32A71CE2688E0230099A4E3 /* LoginView.swift */,
 				B32A71D7268917BE0099A4E3 /* RegisterView.swift */,
+				B3B889C226ADA10500F10E2B /* AppointmentNotLoggedView.swift */,
 			);
 			path = NotConnected;
 			sourceTree = "<group>";
@@ -171,6 +181,7 @@
 			children = (
 				ECD131C92694AFCC00739A3A /* HeaderComponent.swift */,
 				ECD131CB2694B00B00739A3A /* ToggleComponent.swift */,
+				B3B889B926AD9DC300F10E2B /* PickerComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -245,17 +256,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				B319B72F26909839004DA65B /* ResponseMessageView.swift in Sources */,
+				B3B889BA26AD9DC300F10E2B /* PickerComponent.swift in Sources */,
 				ECD131C72694A87A00739A3A /* DesignComponent.swift in Sources */,
 				B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */,
 				B319B72A2690676D004DA65B /* UserService.swift in Sources */,
 				ECD131CA2694AFCC00739A3A /* HeaderComponent.swift in Sources */,
+				B3B889C326ADA10500F10E2B /* AppointmentNotLoggedView.swift in Sources */,
 				B32796B6268BBF4C007C2BE0 /* ValidatorField.swift in Sources */,
 				B32A71CC2688DD6C0099A4E3 /* AppointmentView.swift in Sources */,
 				ECD131CC2694B00B00739A3A /* ToggleComponent.swift in Sources */,
 				B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */,
+				B3B889C026ADA02D00F10E2B /* AppointmentLoggedView.swift in Sources */,
 				B32A71C92688D7CE0099A4E3 /* HomeView.swift in Sources */,
 				B3B889AD26A884E000F10E2B /* ModalView.swift in Sources */,
 				B319B721268DEAD4004DA65B /* HeaderSectionView.swift in Sources */,
+				B3B889BD26AD9EEA00F10E2B /* AppointmentSheetView.swift in Sources */,
 				B32A71C62688D6310099A4E3 /* DiagnosticsView.swift in Sources */,
 				B32A71D8268917BE0099A4E3 /* RegisterView.swift in Sources */,
 				EC1EAF8526739AF4006C0ED8 /* Whats_up_docApp.swift in Sources */,
