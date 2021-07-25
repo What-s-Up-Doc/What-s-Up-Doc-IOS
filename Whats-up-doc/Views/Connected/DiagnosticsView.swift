@@ -38,6 +38,7 @@ struct DiagnosticsView: View {
                                 ToggleComponent(isChecked: $symptoms[index].isChecked, title: symptoms[index].name)
                             }
                         }
+                        .padding([.leading, .trailing], 5)
                     }
                 }
                 Spacer()
