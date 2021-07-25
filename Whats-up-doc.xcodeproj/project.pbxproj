@@ -22,6 +22,7 @@
 		B3B889C026ADA02D00F10E2B /* AppointmentLoggedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889BF26ADA02D00F10E2B /* AppointmentLoggedView.swift */; };
 		B3B889C326ADA10500F10E2B /* AppointmentNotLoggedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889C226ADA10500F10E2B /* AppointmentNotLoggedView.swift */; };
 		B3B889C726ADE99700F10E2B /* PickerValueComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889C626ADE99700F10E2B /* PickerValueComponent.swift */; };
+		B3B889CA26ADF8D200F10E2B /* WarningMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889C926ADF8D200F10E2B /* WarningMessageComponent.swift */; };
 		EC1EAF8526739AF4006C0ED8 /* Whats_up_docApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */; };
 		EC1EAF8926739AF6006C0ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */; };
 		EC1EAF8C26739AF6006C0ED8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8B26739AF6006C0ED8 /* Preview Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		B3B889BF26ADA02D00F10E2B /* AppointmentLoggedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentLoggedView.swift; sourceTree = "<group>"; };
 		B3B889C226ADA10500F10E2B /* AppointmentNotLoggedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentNotLoggedView.swift; sourceTree = "<group>"; };
 		B3B889C626ADE99700F10E2B /* PickerValueComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerValueComponent.swift; sourceTree = "<group>"; };
+		B3B889C926ADF8D200F10E2B /* WarningMessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningMessageComponent.swift; sourceTree = "<group>"; };
 		EC1EAF8126739AF4006C0ED8 /* Whats-up-doc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Whats-up-doc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whats_up_docApp.swift; sourceTree = "<group>"; };
 		EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				ECD131CB2694B00B00739A3A /* ToggleComponent.swift */,
 				B3B889B926AD9DC300F10E2B /* PickerComponent.swift */,
 				B3B889C626ADE99700F10E2B /* PickerValueComponent.swift */,
+				B3B889C926ADF8D200F10E2B /* WarningMessageComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				B32796B6268BBF4C007C2BE0 /* ValidatorField.swift in Sources */,
 				B32A71CC2688DD6C0099A4E3 /* AppointmentView.swift in Sources */,
 				ECD131CC2694B00B00739A3A /* ToggleComponent.swift in Sources */,
+				B3B889CA26ADF8D200F10E2B /* WarningMessageComponent.swift in Sources */,
 				B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */,
 				B3B889C726ADE99700F10E2B /* PickerValueComponent.swift in Sources */,
 				B3B889C026ADA02D00F10E2B /* AppointmentLoggedView.swift in Sources */,

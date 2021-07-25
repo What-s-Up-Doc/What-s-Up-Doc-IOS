@@ -14,6 +14,7 @@ struct Item: Identifiable {
 
 let getDateAndTime = {
     return [
+        Item(id: "0", name: "Pick a Date"),
         Item(id: "1", name: "06/09/2021 11h00"),
         Item(id: "2", name: "06/09/2021 11h00"),
         Item(id: "3", name: "06/09/2021 15h40"),
@@ -26,6 +27,7 @@ let getDateAndTime = {
 
 let getSpecialities = {
     return [
+        Item(id: "0", name: "Pick a Speciality"),
         Item(id: "1", name: "Generalist"),
         Item(id: "2", name: "Cardiology"),
         Item(id: "3", name: "Gynecology"),
@@ -37,6 +39,7 @@ let getSpecialities = {
 
 let getDoctors = {
     return [
+        Item(id: "0", name: "Pick a Doctor"),
         Item(id: "1", name: "Doctor Who"),
         Item(id: "3", name: "Doctor Rand"),
         Item(id: "4", name: "Doctor Aybara"),
@@ -51,10 +54,14 @@ struct AppointmentSheetView: View {
     @State private var showSpecialitiesPicker: Bool = false
     @State private var showDoctorPicker: Bool = false
     @State private var showDatePicker: Bool = false
+    @State private var selectedSpeciality: Bool = false
+    @State private var selectedDoctor: Bool = false
     
     @State private var selectedDateIndex = 0
     @State private var selectedDoctorIndex = 0
     @State private var selectedSpecialityIndex = 0
+    
+    
 
 
     var body: some View {
@@ -92,18 +99,30 @@ struct AppointmentSheetView: View {
                 }
                 
                 Spacer()
-                PickerValueComponent(icon: "person", title:"Doctor", pickerValue: getDoctors()[selectedDoctorIndex].name, showPicker: $showDoctorPicker)
-                .onTapGesture {
-                    self.showSpecialitiesPicker.toggle()
+                ZStack(alignment: .center) {
+                    PickerValueComponent(icon: "person", title:"Doctor", pickerValue: getDoctors()[selectedDoctorIndex].name, showPicker: $showDoctorPicker)
+                    .onTapGesture {
+                        self.showDoctorPicker.toggle()
+                    }.allowsHitTesting(selectedSpecialityIndex != 0)
+                    
+                    if selectedSpecialityIndex == 0 {
+                        WarningMessageComponent(warningMsg: "Choose a Speciality")
+                    }
+                    
                 }
-                
+
+
                 Spacer()
-                PickerValueComponent(icon: "clock", title:"Schedule", pickerValue: getDateAndTime()[selectedDateIndex].name, showPicker: $showDatePicker)
-                .onTapGesture {
-                    self.showSpecialitiesPicker.toggle()
-                }
-                .onTapGesture {
-                    self.showDoctorPicker.toggle()
+                ZStack(alignment: .center) {
+                    PickerValueComponent(icon: "clock", title:"Schedule", pickerValue: getDateAndTime()[selectedDateIndex].name, showPicker: $showDatePicker)
+                    .onTapGesture {
+                        self.showDatePicker.toggle()
+                    }.allowsHitTesting(selectedDoctorIndex != 0)
+                    
+                    if selectedDoctorIndex == 0 {
+                        WarningMessageComponent(warningMsg: "Choose a Speciality and a Doctor")
+                    }
+                    
                 }
                 
                 Spacer()
