@@ -14,8 +14,13 @@ struct Item: Identifiable {
 
 let getDateAndTime = {
     return [
-        Item(id: "1", name: "Monday, 12th May 2021"),
-        Item(id: "2", name: "Thursday, 22 June 2021"),
+        Item(id: "1", name: "06/09/2021 11h00"),
+        Item(id: "2", name: "06/09/2021 11h00"),
+        Item(id: "3", name: "06/09/2021 15h40"),
+        Item(id: "4", name: "07/09/2021 9h40"),
+        Item(id: "5", name: "07/09/2021 11h00"),
+        Item(id: "6", name: "07/09/2021 19h00"),
+        Item(id: "7", name: "08/09/2021 8h00"),
     ]
 }
 
@@ -54,58 +59,87 @@ struct AppointmentSheetView: View {
 
     var body: some View {
         ZStack(alignment: .bottom){
-            Spacer()
-            Text("New Appointment")
-                .font(.largeTitle)
-                .shadow(radius: 10.0, x: 20, y: 10)
-                .foregroundColor(.white)
-                .padding()
-            Spacer()
             VStack(){
+                
+                VStack() {
+                    HStack(){
+                        Text("New Appointment")
+                            .font(.largeTitle)
+                            .shadow(radius: 10.0, x: 20, y: 10)
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                    
+
+                    HStack(){
+                        Image(systemName: "calendar.badge.plus")
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                            .foregroundColor(.white)
+                            .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 20))
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                            .shadow(radius: 10.0, x: 20, y: 10)
+                            .padding(.bottom, 20)
+                    }
+                    
+                }
+
+                
+                
                 Spacer()
                 HStack(){
+                    Image(systemName: "stethoscope")
+                    Text("Speciality")
+                        .bold()
+                    Spacer()
                     Text("\(getSpecialities()[selectedSpecialityIndex].name)")
-                        .onTapGesture {
-                            self.showSpecialitiesPicker.toggle()
-                        }
+
                     Image(systemName: showSpecialitiesPicker ? "chevron.up" : "chevron.down")
                         .resizable()
                         .frame(width:13, height: 6)
                         .foregroundColor(.black)
-                        .onTapGesture {
-                            self.showSpecialitiesPicker.toggle()
-                        }
+                }.pickerDesign()
+                .onTapGesture {
+                    self.showSpecialitiesPicker.toggle()
                 }
+
+                
                 Spacer()
                 HStack(){
+                    Image(systemName: "person")
+                    Text("Doctor")
+                        .bold()
+                    Spacer()
                     Text("\(getDoctors()[selectedDoctorIndex].name)")
-                        .onTapGesture {
-                            self.showDoctorPicker.toggle()
-                        }
+
                     Image(systemName: showDoctorPicker ? "chevron.up" : "chevron.down")
                         .resizable()
                         .frame(width:13, height: 6)
                         .foregroundColor(.black)
-                        .onTapGesture {
-                            self.showDoctorPicker.toggle()
-                        }
+                }.pickerDesign()
+                .onTapGesture {
+                    self.showDoctorPicker.toggle()
                 }
+                
                 Spacer()
                 HStack(){
+                    Image(systemName: "clock")
+                    Text("Schedule")
+                        .bold()
+                    Spacer()
                     Text("\(getDateAndTime()[selectedDateIndex].name)")
-                        .onTapGesture {
-                            self.showDatePicker.toggle()
-                        }
                     Image(systemName: showDatePicker ? "chevron.up" : "chevron.down")
                         .resizable()
                         .frame(width:13, height: 6)
                         .foregroundColor(.black)
-                        .onTapGesture {
-                            self.showDatePicker.toggle()
-                        }
+
+                }.pickerDesign()
+                .onTapGesture {
+                    self.showDatePicker.toggle()
                 }
-                Spacer()
                 
+                Spacer()
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
                 }) {
