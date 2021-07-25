@@ -22,7 +22,7 @@ struct LoginView: View {
     var body: some View {
         ZStack(alignment: .top){
             if showResponseMessage {
-                ResponseMessageView(title: messageTitle, message: messageContent,color: messageColor)
+                ResponseMessageComponent(title: messageTitle, message: messageContent,color: messageColor)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             self.showResponseMessage = false

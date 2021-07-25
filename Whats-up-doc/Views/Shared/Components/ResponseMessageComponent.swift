@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ResponseMessageView: View {
+struct ResponseMessageComponent: View {
     let title: String
     let message: String
     let color: Color
@@ -36,6 +36,6 @@ struct ResponseMessageView: View {
 
 struct SuccessMessage_Previews: PreviewProvider {
     static var previews: some View {
-        ResponseMessageView(title: "Succes !", message: "test", color: Color.blue)
+        ResponseMessageComponent(title: "Succes !", message: "test", color: Color.blue)
     }
 }
