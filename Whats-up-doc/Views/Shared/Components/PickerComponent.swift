@@ -2,7 +2,7 @@
 //  PickerComponent.swift
 //  Whats-up-doc
 //
-//  Created by Hermance Dornier on 25/07/2021.
+//  Created by Aymeric Larvet on 25/07/2021.
 //
 
 import SwiftUI

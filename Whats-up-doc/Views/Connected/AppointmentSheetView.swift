@@ -2,7 +2,7 @@
 //  AppointmentSheetView.swift
 //  Whats-up-doc
 //
-//  Created by Hermance Dornier on 25/07/2021.
+//  Created by Aymeric Larvet on 25/07/2021.
 //
 
 import SwiftUI
@@ -84,59 +84,26 @@ struct AppointmentSheetView: View {
                     }
                     
                 }
-
-                
                 
                 Spacer()
-                HStack(){
-                    Image(systemName: "stethoscope")
-                    Text("Speciality")
-                        .bold()
-                    Spacer()
-                    Text("\(getSpecialities()[selectedSpecialityIndex].name)")
-
-                    Image(systemName: showSpecialitiesPicker ? "chevron.up" : "chevron.down")
-                        .resizable()
-                        .frame(width:13, height: 6)
-                        .foregroundColor(.black)
-                }.pickerDesign()
+                PickerValueComponent(icon: "stethoscope", title:"Speciality", pickerValue: getSpecialities()[selectedSpecialityIndex].name, showPicker: $showSpecialitiesPicker)
                 .onTapGesture {
                     self.showSpecialitiesPicker.toggle()
                 }
-
                 
                 Spacer()
-                HStack(){
-                    Image(systemName: "person")
-                    Text("Doctor")
-                        .bold()
-                    Spacer()
-                    Text("\(getDoctors()[selectedDoctorIndex].name)")
-
-                    Image(systemName: showDoctorPicker ? "chevron.up" : "chevron.down")
-                        .resizable()
-                        .frame(width:13, height: 6)
-                        .foregroundColor(.black)
-                }.pickerDesign()
+                PickerValueComponent(icon: "person", title:"Doctor", pickerValue: getDoctors()[selectedDoctorIndex].name, showPicker: $showDoctorPicker)
                 .onTapGesture {
-                    self.showDoctorPicker.toggle()
+                    self.showSpecialitiesPicker.toggle()
                 }
                 
                 Spacer()
-                HStack(){
-                    Image(systemName: "clock")
-                    Text("Schedule")
-                        .bold()
-                    Spacer()
-                    Text("\(getDateAndTime()[selectedDateIndex].name)")
-                    Image(systemName: showDatePicker ? "chevron.up" : "chevron.down")
-                        .resizable()
-                        .frame(width:13, height: 6)
-                        .foregroundColor(.black)
-
-                }.pickerDesign()
+                PickerValueComponent(icon: "clock", title:"Schedule", pickerValue: getDateAndTime()[selectedDateIndex].name, showPicker: $showDatePicker)
                 .onTapGesture {
-                    self.showDatePicker.toggle()
+                    self.showSpecialitiesPicker.toggle()
+                }
+                .onTapGesture {
+                    self.showDoctorPicker.toggle()
                 }
                 
                 Spacer()
