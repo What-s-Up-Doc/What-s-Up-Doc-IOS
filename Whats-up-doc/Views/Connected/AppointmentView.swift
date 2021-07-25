@@ -77,20 +77,21 @@ struct Appointment: Identifiable {
     let patient: String
 }
 
-struct Item: Codable, Hashable, Identifiable {
+struct Item: Identifiable {
     let id: String
-    var name: String
-}
-
-struct Test: Hashable {
-    var index: Int = 0
+    let name: String
 }
 
 struct SheetView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var showSelector: Bool = false
+    
+    @State private var showSpecialitiesPicker: Bool = false
+    @State private var showDoctorPicker: Bool = false
+    @State private var showDatePicker: Bool = false
+    
+    @State private var selectedDateIndex = 0
+    @State private var selectedDoctorIndex = 0
     @State private var selectedSpecialityIndex = 0
-    @State var indexTest: Test = Test(index: 0)
 
 
     var body: some View {
@@ -107,16 +108,43 @@ struct SheetView: View {
                 HStack(){
                     Text("\(getSpecialities()[selectedSpecialityIndex].name)")
                         .onTapGesture {
-                            self.showSelector.toggle()
+                            self.showSpecialitiesPicker.toggle()
+                        }
+                    Image(systemName: showSpecialitiesPicker ? "chevron.up" : "chevron.down")
+                        .resizable()
+                        .frame(width:13, height: 6)
+                        .foregroundColor(.black)
+                        .onTapGesture {
+                            self.showSpecialitiesPicker.toggle()
                         }
                 }
                 Spacer()
                 HStack(){
-                    DropDown(items: getDoctors(), selection: "Doctor")
+                    Text("\(getDoctors()[selectedDoctorIndex].name)")
+                        .onTapGesture {
+                            self.showDoctorPicker.toggle()
+                        }
+                    Image(systemName: showDoctorPicker ? "chevron.up" : "chevron.down")
+                        .resizable()
+                        .frame(width:13, height: 6)
+                        .foregroundColor(.black)
+                        .onTapGesture {
+                            self.showDoctorPicker.toggle()
+                        }
                 }
                 Spacer()
                 HStack(){
-                    DropDown(items: getDateAndTime(), selection: "Date and Time")
+                    Text("\(getDateAndTime()[selectedDateIndex].name)")
+                        .onTapGesture {
+                            self.showDatePicker.toggle()
+                        }
+                    Image(systemName: showDatePicker ? "chevron.up" : "chevron.down")
+                        .resizable()
+                        .frame(width:13, height: 6)
+                        .foregroundColor(.black)
+                        .onTapGesture {
+                            self.showDatePicker.toggle()
+                        }
                 }
                 Spacer()
                 
@@ -149,29 +177,42 @@ struct SheetView: View {
                 }.padding(.vertical, 10)
                 .padding(.horizontal, 10)
                 
-            }.overlay((self.showSelector ? Color.black.opacity(0.3) : Color.clear)
+            }.overlay((self.showSpecialitiesPicker || self.showDoctorPicker || self.showDatePicker ? Color.black.opacity(0.3) : Color.clear)
             .edgesIgnoringSafeArea(.all)
             .onTapGesture {
-                self.showSelector.toggle()
+                self.showSpecialitiesPicker = false
+                self.showDoctorPicker = false
+                self.showDatePicker = false
             })
 
-            if showSelector {
-                HStack(){
-                    Picker("Speciality", selection: $selectedSpecialityIndex, content: {
-                        ForEach(0..<getSpecialities().count, content: { index in
-                            Text(getSpecialities()[index].name)
-                        })
-                    })
-                }
-                .zIndex(10)
-                .offset(y: self.showSelector ? 0 : UIScreen.main.bounds.height)
-                .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
-                .padding(.horizontal)
-                .padding(.top,20)
-                .background(Color("lightGray"))
-                .edgesIgnoringSafeArea(.bottom)
+            if showSpecialitiesPicker {
+                PickerView(pickerIndex: $selectedSpecialityIndex, pickerList: getSpecialities())
+                    .offset(y: self.showSpecialitiesPicker ? 0 : UIScreen.main.bounds.height)
+                    .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+                    .padding(.horizontal)
+                    .padding(.top,20)
+                    .background(Color("lightGray"))
+                    .edgesIgnoringSafeArea(.bottom)
+            }
+            
+            if showDoctorPicker {
+                PickerView(pickerIndex: $selectedDoctorIndex, pickerList: getDoctors())
+                    .offset(y: self.showDoctorPicker ? 0 : UIScreen.main.bounds.height)
+                    .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+                    .padding(.horizontal)
+                    .padding(.top,20)
+                    .background(Color("lightGray"))
+                    .edgesIgnoringSafeArea(.bottom)
+            }
 
-
+            if showDatePicker {
+                PickerView(pickerIndex: $selectedDateIndex, pickerList: getDateAndTime())
+                    .offset(y: self.showDatePicker ? 0 : UIScreen.main.bounds.height)
+                    .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+                    .padding(.horizontal)
+                    .padding(.top,20)
+                    .background(Color("lightGray"))
+                    .edgesIgnoringSafeArea(.bottom)
             }
 
         } .background(
@@ -180,52 +221,17 @@ struct SheetView: View {
     }
 }
 
-class SpecialitiesController: ObservableObject {
-    @Published var specialities: [Item] = []
-
-    init() {
-        specialities = [
-            Item(id: "0", name: "Generalist"),
-            Item(id: "1", name: "Cardiology"),
-            Item(id: "2", name: "Gynecology"),
-            Item(id: "3", name: "Pediatry"),
-            Item(id: "4", name: "Podology"),
-            Item(id: "5", name: "Sophrology")
-        ]
-    }
-}
-
-struct DropDown: View {
-    @State var expand = false
-    var items: [Item]
-    @State var selection: String
+struct PickerView: View {
+    @Binding var pickerIndex: Int
+    let pickerList: [Item]
+    
     var body: some View{
-        VStack(){
-            VStack(spacing: 30){
-                HStack(){
-                    Text(selection)
-                    Image(systemName: expand ? "chevron.up" : "chevron.down")
-                        .resizable()
-                        .frame(width:13, height: 6)
-                        .foregroundColor(.black)
-                }.onTapGesture {
-                    self.expand.toggle()
-                }
-                if expand {
-                    List {
-                        ForEach(items) { item in
-                            Button(action: {
-                                selection = item.name
-                                self.expand.toggle()
-                            }){
-                                Text(item.name).padding()
-                            }.foregroundColor(.black)
-                        }
-                    }
-                }
-            }
-            .shadow(color: .gray, radius: 5)
-            .animation(.spring())
+        HStack(){
+            Picker("Speciality", selection: $pickerIndex, content: {
+                ForEach(0..<pickerList.count, content: { index in
+                    Text(pickerList[index].name)
+                })
+            })
         }
     }
 }
