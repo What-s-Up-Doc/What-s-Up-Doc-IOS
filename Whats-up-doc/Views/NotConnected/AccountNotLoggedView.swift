@@ -1,14 +1,13 @@
 //
-//  AppointmentNotLoggedView.swift
+//  AccountNotLoggedView.swift
 //  Whats-up-doc
 //
-//  Created by Aymeric Larvet on 25/07/2021.
+//  Created by Hermance Dornier on 26/07/2021.
 //
 
 import SwiftUI
 
-struct AppointmentNotLoggedView: View {
-    @Binding var isActive: Bool
+struct AccountNotLoggedView: View {
     var body: some View {
         ZStack(alignment: .top){
             VStack() {
@@ -17,7 +16,7 @@ struct AppointmentNotLoggedView: View {
                 Text("You must be connected to take an appointment.")
                 HStack {
                     Text("Please ")
-                    NavigationLink(destination: LoginView(isActive: self.$isActive)){
+                    NavigationLink(destination: LoginView()){
                         Text("login")
                     }
                 }
@@ -43,8 +42,8 @@ struct AppointmentNotLoggedView: View {
     }
 }
 
-//struct AppointmentNotLoggedView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AppointmentNotLoggedView()
-//    }
-//}
+struct AccountNotLoggedView_Previews: PreviewProvider {
+    static var previews: some View {
+        AccountNotLoggedView()
+    }
+}

@@ -26,6 +26,13 @@ struct Whats_up_docApp: App {
                         Text("Appointments")
                         Image(systemName: "calendar")
                     }
+                if userData.isLoggedIn {
+                    AccountView()
+                        .tabItem {
+                            Text("Profile")
+                            Image(systemName: "person.circle.fill")
+                        }
+                }
             }.environmentObject(userData)
         }
     }
