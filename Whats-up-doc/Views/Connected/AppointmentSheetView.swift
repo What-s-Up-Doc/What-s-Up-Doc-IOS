@@ -120,9 +120,9 @@ struct AppointmentSheetView: View {
                         PickerValueComponent(icon: "clock", title:"Schedule", pickerValue: getDateAndTime()[selectedDateIndex].name, showPicker: $showDatePicker)
                         .onTapGesture {
                             self.showDatePicker.toggle()
-                        }.allowsHitTesting(selectedDoctorIndex != 0)
+                        }.allowsHitTesting(selectedDoctorIndex != 0 && selectedSpecialityIndex != 0 )
                         
-                        if selectedDoctorIndex == 0 {
+                        if selectedDoctorIndex == 0 || selectedSpecialityIndex == 0 {
                             WarningMessageComponent(warningMsg: "Choose a Speciality and a Doctor")
                         }
                         
@@ -170,11 +170,11 @@ struct AppointmentSheetView: View {
                             .cornerRadius(10)
                             .shadow(radius: 10.0, x: 20, y: 10)
 
-                    }.padding(.vertical, 10)
-                    .padding(.horizontal, 10)
+                    }.padding([.top,.horizontal], 10)
+                    .padding(.bottom, 50)
                     
                 }.overlay((self.showSpecialitiesPicker || self.showDoctorPicker || self.showDatePicker ? Color.black.opacity(0.3) : Color.clear)
-                .edgesIgnoringSafeArea(.all)
+                            .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
                     self.showSpecialitiesPicker = false
                     self.showDoctorPicker = false
@@ -184,36 +184,26 @@ struct AppointmentSheetView: View {
                 if showSpecialitiesPicker {
                     PickerComponent(pickerIndex: $selectedSpecialityIndex, pickerList: getSpecialities())
                         .offset(y: self.showSpecialitiesPicker ? 0 : UIScreen.main.bounds.height)
-                        .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
-                        .padding(.horizontal)
-                        .padding(.top,20)
-                        .background(Color("lightGray"))
-                        .edgesIgnoringSafeArea(.bottom)
+
                 }
                 
                 if showDoctorPicker {
                     PickerComponent(pickerIndex: $selectedDoctorIndex, pickerList: getDoctors())
                         .offset(y: self.showDoctorPicker ? 0 : UIScreen.main.bounds.height)
-                        .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
-                        .padding(.horizontal)
-                        .padding(.top,20)
-                        .background(Color("lightGray"))
-                        .edgesIgnoringSafeArea(.bottom)
                 }
 
                 if showDatePicker {
                     PickerComponent(pickerIndex: $selectedDateIndex, pickerList: getDateAndTime())
                         .offset(y: self.showDatePicker ? 0 : UIScreen.main.bounds.height)
-                        .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
-                        .padding(.horizontal)
-                        .padding(.top,20)
-                        .background(Color("lightGray"))
-                        .edgesIgnoringSafeArea(.bottom)
                 }
 
-            } .background(
+            }
+            .animation(.default, value: showDatePicker || showDoctorPicker || showSpecialitiesPicker)
+            .background(
                 LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.all))
+                .edgesIgnoringSafeArea(.all)
+            )
+            .edgesIgnoringSafeArea(.bottom)
 
     }
     

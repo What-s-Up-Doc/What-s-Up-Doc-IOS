@@ -45,7 +45,7 @@ struct AppointmentLoggedView: View {
                     Section(header: HeaderSectionView(title: "Appointments",icon: "calendar")) {
                         ZStack(alignment: .bottom){
                             List {
-                                ForEach(appointments) { appointment in
+                                ForEach(appointments.reversed()) { appointment in
                                     AppointmentRow(appointment: appointment)
                                            }
                                 .listRowBackground(Color("lightGray"))
