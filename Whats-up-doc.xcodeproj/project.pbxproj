@@ -9,18 +9,24 @@
 /* Begin PBXBuildFile section */
 		B319B721268DEAD4004DA65B /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B720268DEAD4004DA65B /* HeaderSectionView.swift */; };
 		B319B72A2690676D004DA65B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B7292690676D004DA65B /* UserService.swift */; };
-		B319B72F26909839004DA65B /* ResponseMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B72E26909839004DA65B /* ResponseMessageView.swift */; };
-		B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */; };
+		B319B72F26909839004DA65B /* ResponseMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319B72E26909839004DA65B /* ResponseMessageComponent.swift */; };
+		B32796B3268BB56E007C2BE0 /* ErrorMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32796B2268BB56D007C2BE0 /* ErrorMessageComponent.swift */; };
 		B32796B6268BBF4C007C2BE0 /* ValidatorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32796B5268BBF4C007C2BE0 /* ValidatorField.swift */; };
 		B32A71C62688D6310099A4E3 /* DiagnosticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */; };
 		B32A71C92688D7CE0099A4E3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71C82688D7CE0099A4E3 /* HomeView.swift */; };
 		B32A71CC2688DD6C0099A4E3 /* AppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71CB2688DD6C0099A4E3 /* AppointmentView.swift */; };
 		B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71CE2688E0230099A4E3 /* LoginView.swift */; };
 		B32A71D8268917BE0099A4E3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A71D7268917BE0099A4E3 /* RegisterView.swift */; };
+		B3B889BA26AD9DC300F10E2B /* PickerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889B926AD9DC300F10E2B /* PickerComponent.swift */; };
+		B3B889BD26AD9EEA00F10E2B /* AppointmentSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889BC26AD9EEA00F10E2B /* AppointmentSheetView.swift */; };
+		B3B889C026ADA02D00F10E2B /* AppointmentLoggedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889BF26ADA02D00F10E2B /* AppointmentLoggedView.swift */; };
+		B3B889C326ADA10500F10E2B /* AppointmentNotLoggedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889C226ADA10500F10E2B /* AppointmentNotLoggedView.swift */; };
+		B3B889C726ADE99700F10E2B /* PickerValueComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889C626ADE99700F10E2B /* PickerValueComponent.swift */; };
+		B3B889CA26ADF8D200F10E2B /* WarningMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889C926ADF8D200F10E2B /* WarningMessageComponent.swift */; };
 		B6B4A04A2698503C006CB115 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4A0492698503C006CB115 /* UserView.swift */; };
 		B6B4A04E2698579E006CB115 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4A04D2698579E006CB115 /* Patient.swift */; };
 		B6B4A05126985E66006CB115 /* ColumnComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4A05026985E66006CB115 /* ColumnComponent.swift */; };
-		EC1EAF8526739AF4006C0ED8 /* Whats_up_docApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */; };
+    EC1EAF8526739AF4006C0ED8 /* Whats_up_docApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1EAF8426739AF4006C0ED8 /* Whats_up_docApp.swift */; };
 		EC1EAF8926739AF6006C0ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8826739AF6006C0ED8 /* Assets.xcassets */; };
 		EC1EAF8C26739AF6006C0ED8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC1EAF8B26739AF6006C0ED8 /* Preview Assets.xcassets */; };
 		ECD131C72694A87A00739A3A /* DesignComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD131C62694A87A00739A3A /* DesignComponent.swift */; };
@@ -31,8 +37,8 @@
 /* Begin PBXFileReference section */
 		B319B720268DEAD4004DA65B /* HeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
 		B319B7292690676D004DA65B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		B319B72E26909839004DA65B /* ResponseMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessageView.swift; sourceTree = "<group>"; };
-		B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
+		B319B72E26909839004DA65B /* ResponseMessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessageComponent.swift; sourceTree = "<group>"; };
+		B32796B2268BB56D007C2BE0 /* ErrorMessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageComponent.swift; sourceTree = "<group>"; };
 		B32796B5268BBF4C007C2BE0 /* ValidatorField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorField.swift; sourceTree = "<group>"; };
 		B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsView.swift; sourceTree = "<group>"; };
 		B32A71C82688D7CE0099A4E3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -40,6 +46,12 @@
 		B32A71CE2688E0230099A4E3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B32A71D7268917BE0099A4E3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		B365FE74269358B20063048E /* AppointmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentService.swift; sourceTree = "<group>"; };
+		B3B889B926AD9DC300F10E2B /* PickerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerComponent.swift; sourceTree = "<group>"; };
+		B3B889BC26AD9EEA00F10E2B /* AppointmentSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentSheetView.swift; sourceTree = "<group>"; };
+		B3B889BF26ADA02D00F10E2B /* AppointmentLoggedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentLoggedView.swift; sourceTree = "<group>"; };
+		B3B889C226ADA10500F10E2B /* AppointmentNotLoggedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentNotLoggedView.swift; sourceTree = "<group>"; };
+		B3B889C626ADE99700F10E2B /* PickerValueComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerValueComponent.swift; sourceTree = "<group>"; };
+		B3B889C926ADF8D200F10E2B /* WarningMessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningMessageComponent.swift; sourceTree = "<group>"; };
 		B6B4A0492698503C006CB115 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		B6B4A04D2698579E006CB115 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		B6B4A05026985E66006CB115 /* ColumnComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnComponent.swift; sourceTree = "<group>"; };
@@ -88,6 +100,8 @@
 				B32A71C82688D7CE0099A4E3 /* HomeView.swift */,
 				B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */,
 				B32A71CB2688DD6C0099A4E3 /* AppointmentView.swift */,
+				B3B889BC26AD9EEA00F10E2B /* AppointmentSheetView.swift */,
+				B3B889BF26ADA02D00F10E2B /* AppointmentLoggedView.swift */,
 				B6B4A0492698503C006CB115 /* UserView.swift */,
 			);
 			path = Connected;
@@ -98,9 +112,7 @@
 			children = (
 				ECD131C82694AFB100739A3A /* Components */,
 				ECD131C32694A78700739A3A /* Design */,
-				B32796B2268BB56D007C2BE0 /* ErrorMessageView.swift */,
 				B319B720268DEAD4004DA65B /* HeaderSectionView.swift */,
-				B319B72E26909839004DA65B /* ResponseMessageView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -110,6 +122,7 @@
 			children = (
 				B32A71CE2688E0230099A4E3 /* LoginView.swift */,
 				B32A71D7268917BE0099A4E3 /* RegisterView.swift */,
+				B3B889C226ADA10500F10E2B /* AppointmentNotLoggedView.swift */,
 			);
 			path = NotConnected;
 			sourceTree = "<group>";
@@ -181,8 +194,13 @@
 		ECD131C82694AFB100739A3A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B319B72E26909839004DA65B /* ResponseMessageComponent.swift */,
+				B32796B2268BB56D007C2BE0 /* ErrorMessageComponent.swift */,
 				ECD131C92694AFCC00739A3A /* HeaderComponent.swift */,
 				ECD131CB2694B00B00739A3A /* ToggleComponent.swift */,
+				B3B889B926AD9DC300F10E2B /* PickerComponent.swift */,
+				B3B889C626ADE99700F10E2B /* PickerValueComponent.swift */,
+				B3B889C926ADF8D200F10E2B /* WarningMessageComponent.swift */,
 				B6B4A05026985E66006CB115 /* ColumnComponent.swift */,
 			);
 			path = Components;
@@ -257,19 +275,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B319B72F26909839004DA65B /* ResponseMessageView.swift in Sources */,
+				B319B72F26909839004DA65B /* ResponseMessageComponent.swift in Sources */,
+				B3B889BA26AD9DC300F10E2B /* PickerComponent.swift in Sources */,
 				ECD131C72694A87A00739A3A /* DesignComponent.swift in Sources */,
 				B32A71CF2688E0230099A4E3 /* LoginView.swift in Sources */,
 				B319B72A2690676D004DA65B /* UserService.swift in Sources */,
 				B6B4A05126985E66006CB115 /* ColumnComponent.swift in Sources */,
 				ECD131CA2694AFCC00739A3A /* HeaderComponent.swift in Sources */,
+				B3B889C326ADA10500F10E2B /* AppointmentNotLoggedView.swift in Sources */,
 				B32796B6268BBF4C007C2BE0 /* ValidatorField.swift in Sources */,
 				B32A71CC2688DD6C0099A4E3 /* AppointmentView.swift in Sources */,
 				B6B4A04A2698503C006CB115 /* UserView.swift in Sources */,
 				ECD131CC2694B00B00739A3A /* ToggleComponent.swift in Sources */,
-				B32796B3268BB56E007C2BE0 /* ErrorMessageView.swift in Sources */,
+				B3B889CA26ADF8D200F10E2B /* WarningMessageComponent.swift in Sources */,
+				B32796B3268BB56E007C2BE0 /* ErrorMessageComponent.swift in Sources */,
+				B3B889C726ADE99700F10E2B /* PickerValueComponent.swift in Sources */,
+				B3B889C026ADA02D00F10E2B /* AppointmentLoggedView.swift in Sources */,
 				B32A71C92688D7CE0099A4E3 /* HomeView.swift in Sources */,
 				B319B721268DEAD4004DA65B /* HeaderSectionView.swift in Sources */,
+				B3B889BD26AD9EEA00F10E2B /* AppointmentSheetView.swift in Sources */,
 				B32A71C62688D6310099A4E3 /* DiagnosticsView.swift in Sources */,
 				B6B4A04E2698579E006CB115 /* Patient.swift in Sources */,
 				B32A71D8268917BE0099A4E3 /* RegisterView.swift in Sources */,

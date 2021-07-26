@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct DiagnosticsView: View {
+    @EnvironmentObject  var userData: UserData
     
     @State var symptoms:[SymptomItem] = [
         SymptomItem(name: "Gorge irritée", id: 13),
@@ -38,6 +39,7 @@ struct DiagnosticsView: View {
                                 ToggleComponent(isChecked: $symptoms[index].isChecked, title: symptoms[index].name)
                             }
                         }
+                        .padding([.leading, .trailing], 5)
                     }
                 }
                 Spacer()

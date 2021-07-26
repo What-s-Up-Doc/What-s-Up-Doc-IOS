@@ -61,7 +61,7 @@ struct RegisterView: View {
     var body: some View {
         ZStack(alignment: .top) {
             if showResponseMessage {
-                ResponseMessageView(title: messageTitle, message: messageContent,color: messageColor)
+                ResponseMessageComponent(title: messageTitle, message: messageContent,color: messageColor)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             self.showResponseMessage = false
@@ -89,7 +89,7 @@ struct RegisterView: View {
                                     .autocapitalization(.none)
                                 
                                 if emailErrorMsg != "" && emailErrorMsg != nil {
-                                    ErrorMessageView(errorMsg: "\(emailErrorMsg!)")
+                                    ErrorMessageComponent(errorMsg: "\(emailErrorMsg!)")
                                 }
                             }
                             
@@ -131,7 +131,7 @@ struct RegisterView: View {
                                 }
                                 
                                 if passwordErrorMsg != "" && passwordErrorMsg != nil {
-                                    ErrorMessageView(errorMsg: "\(passwordErrorMsg!)")
+                                    ErrorMessageComponent(errorMsg: "\(passwordErrorMsg!)")
                                 }
                             }
 
@@ -173,7 +173,7 @@ struct RegisterView: View {
                                 }
                                 
                                 if passwordConfirmErrorMsg != "" && passwordConfirmErrorMsg != nil {
-                                    ErrorMessageView(errorMsg: "\(passwordConfirmErrorMsg!)")
+                                    ErrorMessageComponent(errorMsg: "\(passwordConfirmErrorMsg!)")
                                 }
                             }
                         }.padding([.top,.bottom],5)
@@ -206,7 +206,7 @@ struct RegisterView: View {
                                     .disableAutocorrection(true)
                                 
                                 if firstnameErrorMsg != "" && firstnameErrorMsg != nil {
-                                    ErrorMessageView(errorMsg: "\(firstnameErrorMsg!)")
+                                    ErrorMessageComponent(errorMsg: "\(firstnameErrorMsg!)")
                                 }
                             }
 
@@ -227,7 +227,7 @@ struct RegisterView: View {
                                     .disableAutocorrection(true)
                                 
                                 if lastnameErrorMsg != "" && lastnameErrorMsg != nil {
-                                    ErrorMessageView(errorMsg: "\(lastnameErrorMsg!)")
+                                    ErrorMessageComponent(errorMsg: "\(lastnameErrorMsg!)")
                                 }
                             }
                             ZStack(alignment: .center) {
@@ -250,7 +250,7 @@ struct RegisterView: View {
                                     .shadow(radius: 10.0, x: 20, y: 10)
                                 }
                                 if birthdayErrorMsg != "" && birthdayErrorMsg != nil {
-                                    ErrorMessageView(errorMsg: "\(birthdayErrorMsg!)")
+                                    ErrorMessageComponent(errorMsg: "\(birthdayErrorMsg!)")
                                 }
                             }
                             
@@ -272,7 +272,7 @@ struct RegisterView: View {
                                     .disableAutocorrection(true)
                                 
                                 if phoneErrorMsg != "" && phoneErrorMsg != nil {
-                                    ErrorMessageView(errorMsg: "\(phoneErrorMsg!)")
+                                    ErrorMessageComponent(errorMsg: "\(phoneErrorMsg!)")
                                 }
                             }
                         }.padding(.bottom, 10)
@@ -312,7 +312,7 @@ struct RegisterView: View {
                                 }
                                 
                                 if weightErroMsg != "" && weightErroMsg != nil {
-                                    ErrorMessageView(errorMsg: "\(weightErroMsg!)")
+                                    ErrorMessageComponent(errorMsg: "\(weightErroMsg!)")
                                 }
                             }
                             
@@ -339,7 +339,7 @@ struct RegisterView: View {
                                 }
                                 
                                 if heightErrorMsg != ""  && heightErrorMsg != nil {
-                                    ErrorMessageView(errorMsg: "\(heightErrorMsg!)")
+                                    ErrorMessageComponent(errorMsg: "\(heightErrorMsg!)")
                                 }
                             }
                             

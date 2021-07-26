@@ -9,9 +9,11 @@ import SwiftUI
 import Combine
 
 struct LoginView: View {
+    
+    @EnvironmentObject  var userData: UserData
 
-    @State private var email = ""
-    @State private var password = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
     @State private var showPassword: Bool = false
     @State private var messageTitle: String = ""
     @State private var messageContent: String = ""
@@ -22,7 +24,7 @@ struct LoginView: View {
     var body: some View {
         ZStack(alignment: .top){
             if showResponseMessage {
-                ResponseMessageView(title: messageTitle, message: messageContent,color: messageColor)
+                ResponseMessageComponent(title: messageTitle, message: messageContent,color: messageColor)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             self.showResponseMessage = false
@@ -118,21 +120,30 @@ struct LoginView: View {
     }
     
     func submitLogin() -> Void {
-        let json = [
-            "username": email,
+        var json = [String:Any]()
+        json = [
+            "email": email,
             "password": password
         ]
         
-        UserService.sharedInstance.CreatePatient(endpoint: "api/login", json: json) { (result, success) -> Void in
+        UserService.sharedInstance.Login(endpoint: "api/login", json: json) { (result, success) -> Void in
             if success {
                 print("User logged !")
+                setToken(token: result)
+                userData.updateIsLoggedIn()
             } else {
                 self.messageTitle = "Error !"
-                self.messageContent = "\(result["message"]!)"
+//                self.messageContent = "\(result["message"]!)"
                 self.showResponseMessage.toggle()
             }
         }
     }
+    
+    func setToken(token: String) {
+        UserDefaults.standard.set(token, forKey:"token")
+    }
+    
+
 }
 
 struct LoginView_Previews: PreviewProvider {
