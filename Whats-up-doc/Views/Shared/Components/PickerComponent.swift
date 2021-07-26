@@ -17,8 +17,8 @@ struct PickerComponent: View {
                 ForEach(0..<pickerList.count, content: { index in
                     Text(pickerList[index].name)
                 })
-            })
-        }
+            }).animation(.default)
+        }.pickerDesign()
     }
 }
 

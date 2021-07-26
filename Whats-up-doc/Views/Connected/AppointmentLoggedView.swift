@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct AppointmentLoggedView: View {
-    var appointments = getAppointments()
+    @State var appointments = getAppointments()
     @State private var showingSheet = false
     @State  var showCircleButton = false
     
@@ -18,7 +18,7 @@ struct AppointmentLoggedView: View {
     
     @State  var messageTitle: String = ""
     @State  var messageContent: String = ""
-    @State  var messageColor: Color = Color.green
+    @State  var messageColor: Color = Color.blue
         
     init() {
        UITableView.appearance().separatorStyle = .none
@@ -45,7 +45,7 @@ struct AppointmentLoggedView: View {
                     Section(header: HeaderSectionView(title: "Appointments",icon: "calendar")) {
                         ZStack(alignment: .bottom){
                             List {
-                                ForEach(appointments) { appointment in
+                                ForEach(appointments.reversed()) { appointment in
                                     AppointmentRow(appointment: appointment)
                                            }
                                 .listRowBackground(Color("lightGray"))
@@ -72,7 +72,9 @@ struct AppointmentLoggedView: View {
                                         AppointmentSheetView(showResponseMessage: $showResponseMessage,
                                                              messageTitle: $messageTitle,
                                                              messageContent: $messageContent,
-                                                             messageColor: $messageColor)
+                                                             messageColor: $messageColor,
+                                                             appointments: $appointments
+                                                             )
                                     }
                                     .padding(.bottom, 20)
                                     .padding(.leading, 300)
@@ -103,7 +105,10 @@ struct AppointmentLoggedView: View {
                                         AppointmentSheetView(showResponseMessage: $showResponseMessage,
                                                              messageTitle: $messageTitle,
                                                              messageContent: $messageContent,
-                                                             messageColor: $messageColor)
+                                                             messageColor: $messageColor,
+                                                             appointments: $appointments
+                                        
+                                        )
                                     }
                                     .padding(.bottom, 20)
                                     .padding(.leading, 200)

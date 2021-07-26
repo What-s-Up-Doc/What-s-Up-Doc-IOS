@@ -26,7 +26,7 @@ struct PickerValueComponent: View {
                 .resizable()
                 .frame(width:13, height: 6)
                 .foregroundColor(.black)
-        }.pickerDesign()
+        }.pickerInputDesign()
         .onTapGesture {
             self.showPicker.toggle()
         }
