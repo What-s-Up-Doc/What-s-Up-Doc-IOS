@@ -56,11 +56,12 @@ struct AppointmentSheetView: View {
     @State private var showDatePicker: Bool = false
     @State private var selectedSpeciality: Bool = false
     @State private var selectedDoctor: Bool = false
-    @Binding  var showResponseMessage: Bool
     
-    @Binding  var messageTitle: String
-    @Binding  var messageContent: String
-    @Binding  var messageColor: Color
+    @Binding var showResponseMessage: Bool
+    @Binding var messageTitle: String
+    @Binding var messageContent: String
+    @Binding var messageColor: Color
+    @Binding var appointments: [Appointment]
     
     @State private var selectedDateIndex = 0
     @State private var selectedDoctorIndex = 0
@@ -132,8 +133,17 @@ struct AppointmentSheetView: View {
                         presentationMode.wrappedValue.dismiss()
                         messageTitle = "Success !"
                         messageContent = "Appointment booked"
-                        messageColor = Color.green
+                        messageColor = Color.blue
                         showResponseMessage = true
+                        let date = getDateAndTime()[selectedDateIndex].name.components(separatedBy: " ")
+                        appointments.append(
+                            Appointment(
+                                date: date[0],
+                                status: "pending",
+                                doctor: getDoctors()[selectedDoctorIndex].name,
+                                speciality: getSpecialities()[selectedSpecialityIndex].name
+                            )
+                        )
                     }) {
                         Text("Validate")
                             .font(.headline)
