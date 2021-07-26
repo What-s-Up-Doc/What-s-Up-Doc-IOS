@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppointmentView: View {
-    @StateObject private var userData: UserData = UserData()
+    @EnvironmentObject private var userData: UserData
     
     var body: some View {
         if userData.isLoggedIn {

@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct DiagnosticsView: View {
+    @EnvironmentObject  var userData: UserData
     
     @State var symptoms:[SymptomItem] = [
         SymptomItem(name: "Gorge irritée", id: 13),
