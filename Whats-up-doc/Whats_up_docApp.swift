@@ -26,11 +26,25 @@ struct Whats_up_docApp: App {
                         Text("Appointments")
                         Image(systemName: "calendar")
                     }
-            }
+            }.environmentObject(userData)
         }
     }
 }
 
+func isUserLoggedIN() -> Bool {
+    let str = UserDefaults.standard.object(forKey: "token") == nil ? "" : UserDefaults.standard.object(forKey: "token") as! String
+    return str.count > 0 ? true : false
+}
+
 class UserData: ObservableObject {
-    @Published var isLoggedIn: Bool = true
+    @Published var isLoggedIn: Bool = isUserLoggedIN()
+    
+    func updateIsLoggedIn (){
+        isLoggedIn = isUserLoggedIN()
+    }
+    
+    func logout (){
+        UserDefaults.standard.set(nil, forKey: "token")
+        isLoggedIn = false
+    }
 }
