@@ -46,13 +46,11 @@ struct AccountView: View {
                     Button(action: {
                         self.showButton.toggle()
                     }) {
-                        Text("Settings")
+                        Text("Logout")
                     }.textButtonNotDisabled(color: Color.blue)
                     .actionSheet(isPresented: $showButton){
-                        ActionSheet(title: Text("Account manager"), message: Text ("Manage your account here"),
-                                    buttons: [ .default(Text("Modify Account information"), action: {
-                                        
-                                    }), .destructive(Text("Logout"), action: {
+                        ActionSheet(title: Text("Logout"), message: Text ("Are your sure ?"),
+                                    buttons: [.destructive(Text("Logout"), action: {
                                         userData.logout()
                                 }), .cancel()])
                     }
