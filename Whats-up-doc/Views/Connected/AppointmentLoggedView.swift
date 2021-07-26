@@ -10,15 +10,16 @@ import SwiftUI
 
 
 struct AppointmentLoggedView: View {
+
     @State var appointments = getAppointments()
     @State private var showingSheet = false
-    @State  var showCircleButton = false
+    @State var showCircleButton = false
     
-    @State  var showResponseMessage: Bool = false
+    @State var showResponseMessage: Bool = false
     
-    @State  var messageTitle: String = ""
-    @State  var messageContent: String = ""
-    @State  var messageColor: Color = Color.blue
+    @State var messageTitle: String = ""
+    @State var messageContent: String = ""
+    @State var messageColor: Color = Color.blue
         
     init() {
        UITableView.appearance().separatorStyle = .none
@@ -26,7 +27,6 @@ struct AppointmentLoggedView: View {
        UITableView.appearance().backgroundColor = .clear
     }
     
-
     var body: some View {
         ZStack(alignment: .top) {
             if showResponseMessage {
@@ -178,8 +178,8 @@ let getAppointments = {
     ]
 }
 
-struct AppointmentLoggedView_Previews: PreviewProvider {
-    static var previews: some View {
-        AppointmentLoggedView()
-    }
-}
+//struct AppointmentLoggedView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AppointmentLoggedView()
+//    }
+//}

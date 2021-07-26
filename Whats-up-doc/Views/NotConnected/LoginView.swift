@@ -9,8 +9,9 @@ import SwiftUI
 import Combine
 
 struct LoginView: View {
-    
     @EnvironmentObject  var userData: UserData
+    
+    @Binding var isActive: Bool
 
     @State private var email: String = ""
     @State private var password: String = ""
@@ -131,6 +132,7 @@ struct LoginView: View {
                 print("User logged !")
                 setToken(token: result)
                 userData.updateIsLoggedIn()
+                self.isActive = false
             } else {
                 self.messageTitle = "Error !"
 //                self.messageContent = "\(result["message"]!)"
@@ -146,8 +148,8 @@ struct LoginView: View {
 
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}
