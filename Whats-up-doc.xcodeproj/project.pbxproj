@@ -114,7 +114,6 @@
 			children = (
 				ECD131C82694AFB100739A3A /* Components */,
 				ECD131C32694A78700739A3A /* Design */,
-				B319B720268DEAD4004DA65B /* HeaderSectionView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -196,6 +195,7 @@
 		ECD131C82694AFB100739A3A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B319B720268DEAD4004DA65B /* HeaderSectionView.swift */,
 				B319B72E26909839004DA65B /* ResponseMessageComponent.swift */,
 				B32796B2268BB56D007C2BE0 /* ErrorMessageComponent.swift */,
 				ECD131C92694AFCC00739A3A /* HeaderComponent.swift */,
