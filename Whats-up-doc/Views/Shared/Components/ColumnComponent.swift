@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct ColumnComponent: View{
-    let string1: String
-    let string2: String
+    let label: String
+    let value: String
     
     var body: some View {
         HStack(){
-            Text(string1).foregroundColor(Color.white)
-            Text(string2).foregroundColor(Color.white)
+            Text(label).bold()
+            Spacer()
+            Text(value)
         }
+        .padding()
+        .background(Color("lightGray"))
+        .cornerRadius(20.0)
+        .shadow(radius: 10.0, x: 20, y: 10)
+        .disableAutocorrection(true)
+        .autocapitalization(.none)
     }
 }

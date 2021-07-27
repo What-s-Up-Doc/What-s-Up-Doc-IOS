@@ -23,6 +23,7 @@
 		B3B889C326ADA10500F10E2B /* AppointmentNotLoggedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889C226ADA10500F10E2B /* AppointmentNotLoggedView.swift */; };
 		B3B889C726ADE99700F10E2B /* PickerValueComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889C626ADE99700F10E2B /* PickerValueComponent.swift */; };
 		B3B889CA26ADF8D200F10E2B /* WarningMessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889C926ADF8D200F10E2B /* WarningMessageComponent.swift */; };
+		B3B889DD26B01D6400F10E2B /* LoadingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B889DC26B01D6400F10E2B /* LoadingComponent.swift */; };
 		B6B4A04A2698503C006CB115 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4A0492698503C006CB115 /* AccountView.swift */; };
 		B6B4A04E2698579E006CB115 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4A04D2698579E006CB115 /* Patient.swift */; };
 		B6B4A05126985E66006CB115 /* ColumnComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4A05026985E66006CB115 /* ColumnComponent.swift */; };
@@ -52,6 +53,7 @@
 		B3B889C226ADA10500F10E2B /* AppointmentNotLoggedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentNotLoggedView.swift; sourceTree = "<group>"; };
 		B3B889C626ADE99700F10E2B /* PickerValueComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerValueComponent.swift; sourceTree = "<group>"; };
 		B3B889C926ADF8D200F10E2B /* WarningMessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningMessageComponent.swift; sourceTree = "<group>"; };
+		B3B889DC26B01D6400F10E2B /* LoadingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingComponent.swift; sourceTree = "<group>"; };
 		B6B4A0492698503C006CB115 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		B6B4A04D2698579E006CB115 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		B6B4A05026985E66006CB115 /* ColumnComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnComponent.swift; sourceTree = "<group>"; };
@@ -112,7 +114,6 @@
 			children = (
 				ECD131C82694AFB100739A3A /* Components */,
 				ECD131C32694A78700739A3A /* Design */,
-				B319B720268DEAD4004DA65B /* HeaderSectionView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -194,6 +195,7 @@
 		ECD131C82694AFB100739A3A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B319B720268DEAD4004DA65B /* HeaderSectionView.swift */,
 				B319B72E26909839004DA65B /* ResponseMessageComponent.swift */,
 				B32796B2268BB56D007C2BE0 /* ErrorMessageComponent.swift */,
 				ECD131C92694AFCC00739A3A /* HeaderComponent.swift */,
@@ -202,6 +204,7 @@
 				B3B889C626ADE99700F10E2B /* PickerValueComponent.swift */,
 				B3B889C926ADF8D200F10E2B /* WarningMessageComponent.swift */,
 				B6B4A05026985E66006CB115 /* ColumnComponent.swift */,
+				B3B889DC26B01D6400F10E2B /* LoadingComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				B3B889C326ADA10500F10E2B /* AppointmentNotLoggedView.swift in Sources */,
 				B32796B6268BBF4C007C2BE0 /* ValidatorField.swift in Sources */,
 				B32A71CC2688DD6C0099A4E3 /* AppointmentView.swift in Sources */,
+				B3B889DD26B01D6400F10E2B /* LoadingComponent.swift in Sources */,
 				B6B4A04A2698503C006CB115 /* AccountView.swift in Sources */,
 				ECD131CC2694B00B00739A3A /* ToggleComponent.swift in Sources */,
 				B3B889CA26ADF8D200F10E2B /* WarningMessageComponent.swift in Sources */,
