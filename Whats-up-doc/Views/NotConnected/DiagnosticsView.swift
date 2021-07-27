@@ -49,12 +49,12 @@ struct DiagnosticsView: View {
                 }) {
                     Text("Diagnostique")
                         .buttonTextDesign()
-                        .background(isDisabled() ? Color.gray : Color.blue)
+                        .background(isDisabled(symptoms: symptoms) ? Color.gray : Color.blue)
                         .cornerRadius(15.0)
                         .shadow(radius: 10.0, x: 20, y: 10)
                     
                 }
-                .disabled(isDisabled())
+                .disabled(isDisabled(symptoms: symptoms))
                 
                 Spacer()
                 
@@ -69,8 +69,13 @@ struct DiagnosticsView: View {
         
     }
     
-    func isDisabled() -> Bool{
-        true
+    func isDisabled(symptoms: [SymptomItem]) -> Bool{
+        for symptom in symptoms {
+            if symptom.isChecked {
+                return false
+            }
+        }
+        return true
     }
 }
 

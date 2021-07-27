@@ -100,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				B32A71C82688D7CE0099A4E3 /* HomeView.swift */,
-				B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */,
 				B32A71CB2688DD6C0099A4E3 /* AppointmentView.swift */,
 				B3B889BC26AD9EEA00F10E2B /* AppointmentSheetView.swift */,
 				B3B889BF26ADA02D00F10E2B /* AppointmentLoggedView.swift */,
@@ -121,6 +120,7 @@
 		B32796BC268BC128007C2BE0 /* NotConnected */ = {
 			isa = PBXGroup;
 			children = (
+				B32A71C52688D6310099A4E3 /* DiagnosticsView.swift */,
 				B32A71CE2688E0230099A4E3 /* LoginView.swift */,
 				B32A71D7268917BE0099A4E3 /* RegisterView.swift */,
 				B3B889C226ADA10500F10E2B /* AppointmentNotLoggedView.swift */,
