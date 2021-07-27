@@ -43,7 +43,7 @@ class User {
 }
 
 func mockUser() -> User{
-    return User(firstname: "blopblop",lastname: "blop",email: "teFbvfvvyhths@gmail.com",phone: "01928384732",gender: "male",birthday: "1993-12-23",smoker: 1,height: 64.3,weight: 54.5,medicalHistory: "nothing",treatment: "nothing", familyMedicalHistory: "nothing")
+    return User(firstname: "Steve",lastname: "Jobs",email: "steve@apple.com",phone: "01928384732",gender: "male",birthday: "1955-02-24",smoker: 0,height: 188,weight: 80,medicalHistory: "nothing",treatment: "nothing", familyMedicalHistory: "nothing")
 }
 
 

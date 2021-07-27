@@ -51,6 +51,7 @@ let getDoctors = {
 struct AppointmentSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     
+    @State private var isLoading: Bool = false
     @State private var showSpecialitiesPicker: Bool = false
     @State private var showDoctorPicker: Bool = false
     @State private var showDatePicker: Bool = false
@@ -68,6 +69,7 @@ struct AppointmentSheetView: View {
     @State private var selectedSpecialityIndex = 0
 
     var body: some View {
+        LoadingComponent(isShowing: self.$isLoading) {
             ZStack(alignment: .bottom){
                 VStack(){
                     
@@ -130,20 +132,25 @@ struct AppointmentSheetView: View {
                     
                     Spacer()
                     Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                        messageTitle = "Success !"
-                        messageContent = "Appointment booked"
-                        messageColor = Color.blue
-                        showResponseMessage = true
-                        let date = getDateAndTime()[selectedDateIndex].name.components(separatedBy: " ")
-                        appointments.append(
-                            Appointment(
-                                date: date[0],
-                                status: "pending",
-                                doctor: getDoctors()[selectedDoctorIndex].name,
-                                speciality: getSpecialities()[selectedSpecialityIndex].name
+                        self.isLoading.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.isLoading.toggle()
+                            presentationMode.wrappedValue.dismiss()
+                            messageTitle = "Success !"
+                            messageContent = "Appointment booked"
+                            messageColor = Color.blue
+                            showResponseMessage = true
+                            let date = getDateAndTime()[selectedDateIndex].name.components(separatedBy: " ")
+                            appointments.append(
+                                Appointment(
+                                    date: date[0],
+                                    status: "pending",
+                                    doctor: getDoctors()[selectedDoctorIndex].name,
+                                    speciality: getSpecialities()[selectedSpecialityIndex].name
+                                )
                             )
-                        )
+                        }
+
                     }) {
                         Text("Validate")
                             .font(.headline)
@@ -205,6 +212,7 @@ struct AppointmentSheetView: View {
             )
             .edgesIgnoringSafeArea(.bottom)
 
+        }
     }
     
     func isDisabled() -> Bool{

@@ -30,7 +30,7 @@ struct Whats_up_docApp: App {
                     AccountView()
                         .tabItem {
                             Text("Profile")
-                            Image(systemName: "person.circle.fill")
+                            Image(systemName: "person.fill")
                         }
                 }
             }.environmentObject(userData)
