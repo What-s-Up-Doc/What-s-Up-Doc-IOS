@@ -21,7 +21,48 @@ class UserService {
     static let sharedInstance = UserService()
     
     
-    private let urlBase = "https://whats-up-doc.azurewebsites.net/";
+    private let urlBase = "https://nameless-brushlands-27231.herokuapp.com/";
+    
+    func Login(endpoint: String, json: [String: Any], completion: @escaping (String, Bool) -> Void) {
+        let endpointUrl = URL(string: urlBase + endpoint)!
+    
+        let data = try! JSONSerialization.data(withJSONObject: json, options: [])
+        
+        var request = URLRequest(url: endpointUrl)
+        request.httpMethod = "POST"
+        request.httpBody = data
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                print("Error: error calling POST")
+                print(error!)
+                return
+            }
+            guard let data = data else {
+                print("Error: Did not receive data")
+                return
+            }
+            do {
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                     if let xDemAuth = httpResponse.allHeaderFields["Authorization"] as? String {
+                        completion(xDemAuth, true)
+                        print(xDemAuth)
+                     }
+                }
+
+            } catch {
+                print("Error: Trying to convert JSON data to string")
+                return
+            }
+            
+        
+        }.resume()
+    }
+    
+    
     
     func CreatePatient(endpoint: String, json: [String: Any], completion: @escaping ([String: Any], Bool) -> Void) {
        

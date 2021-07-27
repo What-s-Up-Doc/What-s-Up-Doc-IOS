@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ErrorMessageView: View {
+struct ErrorMessageComponent: View {
     let errorMsg: String
     @State private var animation = false
     @State var numberOfShakes: CGFloat = 0
