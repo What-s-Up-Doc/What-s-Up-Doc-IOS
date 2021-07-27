@@ -39,8 +39,7 @@ struct Whats_up_docApp: App {
 }
 
 func isUserLoggedIN() -> Bool {
-    let str = UserDefaults.standard.object(forKey: "token") == nil ? "" : UserDefaults.standard.object(forKey: "token") as! String
-    return str.count > 0 ? true : false
+    return UserDefaults.standard.object(forKey: "token") != nil 
 }
 
 class UserData: ObservableObject {

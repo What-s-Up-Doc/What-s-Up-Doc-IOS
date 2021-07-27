@@ -13,6 +13,13 @@ struct DiagnosticsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var diagnostics: [String]
     
+    init(diagnostics: Binding<[String]>) {
+        UITableView.appearance().separatorStyle = .none
+        UITableViewCell.appearance().backgroundColor = .clear
+        UITableView.appearance().backgroundColor = .clear
+        self._diagnostics = diagnostics
+    }
+    
 //    let getDiagnostics = {
 //        return [
 //            "Inflammation du nez et de la gorge",

@@ -88,7 +88,7 @@ struct LoginView: View {
                     }.padding([.leading, .trailing], 27.5)
                     
                     Button(action: {
-                        self.isLoading.toggle()
+//                        self.isLoading.toggle()
                         submitLogin()
                     }) {
                         Text("Sign In")
@@ -133,7 +133,7 @@ struct LoginView: View {
                 setToken(token: result)
                 userData.updateIsLoggedIn()
                 self.isActive = false
-                self.isLoading = false
+//                self.isLoading = false
             } else {
                 self.messageTitle = "Error !"
 //                self.messageContent = "\(result["message"]!)"

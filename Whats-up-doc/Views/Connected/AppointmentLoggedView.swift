@@ -22,9 +22,9 @@ struct AppointmentLoggedView: View {
     @State var messageColor: Color = Color.blue
         
     init() {
-       UITableView.appearance().separatorStyle = .none
+        UITableView.appearance().separatorStyle = .none
         UITableViewCell.appearance().backgroundColor = .clear
-       UITableView.appearance().backgroundColor = .clear
+        UITableView.appearance().backgroundColor = .clear
     }
     
     var body: some View {
