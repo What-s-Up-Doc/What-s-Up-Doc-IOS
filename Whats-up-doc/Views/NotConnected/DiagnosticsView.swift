@@ -8,6 +8,9 @@ import SwiftUI
 
 struct DiagnosticsView: View {
     @EnvironmentObject  var userData: UserData
+    @State var diagnistics: [String] = []
+    @State var showModalDiagnostic: Bool = false
+    @State private var isLoading: Bool = false
     
     @State var symptoms:[SymptomItem] = [
         SymptomItem(name: "Gorge irritée", id: 13),
@@ -27,46 +30,84 @@ struct DiagnosticsView: View {
     @State private var smoker: Bool = false
     
     var body: some View {
-        ZStack(alignment: .top){
-            VStack() {
-                
-                HeaderComponent()
-                
-                Section(header: HeaderSectionView(title: "Symptoms",icon: "heart.fill")) {
-                    ScrollView{
-                        VStack{
-                            ForEach(0..<symptoms.count) { index in
-                                ToggleComponent(isChecked: $symptoms[index].isChecked, title: symptoms[index].name)
-                            }
-                        }
-                        .padding([.leading, .trailing], 5)
-                    }
-                }
-                Spacer()
-                
-                Button(action: {
-                    submitSymptoms()
-                }) {
-                    Text("Diagnostique")
-                        .buttonTextDesign()
-                        .background(isDisabled(symptoms: symptoms) ? Color.gray : Color.blue)
-                        .cornerRadius(15.0)
-                        .shadow(radius: 10.0, x: 20, y: 10)
+        LoadingComponent(isShowing: self.$isLoading) {
+            ZStack(alignment: .top){
+                VStack() {
                     
-                }
-                .disabled(isDisabled(symptoms: symptoms))
+                    HeaderComponent()
+                    
+                    Section(header: HeaderSectionView(title: "Symptoms",icon: "heart.fill")) {
+                        ScrollView{
+                            VStack{
+                                ForEach(0..<symptoms.count) { index in
+                                    ToggleComponent(isChecked: $symptoms[index].isChecked, title: symptoms[index].name)
+                                }
+                            }
+                            .padding([.leading, .trailing], 5)
+                        }
+                    }
+                    Spacer()
+                    
+                    Button(action: {
+                        submitSymptoms()
+                    }) {
+                        Text("Diagnostique")
+                            .buttonTextDesign()
+                            .background(isDisabled(symptoms: symptoms) ? Color.gray : Color.blue)
+                            .cornerRadius(15.0)
+                            .shadow(radius: 10.0, x: 20, y: 10)
+                        
+                    }
+                    .disabled(isDisabled(symptoms: symptoms))
+                    .sheet(isPresented: $showModalDiagnostic) {
+                        DiagnosticsSheetView(diagnostics: $diagnistics)
+                    }
+                    
+                    Spacer()
+                    
+                }.background(
+                    LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
+                        .edgesIgnoringSafeArea(.all))
                 
-                Spacer()
-                
-            }.background(
-                LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.all))
-            
+            }
         }
     }
     
     func submitSymptoms(){
+        self.isLoading.toggle()
         
+        var symptomsId: [Int] = []
+        for symptom in symptoms {
+            if symptom.isChecked {
+                symptomsId.append(symptom.id)
+            }
+        }
+        
+        var json = [String:Any]()
+        json = [
+            "symptoms": symptomsId,
+            "yearOfBirth":1984,
+            "gender":"male"
+        ]
+         DiagnosticService.sharedInstance.getDiagnostic(endpoint: "api/diagnosis", json: json) { (result, success) -> Void in
+            if success {
+                for row in result {
+                    if let issuesArray = row["issues"] as? [[String:Any]],
+                          let issues = issuesArray.first
+                          {
+                        guard let name = issues["name"] as? String else {
+                            print("Error on unwraping")
+                            return
+                        }
+                        diagnistics.append(name)
+                    }
+
+
+                }
+                self.isLoading.toggle()
+                self.showModalDiagnostic.toggle()
+            }
+        }
     }
     
     func isDisabled(symptoms: [SymptomItem]) -> Bool{
@@ -90,8 +131,8 @@ class SymptomItem: ObservableObject {
     }
 }
 
-struct DiagnosticsView_Previews: PreviewProvider {
-    static var previews: some View {
-        DiagnosticsView()
-    }
-}
+//struct DiagnosticsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DiagnosticsView()
+//    }
+//}
