@@ -206,10 +206,7 @@ struct AppointmentSheetView: View {
 
             }
             .animation(.default, value: showDatePicker || showDoctorPicker || showSpecialitiesPicker)
-            .background(
-                LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
-            )
+            .backgroundDesign()
             .edgesIgnoringSafeArea(.bottom)
 
         }

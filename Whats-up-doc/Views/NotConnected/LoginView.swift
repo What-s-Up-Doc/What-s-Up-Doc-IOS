@@ -47,7 +47,7 @@ struct LoginView: View {
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.white, lineWidth: 4))
                         .shadow(radius: 10.0, x: 20, y: 10)
-                        .padding(.bottom, 100)
+                        .padding(.bottom, 50)
                     
                     VStack(alignment: .leading, spacing: 15) {
                         TextField("Email", text: $email)
@@ -110,10 +110,9 @@ struct LoginView: View {
                                 Text("Sign Up")
                             }.navigationBarTitle("Login", displayMode: .inline)
                     }.padding(.bottom)
+                    Spacer()
                 }
-            }.background(
-                LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.all))
+            }.backgroundDesign()
         }
     }
     func isDisabled() -> Bool {

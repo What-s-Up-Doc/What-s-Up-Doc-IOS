@@ -341,24 +341,9 @@ struct RegisterView: View {
                                 if heightErrorMsg != ""  && heightErrorMsg != nil {
                                     ErrorMessageComponent(errorMsg: "\(heightErrorMsg!)")
                                 }
-                            }
+                            }.padding(.bottom, 80)
                             
-                        }.padding(.bottom, 10)
-                        
-                        Button(action: {
-                            submit()
-                        }) {
-                            Text("Submit")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(width: 330, height: 50)
-                                .background(isDisabled() ? Color.gray : Color.blue)
-                                .cornerRadius(15.0)
-                                .shadow(radius: 10.0, x: 20, y: 10)
                         }
-                        .padding([.top,.bottom], 50)
-                        .disabled(self.isDisabled())
                         
                     }.padding([.leading, .trailing], 27.5)
                 }.overlay((self.showsDatePicker ? Color.black.opacity(0.3) : Color.clear)
@@ -366,25 +351,40 @@ struct RegisterView: View {
                 .onTapGesture {
                     self.showsDatePicker.toggle()
                 })
-
-                if self.showsDatePicker {
-                    HStack(){
-                            DatePicker("", selection: $birthday, displayedComponents: .date)
-                                .datePickerStyle(WheelDatePickerStyle())
-                        }
-                        .offset(y: self.showsDatePicker ? 0 : UIScreen.main.bounds.height)
-                        .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
-                        .padding(.horizontal)
-                        .padding(.top,20)
-                        .background(Color("lightGray"))
-                        .edgesIgnoringSafeArea(.bottom)
-                }
                 
+                ZStack(alignment: .bottom) {
+                    Button(action: {
+                        submit()
+                    }) {
+                        Text("Submit")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(width: 330, height: 50)
+                            .background(isDisabled() ? Color.gray : Color.blue)
+                            .cornerRadius(15.0)
+                            .shadow(radius: 10.0, x: 20, y: 10)
+                    }
+                    .padding(.top, 5)
+                    .padding(.bottom)
+                    .disabled(self.isDisabled())
+
+                    if self.showsDatePicker {
+                        HStack(){
+                                DatePicker("", selection: $birthday, displayedComponents: .date)
+                                    .datePickerStyle(WheelDatePickerStyle())
+                            }
+                            .offset(y: self.showsDatePicker ? 0 : UIScreen.main.bounds.height)
+                            .padding(.bottom, (UIApplication.shared.windows.last?.safeAreaInsets.bottom)! + 10)
+                            .padding(.horizontal)
+                            .padding(.top,20)
+                            .background(Color("lightGray"))
+                            .edgesIgnoringSafeArea(.bottom)
+                    }
+                }
             }
             .animation(.default, value: showsDatePicker)
-            .background(
-                LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.all))
+            .backgroundDesign()
             .navigationBarTitle("Register", displayMode: .inline)
         }
     }

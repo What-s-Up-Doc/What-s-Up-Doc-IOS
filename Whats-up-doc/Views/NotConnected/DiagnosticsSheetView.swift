@@ -22,13 +22,13 @@ struct DiagnosticsSheetView: View {
     
 //    let getDiagnostics = {
 //        return [
-//            "Inflammation du nez et de la gorge",
-//            "Rhume",
-//            "Grippe",
-//            "Inflammation des amygdales",
-//            "Phlegmon de l'amygdale",
-//            "Maladie de reflux",
-//            "Maladie du baiser",
+////            "Inflammation du nez et de la gorge",
+////            "Rhume",
+////            "Grippe",
+////            "Inflammation des amygdales",
+////            "Phlegmon de l'amygdale",
+////            "Maladie de reflux",
+////            "Maladie du baiser",
 //        ]
 //
 //    }
@@ -64,15 +64,22 @@ struct DiagnosticsSheetView: View {
                 Section(header: HeaderSectionView(title: "Possible medical diagnoses",icon: "waveform.path.ecg")) {
                     ZStack(alignment: .bottom){
                         VStack(){
-                            List {
-                                ForEach(0..<diagnostics.count, content: { index in
-                                    Text(diagnostics[index])
-                                        .padding(.vertical)
-                                })
-                                .listRowBackground(Color("lightGray"))
-                                .opacity(0.7)
-                            }.cornerRadius(10)
-                            .padding(.top, 10)
+                            if diagnostics.count > 0 {
+                                List {
+                                    ForEach(0..<diagnostics.count, content: { index in
+                                        Text(diagnostics[index])
+                                            .padding(.vertical)
+                                    })
+                                    .listRowBackground(Color("lightGray"))
+                                    .opacity(0.7)
+                                }.cornerRadius(10)
+                                .padding(.top, 10)
+                            } else {
+                                Text("No diagnoses were found")
+                                    .padding(.vertical,200)
+
+                            }
+
                         }
                         
                         Button(action: {

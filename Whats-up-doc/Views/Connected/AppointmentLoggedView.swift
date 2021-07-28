@@ -13,7 +13,10 @@ struct AppointmentLoggedView: View {
 
     @State var appointments = getAppointments()
     @State private var showingSheet = false
-    @State var showCircleButton = false
+    @State private var showConfirmCancel = false
+    @State private var index: IndexSet?
+    
+    @State private var isOk: Bool = false
     
     @State var showResponseMessage: Bool = false
     
@@ -44,82 +47,70 @@ struct AppointmentLoggedView: View {
                     
                     Section(header: HeaderSectionView(title: "Appointments",icon: "calendar")) {
                         ZStack(alignment: .bottom){
-                            List {
-                                ForEach(appointments.reversed()) { appointment in
-                                    AppointmentRow(appointment: appointment)
-                                           }
-                                .listRowBackground(Color("lightGray"))
-                                .opacity(0.7)
-                            }.cornerRadius(10)
-                            .padding(.top, 10)
-                        
-                            
-                                if showCircleButton {
-                                    
-                                    Button(action: {
-                                        showingSheet.toggle()
-                                    }) {
-                                        
-                                        Image(systemName: "calendar.badge.plus")
-                                            .foregroundColor(.white)
-                                            .padding()
-                                            .background(Color.blue)
-                                            .clipShape(Circle())
-                                            .shadow(radius: 10.0, x: 20, y: 10)
-
+                            if appointments.count > 0 {
+                                List {
+                                    ForEach(appointments.reversed()) { appointment in
+                                        AppointmentRow(appointment: appointment)
                                     }
-                                    .sheet(isPresented: $showingSheet) {
-                                        AppointmentSheetView(showResponseMessage: $showResponseMessage,
-                                                             messageTitle: $messageTitle,
-                                                             messageContent: $messageContent,
-                                                             messageColor: $messageColor,
-                                                             appointments: $appointments
-                                                             )
+                                    .onDelete { (indexSet) in
+                                            self.showConfirmCancel = true
+                                            self.index = indexSet
                                     }
-                                    .padding(.bottom, 20)
-                                    .padding(.leading, 300)
-
-                                    
-                                    
-                                } else {
-                                    Button(action: {
-                                        showingSheet.toggle()
-                                    }) {
-                                        
-                                        HStack(){
-                                            Image(systemName: "calendar.badge.plus")
-                                            
-                                            Text("New Appointment")
-                                                
-
-                                        }
-                                        .font(.system(size: 14))
-                                        .foregroundColor(.white)
-                                        .padding()
-                                        .background(Color.blue)
-                                        .cornerRadius(30)
-                                        .shadow(radius: 10.0, x: 20, y: 10)
-
-                                    }
-                                    .sheet(isPresented: $showingSheet) {
-                                        AppointmentSheetView(showResponseMessage: $showResponseMessage,
-                                                             messageTitle: $messageTitle,
-                                                             messageContent: $messageContent,
-                                                             messageColor: $messageColor,
-                                                             appointments: $appointments
-                                        
-                                        )
-                                    }
-                                    .padding(.bottom, 20)
-                                    .padding(.leading, 200)
-                                }
+                                    .listRowBackground(Color("lightGray"))
+                                    .opacity(0.7)
+                                }.cornerRadius(10)
+                                .padding(.top, 10)
+                            } else {
+                                Text("No appointments")
+                                    .padding(.vertical,200)
                             }
+
+                            Button(action: {
+                                showingSheet.toggle()
+                            }) {
+                                
+                                HStack(){
+                                    Image(systemName: "calendar.badge.plus")
+                                    Text("New Appointment")
+                                }
+                                .font(.system(size: 14))
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color.blue)
+                                .cornerRadius(30)
+                                .shadow(radius: 10.0, x: 20, y: 10)
+
+                            }
+                            .sheet(isPresented: $showingSheet) {
+                                AppointmentSheetView(showResponseMessage: $showResponseMessage,
+                                                     messageTitle: $messageTitle,
+                                                     messageContent: $messageContent,
+                                                     messageColor: $messageColor,
+                                                     appointments: $appointments
+                                
+                                )
+                            }
+                            .alert(isPresented: $showConfirmCancel) {
+                                Alert(title: Text("Cancel the appointment"),
+                                    message: Text("Are you sure ?"),
+                                    primaryButton: .destructive(Text("Yes")) {
+                                       self.delete(at:  self.index!) //call delete method
+                                    },
+                                    secondaryButton: .cancel())
+                            }
+                            .padding(.bottom, 20)
+                            .padding(.leading, 200)
+                        }
                     }
                 }
-            }.background(
-                LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.all))
+            }.backgroundDesign()
         }
+    }
+    
+    func delete(at offsets: IndexSet) {
+        var appointmentsReverse: [Appointment] = appointments.reversed()
+        appointmentsReverse.remove(atOffsets: offsets)
+        appointments = appointmentsReverse.reversed()
     }
 }
 
