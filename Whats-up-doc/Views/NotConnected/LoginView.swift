@@ -47,7 +47,7 @@ struct LoginView: View {
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.white, lineWidth: 4))
                         .shadow(radius: 10.0, x: 20, y: 10)
-                        .padding(.bottom, 100)
+                        .padding(.bottom, 50)
                     
                     VStack(alignment: .leading, spacing: 15) {
                         TextField("Email", text: $email)
@@ -88,7 +88,7 @@ struct LoginView: View {
                     }.padding([.leading, .trailing], 27.5)
                     
                     Button(action: {
-                        self.isLoading.toggle()
+//                        self.isLoading.toggle()
                         submitLogin()
                     }) {
                         Text("Sign In")
@@ -110,10 +110,9 @@ struct LoginView: View {
                                 Text("Sign Up")
                             }.navigationBarTitle("Login", displayMode: .inline)
                     }.padding(.bottom)
+                    Spacer()
                 }
-            }.background(
-                LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.all))
+            }.backgroundDesign()
         }
     }
     func isDisabled() -> Bool {
@@ -133,7 +132,7 @@ struct LoginView: View {
                 setToken(token: result)
                 userData.updateIsLoggedIn()
                 self.isActive = false
-                self.isLoading = false
+//                self.isLoading = false
             } else {
                 self.messageTitle = "Error !"
 //                self.messageContent = "\(result["message"]!)"

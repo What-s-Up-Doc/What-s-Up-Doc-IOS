@@ -13,17 +13,17 @@ struct DiagnosticsView: View {
     @State private var isLoading: Bool = false
     
     @State var symptoms:[SymptomItem] = [
-        SymptomItem(name: "Gorge irritée", id: 13),
-        SymptomItem(name: "Nez qui coule", id: 14),
-        SymptomItem(name: "Nez encombré", id: 28),
-        SymptomItem(name: "Eternuements", id: 95),
-        SymptomItem(name: "Douleur dans les membres", id: 12),
-        SymptomItem(name: "Douleur thoracique", id: 17),
-        SymptomItem(name: "Nausée", id: 44),
-        SymptomItem(name: "Brûlures d'estomac", id: 45),
+        SymptomItem(name: "Sore throat", id: 13),
+        SymptomItem(name: "Runny nose", id: 14),
+        SymptomItem(name: "Congested nose", id: 28),
+        SymptomItem(name: "Sneezing", id: 95),
+        SymptomItem(name: "Pain in the limbs", id: 12),
+        SymptomItem(name: "Chest pain", id: 17),
+        SymptomItem(name: "Nausea", id: 44),
+        SymptomItem(name: "Stomach pains", id: 45),
         SymptomItem(name: "Palpitations", id: 37),
-        SymptomItem(name: "Rythme cardiaque irrégulier", id: 986),
-        SymptomItem(name: "Toux", id: 15)
+        SymptomItem(name: "Irregular heartbeat", id: 986),
+        SymptomItem(name: "Cough", id: 15)
     ]
     
     
@@ -33,9 +33,7 @@ struct DiagnosticsView: View {
         LoadingComponent(isShowing: self.$isLoading) {
             ZStack(alignment: .top){
                 VStack() {
-                    
                     HeaderComponent()
-                    
                     Section(header: HeaderSectionView(title: "Symptoms",icon: "heart.fill")) {
                         ScrollView{
                             VStack{
@@ -51,7 +49,7 @@ struct DiagnosticsView: View {
                     Button(action: {
                         submitSymptoms()
                     }) {
-                        Text("Diagnostique")
+                        Text("Analyze")
                             .buttonTextDesign()
                             .background(isDisabled(symptoms: symptoms) ? Color.gray : Color.blue)
                             .cornerRadius(15.0)
@@ -62,12 +60,8 @@ struct DiagnosticsView: View {
                     .sheet(isPresented: $showModalDiagnostic) {
                         DiagnosticsSheetView(diagnostics: $diagnistics)
                     }
-                    
                     Spacer()
-                    
-                }.background(
-                    LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                        .edgesIgnoringSafeArea(.all))
+                }.backgroundDesign()
                 
             }
         }
@@ -91,6 +85,7 @@ struct DiagnosticsView: View {
         ]
          DiagnosticService.sharedInstance.getDiagnostic(endpoint: "api/diagnosis", json: json) { (result, success) -> Void in
             if success {
+                diagnistics = []
                 for row in result {
                     if let issuesArray = row["issues"] as? [[String:Any]],
                           let issues = issuesArray.first
