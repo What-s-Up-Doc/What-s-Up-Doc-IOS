@@ -28,7 +28,7 @@ struct DiagnosticsSheetView: View {
 //            "Inflammation des amygdales",
 //            "Phlegmon de l'amygdale",
 //            "Maladie de reflux",
-//            "Maladie du baiser"
+//            "Maladie du baiser",
 //        ]
 //
 //    }
@@ -61,33 +61,39 @@ struct DiagnosticsSheetView: View {
                 }
                 
                 Spacer()
-    
-                VStack(){
-                    List {
-                        ForEach(0..<diagnostics.count, content: { index in
-                            Text(diagnostics[index])
-                                .padding(.vertical)
-                        })
-                        .listRowBackground(Color("lightGray"))
-                        .opacity(0.7)
-                    }.cornerRadius(10)
-                    .padding(.top, 10)
+                Section(header: HeaderSectionView(title: "Possible medical diagnoses",icon: "waveform.path.ecg")) {
+                    ZStack(alignment: .bottom){
+                        VStack(){
+                            List {
+                                ForEach(0..<diagnostics.count, content: { index in
+                                    Text(diagnostics[index])
+                                        .padding(.vertical)
+                                })
+                                .listRowBackground(Color("lightGray"))
+                                .opacity(0.7)
+                            }.cornerRadius(10)
+                            .padding(.top, 10)
+                        }
+                        
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            
+                            HStack(){
+                                Image(systemName: "xmark.circle.fill")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("lightGray"))
+                            }
+                            .padding(5)
+                            .foregroundColor(.white)
+                            .background(Color.blue)
+                            .cornerRadius(30)
+                            .shadow(radius: 10.0, x: 20, y: 10)
+                        }
+                        .padding(.bottom, 30)
+                    }.edgesIgnoringSafeArea(.bottom)
                 }
-                
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    
-                    HStack(){
-                        Image(systemName: "xmark.circle")
-                    }
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(30)
-                    .shadow(radius: 10.0, x: 20, y: 10)
-                }
-                    
             }.backgroundDesign()
         }
     }
