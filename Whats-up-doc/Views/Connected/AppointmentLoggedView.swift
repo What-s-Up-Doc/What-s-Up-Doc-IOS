@@ -94,7 +94,7 @@ struct AppointmentLoggedView: View {
                                 Alert(title: Text("Cancel the appointment"),
                                     message: Text("Are you sure ?"),
                                     primaryButton: .destructive(Text("Yes")) {
-                                       self.delete(at:  self.index!) //call delete method
+                                       self.delete(at:  self.index!)
                                     },
                                     secondaryButton: .cancel())
                             }
