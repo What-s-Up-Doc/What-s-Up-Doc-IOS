@@ -33,9 +33,7 @@ struct DiagnosticsView: View {
         LoadingComponent(isShowing: self.$isLoading) {
             ZStack(alignment: .top){
                 VStack() {
-                    
                     HeaderComponent()
-                    
                     Section(header: HeaderSectionView(title: "Symptoms",icon: "heart.fill")) {
                         ScrollView{
                             VStack{
@@ -62,12 +60,8 @@ struct DiagnosticsView: View {
                     .sheet(isPresented: $showModalDiagnostic) {
                         DiagnosticsSheetView(diagnostics: $diagnistics)
                     }
-                    
                     Spacer()
-                    
-                }.background(
-                    LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                        .edgesIgnoringSafeArea(.all))
+                }.backgroundDesign()
                 
             }
         }

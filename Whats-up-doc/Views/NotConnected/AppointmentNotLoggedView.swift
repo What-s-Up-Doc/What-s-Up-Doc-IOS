@@ -36,9 +36,7 @@ struct AppointmentNotLoggedView: View {
                 maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
                 alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/
             )
-            .background(
-                LinearGradient(gradient: Gradient(colors: [.green, Color("lightGray")]), startPoint: .top, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.all))
+            .backgroundDesign()
         }
     }
 }
